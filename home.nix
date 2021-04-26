@@ -20,6 +20,7 @@
   home.homeDirectory = "/home/cbrewster";
 
   home.packages = with pkgs; [
+    nix-index
     ripgrep
     rust-analyzer
     rustup
