@@ -27,6 +27,7 @@
     clang
     clang-tools
     htop
+    zoom-us
     _1password
     _1password-gui
   ];
