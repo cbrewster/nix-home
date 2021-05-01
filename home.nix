@@ -27,6 +27,11 @@
     clang
     clang-tools
     htop
+    kubectl
+    kubectx
+    minikube
+
+    # unfree :(
     zoom-us
     _1password
     _1password-gui

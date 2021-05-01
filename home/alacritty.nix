@@ -6,7 +6,7 @@
 
     settings = {
       font = {
-        size = 12.0;
+        size = 12;
         normal = {
           family = "FiraCode Nerd Font Mono";
         };

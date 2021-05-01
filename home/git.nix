@@ -6,6 +6,10 @@
     userName = "Connor Brewster";
     userEmail = "cbrewster@hey.com";
 
+    ignores = [
+      ".venv"
+    ];
+
     aliases = {
       fixup = "!f() { TARGET=$(git rev-parse \"$1\"); git commit --fixup=$TARGET \${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f";
       ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --decorate";

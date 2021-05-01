@@ -26,8 +26,8 @@ in {
         "${mod}+Shift+k" = "move up";
         "${mod}+Shift+l" = "move right";
 
-        "${mod}+s" = "split h";
-        "${mod}+v" = "split v";
+        "${mod}+v" = "split h";
+        "${mod}+s" = "split v";
         "${mod}+f" = "fullscreen toggle";
 
         # "${mod}+s" = "layout stacking";
@@ -76,7 +76,7 @@ in {
   
         "${mod}+Shift+c" = "reload";
         "${mod}+Shift+r" = "restart";
-        "${mod}+Shift+e" = "xfce4-session-logout";
+        "${mod}+Shift+e" = "${pkgs.xfce.xfce4-session}/bin/xfce4-session-logout";
   
         "${mod}+r" = "mode resize";
 
