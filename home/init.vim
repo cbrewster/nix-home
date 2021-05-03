@@ -394,7 +394,7 @@ gls.right[3] = {
 
 gls.right[4] = {
   GitBranch = {
-    provider = {space,'GitBranch'},
+    provider = {space,'GitBranch', space},
     condition = condition.check_git_workspace,
     highlight = {colors.bg,colors.violet,'bold'},
     separator = '',
