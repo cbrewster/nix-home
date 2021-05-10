@@ -3,7 +3,7 @@ syntax on
 set number
 set cursorline
 set background=dark
-set clipboard=unnamed
+set clipboard=unnamedplus
 set scrolloff=8
 set tabstop=4 softtabstop=4
 set shiftwidth=4

@@ -20,6 +20,7 @@
   home.homeDirectory = "/home/cbrewster";
 
   home.packages = with pkgs; [
+    brave # ugh
     nix-index
     ripgrep
     rust-analyzer
@@ -32,9 +33,10 @@
     minikube
 
     # unfree :(
-    zoom-us
     _1password
     _1password-gui
+    discord
+    zoom-us
   ];
 
   programs.direnv = {
