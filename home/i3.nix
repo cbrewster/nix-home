@@ -16,6 +16,13 @@ in {
         { command = "xset r rate 200 40"; }
       ];
 
+      gaps = {
+        inner = 10;
+        outer = 10;
+      };
+
+      window.titlebar = false;
+
       keybindings = lib.mkOptionDefault {
         # Focus
         "${mod}+h" = "focus left";

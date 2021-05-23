@@ -19,18 +19,23 @@
   home.username = "cbrewster";
   home.homeDirectory = "/home/cbrewster";
 
+  services.random-background = {
+    enable = true;
+    imageDirectory = "%h/backgrounds";
+  };
+
   home.packages = with pkgs; [
     brave # ugh
     nix-index
     ripgrep
-    rust-analyzer
-    rustup
     clang
     clang-tools
     htop
     kubectl
     kubectx
     minikube
+    jq
+    whois
 
     # unfree :(
     _1password

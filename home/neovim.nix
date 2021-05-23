@@ -26,7 +26,7 @@
 
       nvim-treesitter
 
-      galaxyline-nvim
+      lualine-nvim
       vim-highlightedyank
       vim-matchup
       vim-surround
