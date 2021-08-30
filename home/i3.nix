@@ -41,6 +41,10 @@ in {
 
         "${mod}+Shift+e" = "exec ${pkgs.xfce.xfce4-session}/bin/xfce4-session-logout";
 
+        # Multiple monitor
+        "${mod}+Shift+greater" = "move container to output right";
+        "${mod}+Shift+less" = "move container to output left";
+
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
         "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";

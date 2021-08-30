@@ -25,7 +25,6 @@
   };
 
   home.packages = with pkgs; [
-    brave # ugh
     nix-index
     ripgrep
     clang
@@ -36,18 +35,27 @@
     minikube
     jq
     whois
+    tree
+    vscode
+    gitstatus
+    apple-music-electron
+    obs-studio
+    ffmpeg
+    slack
+    insomnia
 
     # unfree :(
     _1password
     _1password-gui
     discord
     zoom-us
+    spotify
   ];
 
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
-    enableNixDirenvIntegration = true;
+    nix-direnv.enable = true;
   };
 
   # This value determines the Home Manager release that your

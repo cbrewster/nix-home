@@ -8,6 +8,7 @@ set scrolloff=8
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
+set hidden
 " upate git faster
 set updatetime=100
 " Use <SPACE> as leader
@@ -87,9 +88,10 @@ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat prettier
 " Tree sitter tings
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "rust", "go", "typescript" },
   highlight = {
-    enable = true,              -- false will disable the whole extension
+    enable = true,
+    additional_vim_regex_highlighting = false,
   },
 }
 EOF
@@ -197,7 +199,12 @@ require('lualine').setup({
         theme = "gruvbox"
     },
     sections = {
-        lualine_c = {"os.data('%a')", "data", require'lsp-status'.status}
+        lualine_b = {'filename'},
+        lualine_c = {"os.data('%a')", "data", require'lsp-status'.status},
+
+        lualine_x = {'progress'},
+        lualine_y = {'location'},
+        lualine_z = {'branch'}
     }
 })
 EOF

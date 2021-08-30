@@ -1,17 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
   home.sessionVariables.EDITOR = "nvim";
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
     vimAlias = true;
 
     extraConfig = (builtins.readFile ./init.vim);
@@ -25,6 +18,7 @@
       lsp-status-nvim
 
       nvim-treesitter
+      playground
 
       lualine-nvim
       vim-highlightedyank
