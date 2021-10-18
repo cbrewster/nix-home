@@ -11,11 +11,19 @@
       
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
-      nvim-compe
       lspsaga-nvim
+      lsp-status-nvim
+
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp-nvim-lua
+      
       vim-vsnip
       vim-vsnip-integ
-      lsp-status-nvim
+      cmp-vsnip
+
+      # luasnip
+      # cmp_luasnip
 
       nvim-treesitter
       playground

@@ -32,7 +32,6 @@
     htop
     kubectl
     kubectx
-    minikube
     jq
     whois
     tree
