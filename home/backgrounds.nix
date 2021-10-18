@@ -1,4 +1,4 @@
-{}:
+{ ... }:
 
 {
   services.random-background = {
