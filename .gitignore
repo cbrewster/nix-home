@@ -1,0 +1,3 @@
+# symlink either home-linux.nix or home-darwin.nix to home.nix.
+home.nix
+

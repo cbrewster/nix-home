@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ./home/i3.nix 
     ./home/neovim.nix
     ./home/zsh.nix
     ./home/alacritty.nix
     ./home/git.nix
+    ./home/direnv.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -17,45 +17,16 @@
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "cbrewster";
-  home.homeDirectory = "/home/cbrewster";
-
-  services.random-background = {
-    enable = true;
-    imageDirectory = "%h/backgrounds";
-  };
+  home.homeDirectory = "/Users/cbrewster";
 
   home.packages = with pkgs; [
-    nix-index
     ripgrep
-    clang
-    clang-tools
-    htop
+    nix-index
     kubectl
     kubectx
+    htop
     jq
-    whois
-    tree
-    vscode
-    gitstatus
-    apple-music-electron
-    obs-studio
-    ffmpeg
-    slack
-    insomnia
-
-    # unfree :(
-    _1password
-    _1password-gui
-    discord
-    zoom-us
-    spotify
   ];
-
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-    nix-direnv.enable = true;
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
