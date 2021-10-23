@@ -1,5 +1,21 @@
 { config, lib, pkgs, ... }:
 
+let
+
+  lspkind-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "lspkind-nvim";
+    version = "2021-10-11";
+    src = pkgs.fetchFromGitHub {
+      owner = "onsails";
+      repo = "lspkind-nvim";
+      rev = "0f7851772ebdd5cb67a04b3d3cda5281a1eb83c1";
+      sha256 = "0jk1xlp8x6vw40dl96zvmdxv0p8100rzx7za58xpahz10232lckx";
+    };
+    meta.homepage = "https://github.com/onsails/lspkind-nvim/";
+  };
+
+in
+
 {
   home.sessionVariables.EDITOR = "nvim";
 
@@ -21,6 +37,8 @@
       vim-vsnip
       vim-vsnip-integ
       cmp-vsnip
+
+      lspkind-nvim
 
       # luasnip
       # cmp_luasnip

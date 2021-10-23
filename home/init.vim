@@ -132,7 +132,8 @@ xmap        S   <Plug>(vsnip-cut-text)
 set completeopt=menu,menuone,noselect
 
 lua << EOF
-local cmp = require'cmp'
+local cmp = require('cmp')
+local lspkind = require('lspkind')
 
 cmp.setup({
     snippet = {
@@ -146,9 +147,27 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = {
+        { name = 'nvim_lua' },
         { name = 'nvim_lsp' },
+        { name = 'path' },
         { name = 'vsnip' },
         { name = 'buffer' },
+    },
+    formatting = {
+        format = lspkind.cmp_format {
+            with_test = true,
+            menu = {
+                buffer = "[buf]",
+                nvim_lsp = "[lsp]",
+                nvim_lua = "[api]",
+                path = "[path]",
+                vsnip = "[snip]",
+            },
+        },
+    },
+    experimental = {
+        native_menu = false,
+        -- ghost_text = true,
     },
 })
 
@@ -217,7 +236,7 @@ require('lualine').setup({
 })
 EOF
 
-nnoremap <leader>a  <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+nnoremap <leader>a  <cmd>lua require('telescope.builtin').lsp_code_actions()<CR>
 nnoremap <silent>K  <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 xnoremap <silent> <c-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
 inoremap <silent> <c-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
