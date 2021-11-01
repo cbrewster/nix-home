@@ -110,10 +110,6 @@ set shortmess+=c
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
 autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
-" TODO: Not sure if these even work :(
-" autocmd CursorHold   <buffer> lua vim.lsp.buf.document_highlight()
-" autocmd CursorHoldI  <buffer> lua vim.lsp.buf.document_highlight()
-" autocmd CursorMoved  <buffer> lua vim.lsp.buf.clear_references()
 
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -174,7 +170,7 @@ cmp.setup({
     },
     experimental = {
         native_menu = false,
-        -- ghost_text = true,
+        ghost_text = true,
     },
 })
 
@@ -186,6 +182,11 @@ lsp_status.config({
 
 local on_attach = function(client, bufnr)
     lsp_status.on_attach(client, bufnr)
+    if client.resolved_capabilities.document_highlight then
+        vim.cmd 'autocmd CursorHold   <buffer> lua vim.lsp.buf.document_highlight()'
+        vim.cmd 'autocmd CursorHoldI  <buffer> lua vim.lsp.buf.document_highlight()'
+        vim.cmd 'autocmd CursorMoved  <buffer> lua vim.lsp.buf.clear_references()'
+    end
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -219,14 +220,6 @@ require'lspconfig'.flow.setup{
     capabilities = capabilities,
     on_attach = on_attach,
 }
-
--- require'lspconfig'.vimls.setup{
---    capabilities = capabilities,
---     on_attach = on_attach,
--- }
-
--- local saga = require 'lspsaga'
--- saga.init_lsp_saga{}
 
 require('lualine').setup({
     options = {
