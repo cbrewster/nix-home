@@ -1,12 +1,18 @@
 { config, lib, pkgs, ... }:
 
+let
+
+  size = if pkgs.stdenv.isDarwin then 18 else 12;
+
+in
+
 {
   programs.alacritty = {
     enable = true;
 
     settings = {
       font = {
-        size = 12;
+        size = size;
         normal = {
           family = "FiraCode Nerd Font Mono";
         };

@@ -7,9 +7,15 @@
     ./home/alacritty.nix
     ./home/git.nix
     ./home/direnv.nix
+    ./home/tmux.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -26,7 +32,11 @@
     kubectx
     htop
     jq
+
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
+
+  fonts.fontconfig.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
