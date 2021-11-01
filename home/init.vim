@@ -19,9 +19,16 @@ let mapleader = "\<Space>"
 " colorscheme space-vim-dark
 " colorscheme embark
 
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_invert_selection='0'
-colorscheme gruvbox
+" let g:gruvbox_contrast_dark='hard'
+" let g:gruvbox_invert_selection='0'
+" colorscheme gruvbox
+
+lua << EOF
+require('github-theme').setup({
+    theme_style = 'dark',
+    dark_float = true,
+})
+EOF
 
 set backspace=indent,eol,start
 " Fix colors for alacritty
@@ -59,7 +66,7 @@ set mouse=a
 
 " Quick edit/reload nvim config
 nnoremap gev :e $MYVIMRC<CR>
-nnoremap gsv :so $MYVIMRC<CR>
+nnoremap gsv :!home-manager switch<CR>:so $MYVIMRC<CR>
 
 " Use <space><space> to toggle to the last buffer
 nnoremap <leader><leader> <c-^>
@@ -213,17 +220,17 @@ require'lspconfig'.flow.setup{
     on_attach = on_attach,
 }
 
-require'lspconfig'.vimls.setup{
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+-- require'lspconfig'.vimls.setup{
+--    capabilities = capabilities,
+--     on_attach = on_attach,
+-- }
 
-local saga = require 'lspsaga'
-saga.init_lsp_saga{}
+-- local saga = require 'lspsaga'
+-- saga.init_lsp_saga{}
 
 require('lualine').setup({
     options = {
-        theme = "gruvbox"
+        theme = "github"
     },
     sections = {
         lualine_b = {'filename'},
@@ -237,16 +244,13 @@ require('lualine').setup({
 EOF
 
 nnoremap <leader>a  <cmd>lua require('telescope.builtin').lsp_code_actions()<CR>
-nnoremap <silent>K  <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-xnoremap <silent> <c-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
-inoremap <silent> <c-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
-nnoremap <leader>rn <cmd>lua require('lspsaga.rename').rename()<CR>
+nnoremap <silent>K  <cmd>lua vim.lsp.buf.hover()<CR>
+xnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
-nnoremap <silent><leader>cd <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
-
-nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
-nnoremap <silent> [e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
-nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
+nnoremap <silent> [e <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> ]e <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 function LspReload()
     lua vim.lsp.stop_client(vim.lsp.get_active_clients())

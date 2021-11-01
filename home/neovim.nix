@@ -2,16 +2,14 @@
 
 let
 
-  lspkind-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "lspkind-nvim";
-    version = "2021-10-11";
+  github-nvim-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "github-nvim-theme";
     src = pkgs.fetchFromGitHub {
-      owner = "onsails";
-      repo = "lspkind-nvim";
-      rev = "0f7851772ebdd5cb67a04b3d3cda5281a1eb83c1";
-      sha256 = "0jk1xlp8x6vw40dl96zvmdxv0p8100rzx7za58xpahz10232lckx";
+      owner = "projekt0n";
+      repo = "github-nvim-theme";
+      rev = "a70f851cd5fcfff0d2c0fab062d31e4d40a71d52";
+      sha256 = "1q6bhm1iiv1yk9q2i9057h1irndbydsy1fc15qsl16avg74v09hl";
     };
-    meta.homepage = "https://github.com/onsails/lspkind-nvim/";
   };
 
 in
@@ -20,6 +18,7 @@ in
   home.sessionVariables.EDITOR = "nvim";
 
   programs.neovim = {
+    package = pkgs.neovim-nightly;
     enable = true;
     vimAlias = true;
 
@@ -27,7 +26,7 @@ in
       
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
-      lspsaga-nvim
+      # lspsaga-nvim
       lsp-status-nvim
 
       nvim-cmp
@@ -64,6 +63,7 @@ in
       vim-nix        
 
       gruvbox
+      github-nvim-theme
 
       nvim-web-devicons
 
