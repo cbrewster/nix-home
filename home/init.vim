@@ -95,7 +95,7 @@ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat prettier
 " Tree sitter tings
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "rust", "go", "typescript" },
+  ensure_installed = { "rust", "go", "typescript", "tsx", "javascript" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -218,6 +218,11 @@ require'lspconfig'.tsserver.setup{
 }
 
 require'lspconfig'.flow.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.eslint.setup{
     capabilities = capabilities,
     on_attach = on_attach,
 }
