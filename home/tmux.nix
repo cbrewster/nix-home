@@ -10,7 +10,7 @@
 
     extraConfig = ''
       set -g mouse on
-      set-option -g status-position top
+      set-option -g status-position bottom
 
       bind v split-window -h
       bind s split-window -v

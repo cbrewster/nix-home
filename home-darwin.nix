@@ -32,6 +32,9 @@
     kubectx
     htop
     jq
+    nodejs-14_x
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
 
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
