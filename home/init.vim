@@ -65,7 +65,7 @@ nnoremap <leader>ds <cmd>lua require'telescope.builtin'.lsp_document_symbols()<c
 set mouse=a
 
 " Quick edit/reload nvim config
-nnoremap gev :e $MYVIMRC<CR>
+nnoremap gev :e ~/.config/nixpkgs/home/init.vim<CR>
 nnoremap gsv :!home-manager switch<CR>:so $MYVIMRC<CR>
 
 " Use <space><space> to toggle to the last buffer
@@ -190,6 +190,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
 require'lspconfig'.gopls.setup{
     capablities = capabilities,
@@ -227,7 +228,7 @@ require('lualine').setup({
     },
     sections = {
         lualine_b = {'filename'},
-        lualine_c = {"os.data('%a')", "data", require'lsp-status'.status},
+        lualine_c = {lsp_status.status},
 
         lualine_x = {'progress'},
         lualine_y = {'location'},
