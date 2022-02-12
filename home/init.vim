@@ -184,7 +184,6 @@ local on_attach = function(client, bufnr)
     lsp_status.on_attach(client, bufnr)
     if client.resolved_capabilities.document_highlight then
         vim.cmd 'autocmd CursorHold   <buffer> lua vim.lsp.buf.document_highlight()'
-        vim.cmd 'autocmd CursorHoldI  <buffer> lua vim.lsp.buf.document_highlight()'
         vim.cmd 'autocmd CursorMoved  <buffer> lua vim.lsp.buf.clear_references()'
     end
 end
@@ -222,7 +221,22 @@ require'lspconfig'.flow.setup{
     on_attach = on_attach,
 }
 
+require'lspconfig'.ccls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.clangd.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
 require'lspconfig'.eslint.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.terraformls.setup{
     capabilities = capabilities,
     on_attach = on_attach,
 }
@@ -248,8 +262,8 @@ xnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
-nnoremap <silent> [e <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> ]e <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> [e <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> ]e <cmd>lua vim.diagnostic.goto_next()<CR>
 
 function LspReload()
     lua vim.lsp.stop_client(vim.lsp.get_active_clients())

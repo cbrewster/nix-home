@@ -40,7 +40,6 @@
     vscode
     gitstatus
     insomnia
-    obs-studio
     ffmpeg
     slack
 

@@ -5,6 +5,10 @@ let
   mod = "Mod4";
 
 in {
+  programs.rofi = {
+    enable = true;
+  };
+
   xsession.windowManager.i3 = {
     enable = true;
 
@@ -24,6 +28,7 @@ in {
       window.titlebar = false;
 
       keybindings = lib.mkOptionDefault {
+        "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show run";
         # Focus
         "${mod}+h" = "focus left";
         "${mod}+j" = "focus down";

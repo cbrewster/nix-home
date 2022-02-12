@@ -61,6 +61,7 @@ in
       vim-jsx-typescript
       neoformat
       vim-nix        
+      vim-terraform
 
       gruvbox
       github-nvim-theme
