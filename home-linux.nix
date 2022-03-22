@@ -3,7 +3,7 @@
 let
 
   # TODO: Pull this from GitHub or something...
-  graphite = pkgs.callPackage /home/cbrewster/Development/graphite-cli {};
+  # graphite = pkgs.callPackage /home/cbrewster/Development/graphite-cli {};
 
   customNodePackages = pkgs.callPackage ./node-packages {
       nodejs = pkgs.nodejs-12_x;
@@ -54,10 +54,11 @@ in {
     slack
     simplescreenrecorder
     nixos-shell
-    graphite
+    # graphite
     wireshark
 
     customNodePackages."@ansible/ansible-language-server"
+    customNodePackages."@withgraphite/graphite-cli"
 
     # unfree :(
     _1password
