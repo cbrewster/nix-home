@@ -1,7 +1,13 @@
 { config, lib, pkgs, ... }:
 
+let
+
   # TODO: Pull this from GitHub or something...
-  let graphite = pkgs.callPackage /home/cbrewster/Development/graphite-cli {};
+  graphite = pkgs.callPackage /home/cbrewster/Development/graphite-cli {};
+
+  customNodePackages = pkgs.callPackage ./node-packages {
+      nodejs = pkgs.nodejs-12_x;
+  };
 
 in {
   imports = [
@@ -50,6 +56,8 @@ in {
     nixos-shell
     graphite
     wireshark
+
+    customNodePackages."@ansible/ansible-language-server"
 
     # unfree :(
     _1password
