@@ -62,6 +62,7 @@ in
       neoformat
       vim-nix        
       vim-terraform
+      nvim-lsp-ts-utils
 
       gruvbox
       github-nvim-theme

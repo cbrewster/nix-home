@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
-{
+  # TODO: Pull this from GitHub or something...
+  let graphite = pkgs.callPackage /home/cbrewster/Development/graphite-cli {};
+
+in {
   imports = [
     ./home/neovim.nix
     ./home/zsh.nix
@@ -31,6 +34,7 @@
     nix-index
     kubectl
     kubectx
+    kubernetes-helm
     htop
     jq
     clang
@@ -42,6 +46,10 @@
     insomnia
     ffmpeg
     slack
+    simplescreenrecorder
+    nixos-shell
+    graphite
+    wireshark
 
     # unfree :(
     _1password

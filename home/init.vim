@@ -14,6 +14,9 @@ set updatetime=100
 " Use <SPACE> as leader
 let mapleader = "\<Space>"
 
+" general guideline for line length
+set colorcolumn=120
+
 " set background=dark
 " colorscheme github
 " colorscheme space-vim-dark
@@ -90,7 +93,7 @@ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat prettier
 
 " Directory specific overrides
 " repl it web uses 2 space indent
-:autocmd BufRead,BufNewFile /Users/cbrewster/Development/repl-it-web/* setlocal ts=2 sw=2 expandtab
+:autocmd BufRead,BufNewFile /home/cbrewster/Development/replit/repl-it-web/* setlocal ts=2 sw=2 expandtab
 
 " Tree sitter tings
 lua <<EOF
@@ -109,7 +112,7 @@ set shortmess+=c
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
-autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting_sync()
 
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -212,8 +215,14 @@ require'lspconfig'.rust_analyzer.setup{
 }
 
 require'lspconfig'.tsserver.setup{
+    init_options = require'nvim-lsp-ts-utils'.init_options,
     capabilities = capabilities,
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        local ts_utils = require'nvim-lsp-ts-utils'
+        ts_utils.setup({})
+        ts_utils.setup_client(client)
+    end,
 }
 
 require'lspconfig'.flow.setup{
@@ -226,10 +235,10 @@ require'lspconfig'.ccls.setup{
     on_attach = on_attach,
 }
 
-require'lspconfig'.clangd.setup{
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+-- require'lspconfig'.clangd.setup{
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+-- }
 
 require'lspconfig'.eslint.setup{
     capabilities = capabilities,
