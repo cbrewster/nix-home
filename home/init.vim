@@ -250,6 +250,11 @@ require'lspconfig'.terraformls.setup{
     on_attach = on_attach,
 }
 
+require'lspconfig'.ansiblels.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
 require('lualine').setup({
     options = {
         theme = "github"
