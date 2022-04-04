@@ -35,6 +35,11 @@
     nodejs-14_x
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
+    nodePackages.eslint
+    nodePackages.prettier
+    google-cloud-sdk
+    docker-compose
+    terraform
 
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
