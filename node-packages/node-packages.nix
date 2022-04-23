@@ -103,15 +103,6 @@ let
         sha512 = "zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==";
       };
     };
-    "array-union-2.1.0" = {
-      name = "array-union";
-      packageName = "array-union";
-      version = "2.1.0";
-      src = fetchurl {
-        url = "https://registry.npmjs.org/array-union/-/array-union-2.1.0.tgz";
-        sha512 = "HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==";
-      };
-    };
     "at-least-node-1.0.0" = {
       name = "at-least-node";
       packageName = "at-least-node";
@@ -310,13 +301,13 @@ let
         sha512 = "AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==";
       };
     };
-    "globby-11.1.0" = {
+    "globby-13.1.1" = {
       name = "globby";
       packageName = "globby";
-      version = "11.1.0";
+      version = "13.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/globby/-/globby-11.1.0.tgz";
-        sha512 = "jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==";
+        url = "https://registry.npmjs.org/globby/-/globby-13.1.1.tgz";
+        sha512 = "XMzoDZbGZ37tufiv7g0N4F/zp3zkwdFtVbV3EHsVl1KQr4RPLfNoT068/97RPshz2J5xYNEjLKKBKaGHifBd3Q==";
       };
     };
     "graceful-fs-4.2.9" = {
@@ -490,13 +481,13 @@ let
         sha512 = "8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==";
       };
     };
-    "micromatch-4.0.4" = {
+    "micromatch-4.0.5" = {
       name = "micromatch";
       packageName = "micromatch";
-      version = "4.0.4";
+      version = "4.0.5";
       src = fetchurl {
-        url = "https://registry.npmjs.org/micromatch/-/micromatch-4.0.4.tgz";
-        sha512 = "pRmzw/XUcwXGpD9aI9q/0XOwLNygjETJ8y0ao0wdqprrzDa4YnxLcz7fQRZr8voh8V10kGhABbNcHVk5wHgWwg==";
+        url = "https://registry.npmjs.org/micromatch/-/micromatch-4.0.5.tgz";
+        sha512 = "DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==";
       };
     };
     "minimatch-3.1.2" = {
@@ -661,13 +652,13 @@ let
         sha512 = "bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==";
       };
     };
-    "slash-3.0.0" = {
+    "slash-4.0.0" = {
       name = "slash";
       packageName = "slash";
-      version = "3.0.0";
+      version = "4.0.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/slash/-/slash-3.0.0.tgz";
-        sha512 = "g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==";
+        url = "https://registry.npmjs.org/slash/-/slash-4.0.0.tgz";
+        sha512 = "3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==";
       };
     };
     "string-width-4.2.3" = {
@@ -883,24 +874,23 @@ in
   "@ansible/ansible-language-server" = nodeEnv.buildNodePackage {
     name = "_at_ansible_slash_ansible-language-server";
     packageName = "@ansible/ansible-language-server";
-    version = "0.5.3";
+    version = "0.5.4";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.5.3.tgz";
-      sha512 = "nZ6vrbvtB8O5S0LvkJx9Y51uqRSAdxeoWP4z6luQWmJHrO8St5GcUzgfZmZpSFh8TLG31nurQOxPfEpUL3Sx4A==";
+      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.5.4.tgz";
+      sha512 = "PRjqGWBgYFkR+FOmquqObsYSFZt/BDYUfmc1dg2OCLU0f3dT7kf0d7oL19n/Pjhl5qlHZ4gQC1o9fxuJ4iD4Ww==";
     };
     dependencies = [
       sources."@flatten-js/interval-tree-1.0.18"
       sources."@nodelib/fs.scandir-2.1.5"
       sources."@nodelib/fs.stat-2.0.5"
       sources."@nodelib/fs.walk-1.2.8"
-      sources."array-union-2.1.0"
       sources."braces-3.0.2"
       sources."dir-glob-3.0.1"
       sources."fast-glob-3.2.11"
       sources."fastq-1.13.0"
       sources."fill-range-7.0.1"
       sources."glob-parent-5.1.2"
-      sources."globby-11.1.0"
+      sources."globby-13.1.1"
       sources."ignore-5.2.0"
       sources."ini-2.0.0"
       sources."is-extglob-2.1.1"
@@ -908,13 +898,13 @@ in
       sources."is-number-7.0.0"
       sources."lodash-4.17.21"
       sources."merge2-1.4.1"
-      sources."micromatch-4.0.4"
+      sources."micromatch-4.0.5"
       sources."path-type-4.0.0"
       sources."picomatch-2.3.1"
       sources."queue-microtask-1.2.3"
       sources."reusify-1.0.4"
       sources."run-parallel-1.2.0"
-      sources."slash-3.0.0"
+      sources."slash-4.0.0"
       sources."to-regex-range-5.0.1"
       sources."uuid-8.3.2"
       sources."vscode-jsonrpc-6.0.0"
@@ -937,10 +927,10 @@ in
   "@withgraphite/graphite-cli" = nodeEnv.buildNodePackage {
     name = "_at_withgraphite_slash_graphite-cli";
     packageName = "@withgraphite/graphite-cli";
-    version = "0.17.4";
+    version = "0.17.6";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.17.4.tgz";
-      sha512 = "UGYy+T7Uyv9tXTfBnIv9PQoxtXtA7Fl1cnCOHu6I31vIl5t/gbUULavPjmeLmp1qYhQvEc6IlpZDEbegyM+pDg==";
+      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.17.6.tgz";
+      sha512 = "KADwjw61FXK86Gr46igKYVyIECdaSKhMm8GK1vGudyST9c9KjJMLEO9S4O2ydbWdelN8CYWQALeB391VmZ0ukA==";
     };
     dependencies = [
       sources."@types/isomorphic-fetch-0.0.35"
@@ -981,7 +971,7 @@ in
       sources."jsonfile-6.1.0"
       sources."kleur-3.0.3"
       sources."lodash.set-4.3.2"
-      sources."micromatch-4.0.4"
+      sources."micromatch-4.0.5"
       sources."minimatch-3.1.2"
       sources."ms-2.1.2"
       sources."nock-13.2.4"

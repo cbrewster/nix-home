@@ -54,8 +54,12 @@ in {
     slack
     simplescreenrecorder
     nixos-shell
-    # graphite
     wireshark
+    vault
+
+    rustup
+    rust-analyzer
+    cargo-edit
 
     customNodePackages."@ansible/ansible-language-server"
     customNodePackages."@withgraphite/graphite-cli"
