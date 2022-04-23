@@ -41,6 +41,8 @@
     docker-compose
     terraform
 
+    rust-analyzer
+
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
