@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
-{
+let
+  customNodePackages = pkgs.callPackage ./node-packages {
+      nodejs = pkgs.nodejs-12_x;
+  };
+in {
   imports = [
     ./home/neovim.nix
     ./home/zsh.nix
@@ -40,6 +44,11 @@
     google-cloud-sdk
     docker-compose
     terraform
+
+    customNodePackages."@ansible/ansible-language-server"
+    customNodePackages."@withgraphite/graphite-cli"
+
+    rust-analyzer
 
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
