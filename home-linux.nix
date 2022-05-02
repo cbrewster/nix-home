@@ -18,6 +18,7 @@ in {
     ./home/i3.nix 
     ./home/backgrounds.nix
     ./home/direnv.nix
+    ./home/tmux.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
