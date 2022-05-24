@@ -748,10 +748,10 @@ in
   "@ansible/ansible-language-server" = nodeEnv.buildNodePackage {
     name = "_at_ansible_slash_ansible-language-server";
     packageName = "@ansible/ansible-language-server";
-    version = "0.7.1";
+    version = "0.7.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.7.1.tgz";
-      sha512 = "iRs5+ZBHw9TJzBoqouPe9gSf2j5EYcqsXZGbcEkjmcBJJNcMKFe4Rqf1dKmaFFLGNX1qT7RUz4PW8kGTWyXxJg==";
+      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.7.2.tgz";
+      sha512 = "CvrhxWOEX9y68kqwONEkIsfwr2c40Rd6b8LDQJGVbmFHNVQw4FOGhmjZgFKVnIaIVgm3U8QSh2kpBr8cRheqiQ==";
     };
     dependencies = [
       sources."@flatten-js/interval-tree-1.0.18"
@@ -788,10 +788,10 @@ in
   "@withgraphite/graphite-cli" = nodeEnv.buildNodePackage {
     name = "_at_withgraphite_slash_graphite-cli";
     packageName = "@withgraphite/graphite-cli";
-    version = "0.18.4";
+    version = "0.18.6";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.18.4.tgz";
-      sha512 = "4XFkDeeZpJgunPGzXOncgJaJFxM+6uXUEKIGr31JdwqfzjynDIG/ZOp7zBZdVzgGGbV8iwvAWX7MW0iPSAMOgA==";
+      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.18.6.tgz";
+      sha512 = "57hlTo8+Q5LvqIo7M2MyuFiqUU6nbH8aTGLQHrBPvS4WjYn7DlACzuDIqbH7zcscaXxQSIRI5lf5bM0QTNst/g==";
     };
     dependencies = [
       sources."@types/isomorphic-fetch-0.0.35"
