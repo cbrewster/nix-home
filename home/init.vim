@@ -50,6 +50,7 @@ let g:netrw_winsize = 25
 lua << EOF
 require'telescope'.setup{}
 require'nvim-web-devicons'.setup{}
+require'telescope'.load_extension("ui-select")
 EOF
 
 " Ctrl-p find files
@@ -97,6 +98,9 @@ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat prettier
 
 " Tree sitter tings
 lua <<EOF
+
+require"nvim-treesitter.install".compilers = {"clang++"}
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "rust", "go", "typescript", "tsx", "javascript" },
   highlight = {
@@ -147,11 +151,10 @@ cmp.setup({
             vim.fn["vsnip#anonymous"](args.body)
         end
     },
-    mapping = {
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
+    mapping = cmp.mapping.preset.insert({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
+        ['<C-Space>'] = cmp.mapping.complete(),
+    }),
     sources = {
         { name = 'nvim_lua' },
         { name = 'nvim_lsp' },
@@ -185,7 +188,7 @@ lsp_status.config({
 
 local on_attach = function(client, bufnr)
     lsp_status.on_attach(client, bufnr)
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.documentHighlightProvider then
         vim.cmd 'autocmd CursorHold   <buffer> lua vim.lsp.buf.document_highlight()'
         vim.cmd 'autocmd CursorMoved  <buffer> lua vim.lsp.buf.clear_references()'
     end
@@ -257,7 +260,7 @@ require'lspconfig'.ansiblels.setup{
 
 require('lualine').setup({
     options = {
-        theme = "github"
+        theme = "github_dark"
     },
     sections = {
         lualine_b = {'filename'},
@@ -270,7 +273,7 @@ require('lualine').setup({
 })
 EOF
 
-nnoremap <leader>a  <cmd>lua require('telescope.builtin').lsp_code_actions()<CR>
+nnoremap <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent>K  <cmd>lua vim.lsp.buf.hover()<CR>
 xnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>

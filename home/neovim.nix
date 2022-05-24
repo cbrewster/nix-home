@@ -7,8 +7,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "projekt0n";
       repo = "github-nvim-theme";
-      rev = "a70f851cd5fcfff0d2c0fab062d31e4d40a71d52";
-      sha256 = "1q6bhm1iiv1yk9q2i9057h1irndbydsy1fc15qsl16avg74v09hl";
+      rev = "eeac2e7b2832d8de9a21cfa8627835304c96bb44";
+      sha256 = "tZBS+eP7n98WVvM2EZdPSttGAjUniXP+rEoQn4aL3eU=";
     };
   };
 
@@ -18,7 +18,7 @@ in
   home.sessionVariables.EDITOR = "nvim";
 
   programs.neovim = {
-    package = pkgs.neovim-nightly;
+    # package = pkgs.neovim-nightly;
     enable = true;
     vimAlias = true;
 
@@ -72,6 +72,9 @@ in
       popup-nvim
       plenary-nvim
       telescope-nvim
+      telescope-ui-select-nvim
+
+      orgmode
     ];
   };  
 }

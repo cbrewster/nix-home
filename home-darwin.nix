@@ -2,7 +2,7 @@
 
 let
   customNodePackages = pkgs.callPackage ./node-packages {
-      nodejs = pkgs.nodejs-12_x;
+      nodejs = pkgs.nodejs-14_x;
   };
 in {
   imports = [

@@ -12,7 +12,6 @@
 
     sessionVariables = {
       EDITOR = "nvim";
-      VAULT_ADDR = "https://vault.goval.replit.com";
     };
 
     plugins = [

@@ -6,7 +6,7 @@ let
   # graphite = pkgs.callPackage /home/cbrewster/Development/graphite-cli {};
 
   customNodePackages = pkgs.callPackage ./node-packages {
-      nodejs = pkgs.nodejs-12_x;
+      nodejs = pkgs.nodejs-14_x;
   };
 
 in {
@@ -22,11 +22,11 @@ in {
   ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
+  # nixpkgs.overlays = [
+  #   (import (builtins.fetchTarball {
+  #     url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+  #   }))
+  # ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
