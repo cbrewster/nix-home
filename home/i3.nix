@@ -44,6 +44,8 @@ in {
         "${mod}+v" = "split h";
         "${mod}+s" = "split v";
 
+        "${mod}+w" = "sticky toggle";
+
         "${mod}+Shift+e" = "exec ${pkgs.xfce.xfce4-session}/bin/xfce4-session-logout";
 
         # Multiple monitor
