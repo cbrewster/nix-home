@@ -116,7 +116,7 @@ set shortmess+=c
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
-autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre *.go,*.rs,*.ex,*.exs lua vim.lsp.buf.formatting_sync()
 
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'

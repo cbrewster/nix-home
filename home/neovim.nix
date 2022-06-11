@@ -37,6 +37,8 @@ in
       vim-vsnip-integ
       cmp-vsnip
 
+      vim-sleuth
+
       lspkind-nvim
 
       # luasnip
