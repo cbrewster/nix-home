@@ -6,6 +6,12 @@
     userName = "Connor Brewster";
     userEmail = "cbrewster@hey.com";
 
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+    };
+
     ignores = [
       ".venv"
     ];

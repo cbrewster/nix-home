@@ -2,9 +2,6 @@
 
 let
 
-  # TODO: Pull this from GitHub or something...
-  # graphite = pkgs.callPackage /home/cbrewster/Development/graphite-cli {};
-
   customNodePackages = pkgs.callPackage ./node-packages {
       nodejs = pkgs.nodejs-14_x;
   };
@@ -57,6 +54,10 @@ in {
     nixos-shell
     wireshark
     vault
+    lutris-free
+    flyctl
+    elixir_ls
+    elixir
 
     rustup
     rust-analyzer
