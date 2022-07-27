@@ -8,6 +8,8 @@
 
     prefix = "C-a";
 
+    shell = "${pkgs.zsh}/bin/zsh";
+
     extraConfig = ''
       set -g mouse on
       set-option -g status-position bottom
@@ -28,20 +30,20 @@
       set -ga terminal-overrides ',*256col*:Tc'
     '';
 
-    plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.resurrect;
-      }
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '10' # minutes
-        '';
-      }
-      # {
-      #   plugin = tmuxPlugins.gruvbox;
-      # }
-    ];
+    # plugins = with pkgs; [
+    #   {
+    #     plugin = tmuxPlugins.resurrect;
+    #   }
+    #   {
+    #     plugin = tmuxPlugins.continuum;
+    #     extraConfig = ''
+    #       set -g @continuum-restore 'on'
+    #       set -g @continuum-save-interval '10' # minutes
+    #     '';
+    #   }
+    #   # {
+    #   #   plugin = tmuxPlugins.gruvbox;
+    #   # }
+    # ];
   };
 }

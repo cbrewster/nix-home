@@ -42,7 +42,7 @@ in
       # luasnip
       # cmp_luasnip
 
-      nvim-treesitter
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       playground
 
       lualine-nvim

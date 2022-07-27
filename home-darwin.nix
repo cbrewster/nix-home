@@ -44,6 +44,10 @@ in {
     google-cloud-sdk
     docker-compose
     terraform
+    elixir
+    elixir_ls
+    tailscale
+    terraform-ls
 
     customNodePackages."@ansible/ansible-language-server"
     customNodePackages."@withgraphite/graphite-cli"

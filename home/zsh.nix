@@ -14,6 +14,10 @@
       EDITOR = "nvim";
     };
 
+    initExtra = ''
+      source <(gt completion) 
+    '';
+
     plugins = [
       {
         name = "powerlevel10k";

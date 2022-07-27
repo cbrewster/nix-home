@@ -102,7 +102,7 @@ lua <<EOF
 require"nvim-treesitter.install".compilers = {"clang++"}
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "rust", "go", "typescript", "tsx", "javascript" },
+  ensure_installed = { "rust", "go", "typescript", "tsx", "javascript", "elixir", "html", "heex" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -116,7 +116,7 @@ set shortmess+=c
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
-autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre *.go,*.rs,*.ex,*.exs,*.leex,*.heex lua vim.lsp.buf.formatting_sync()
 
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -256,6 +256,12 @@ require'lspconfig'.terraformls.setup{
 require'lspconfig'.ansiblels.setup{
     capabilities = capabilities,
     on_attach = on_attach,
+}
+
+require'lspconfig'.elixirls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+    cmd = { "elixir-ls" },
 }
 
 require('lualine').setup({
