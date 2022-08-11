@@ -4,13 +4,13 @@
 
 let
   sources = {
-    "@flatten-js/interval-tree-1.0.18" = {
+    "@flatten-js/interval-tree-1.0.19" = {
       name = "_at_flatten-js_slash_interval-tree";
       packageName = "@flatten-js/interval-tree";
-      version = "1.0.18";
+      version = "1.0.19";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@flatten-js/interval-tree/-/interval-tree-1.0.18.tgz";
-        sha512 = "o72sZErW0Y1C82Cg7nk82ojJ/22EtmKyp5I3eNqgcOKFp/VCzetATYYjJIqOBBaR7FQ/MFj/ZpsmP38mL4TkYA==";
+        url = "https://registry.npmjs.org/@flatten-js/interval-tree/-/interval-tree-1.0.19.tgz";
+        sha512 = "E+uCpmzAP6EL1L0VDligIg2oUnwbzhSMRXts8Ct7OQ+i+dFEgefExcKnTwGFa+MUZGYAIKHBoUWo/f/lhqc1Ew==";
       };
     };
     "@withgraphite/graphite-cli-routes-0.22.0" = {
@@ -625,13 +625,13 @@ let
         sha512 = "t6YAJcxDkNX7NFYiVtKvWUz8l+PaKTLiL63mJYWR2GnHq2gjEWISzsLp9wg3aY36dY1j+gfIEL3pIF+XlJJfbA==";
       };
     };
-    "yargs-parser-21.0.1" = {
+    "yargs-parser-21.1.1" = {
       name = "yargs-parser";
       packageName = "yargs-parser";
-      version = "21.0.1";
+      version = "21.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.0.1.tgz";
-        sha512 = "9BK1jFpLzJROCI5TzwZL/TU4gqjK5xiHV/RfWLOahrjAko/e4DJkRDZQXfvqAsiZzzYhgAzbgz6lg48jcm4GLg==";
+        url = "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.1.1.tgz";
+        sha512 = "tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==";
       };
     };
   };
@@ -646,7 +646,7 @@ in
       sha512 = "CT5pHMndxE93K7uDWANfHPZWGMjRIUOt/jy5xahy+BVRnjLbc5KGRFGoLVN1bLfJ4S00qE8X936wY6HMoIBV1A==";
     };
     dependencies = [
-      sources."@flatten-js/interval-tree-1.0.18"
+      sources."@flatten-js/interval-tree-1.0.19"
       sources."balanced-match-1.0.2"
       sources."brace-expansion-2.0.1"
       sources."fs.realpath-1.0.0"
@@ -680,10 +680,10 @@ in
   "@withgraphite/graphite-cli" = nodeEnv.buildNodePackage {
     name = "_at_withgraphite_slash_graphite-cli";
     packageName = "@withgraphite/graphite-cli";
-    version = "0.20.6";
+    version = "0.20.10";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.20.6.tgz";
-      sha512 = "HX73RzmoCIMag2FyHohGm9iS+kRS1VpSZOmtuh5JSwTpU1ZiEoC+5CFVQQXiaACTLwkxLuwMuA4xxHxZmXDp8Q==";
+      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.20.10.tgz";
+      sha512 = "NT0jJZZmmPf/LPnwOoTi9jhgOTW1Nj8n4zWID3rvpJASEXvXnH7k9j16atAoJK3KhSEFvfPRf7NV+35QmHZkPA==";
     };
     dependencies = [
       sources."@withgraphite/graphite-cli-routes-0.22.0"
@@ -741,7 +741,7 @@ in
       sources."y18n-5.0.8"
       sources."yallist-4.0.0"
       sources."yargs-17.5.1"
-      sources."yargs-parser-21.0.1"
+      sources."yargs-parser-21.1.1"
     ];
     buildInputs = globalBuildInputs;
     meta = {

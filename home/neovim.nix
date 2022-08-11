@@ -7,8 +7,18 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "projekt0n";
       repo = "github-nvim-theme";
-      rev = "eeac2e7b2832d8de9a21cfa8627835304c96bb44";
-      sha256 = "tZBS+eP7n98WVvM2EZdPSttGAjUniXP+rEoQn4aL3eU=";
+      rev = "b3f15193d1733cc4e9c9fe65fbfec329af4bdc2a";
+      sha256 = "wLX81wgl4E50mRig9erbLyrxyGbZllFbHFAQ9+v60W4=";
+    };
+  };
+
+  go-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "go-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "ray-x";
+      repo = "go.nvim";
+      rev = "c75824b1f050c153ebfd5be65a318b9d4463d5a9";
+      sha256 = "azO+Eay3V9aLyJyP1hmKiEAtr6Z3OqlWVu4v2GEoUdo=";
     };
   };
 
@@ -45,6 +55,8 @@ in
       # cmp_luasnip
 
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+      # Unfortunately tree-sitter is too slow with large Go files.
+      # nvim-treesitter-context
       playground
 
       lualine-nvim
@@ -65,6 +77,7 @@ in
       vim-nix        
       vim-terraform
       nvim-lsp-ts-utils
+      go-nvim
 
       gruvbox
       github-nvim-theme

@@ -96,18 +96,28 @@ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat prettier
 " repl it web uses 2 space indent
 :autocmd BufRead,BufNewFile /home/cbrewster/Development/replit/repl-it-web/* setlocal ts=2 sw=2 expandtab
 
+" Go
+lua <<EOF
+require('go').setup()
+EOF
+
 " Tree sitter tings
 lua <<EOF
 
 require"nvim-treesitter.install".compilers = {"clang++"}
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "rust", "go", "typescript", "tsx", "javascript", "elixir", "html", "heex", "eex" },
+  -- ensure_installed = { "rust", "go", "typescript", "tsx", "javascript", "elixir", "html", "heex", "eex" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
+    disable = function(lang, bufnr) -- Disable in large Go buffers
+      return lang == "go" and vim.api.nvim_buf_line_count(bufnr) > 1000
+    end,
   },
 }
+
+-- require'treesitter-context'.setup{}
 EOF
 
 " === LSP Tings ===
