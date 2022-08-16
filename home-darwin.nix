@@ -41,7 +41,6 @@ in {
     nodePackages.vscode-langservers-extracted
     nodePackages.eslint
     nodePackages.prettier
-    google-cloud-sdk
     docker-compose
     terraform
     elixir

@@ -111,9 +111,6 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
-    disable = function(lang, bufnr) -- Disable in large Go buffers
-      return lang == "go" and vim.api.nvim_buf_line_count(bufnr) > 1000
-    end,
   },
 }
 
