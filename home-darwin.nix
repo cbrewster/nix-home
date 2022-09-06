@@ -34,6 +34,7 @@ in {
     nix-index
     kubectl
     kubectx
+    kubent
     htop
     jq
     nodejs-14_x

@@ -17,6 +17,7 @@
     initExtra = ''
       source <(gt completion) 
       export PATH=~/google-cloud-sdk/bin:$PATH
+      export GCEVM_USERNAME=connor;
     '';
 
     plugins = [
