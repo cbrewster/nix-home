@@ -54,7 +54,6 @@ in {
     nixos-shell
     wireshark
     vault
-    lutris-free
     flyctl
     elixir_ls
     elixir
