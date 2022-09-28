@@ -22,22 +22,22 @@ let
         sha512 = "0LqJ2UMyGkZgP/cp4x89nKibX8r/XMgC+G4Xhobxq34gSOrihqHQjEvPeTiVgjX4MsH7340v8cE2y5pKX6m0aA==";
       };
     };
-    "@withgraphite/retype-0.3.11" = {
+    "@withgraphite/retype-0.3.13" = {
       name = "_at_withgraphite_slash_retype";
       packageName = "@withgraphite/retype";
-      version = "0.3.11";
+      version = "0.3.13";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@withgraphite/retype/-/retype-0.3.11.tgz";
-        sha512 = "DIXkXBdZpxB5OQ9p+FFVCJ9/DPHRyBsZg2uyNkltOXJ8jIxI5i6sfa2AZZar0vtXUTyMwK8GjsuN1komzcGMog==";
+        url = "https://registry.npmjs.org/@withgraphite/retype/-/retype-0.3.13.tgz";
+        sha512 = "jGhsyvjRdZCMeOQ+NiNij/zd2FXRyoOCGoJnRT0lg35jfW55ikRPpQ5zOSbbW0H78UPpyz7X97NAKxa8uVBtVg==";
       };
     };
-    "@withgraphite/retyped-routes-0.3.2" = {
+    "@withgraphite/retyped-routes-0.3.5" = {
       name = "_at_withgraphite_slash_retyped-routes";
       packageName = "@withgraphite/retyped-routes";
-      version = "0.3.2";
+      version = "0.3.5";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@withgraphite/retyped-routes/-/retyped-routes-0.3.2.tgz";
-        sha512 = "EVhradzaO/AMXfCCoGRb2MAO18cg6/f2XSfjGHHvUfdQouAMRDzF8Xq564spaoi53ZB1VlgjqenXi8QGxSfSNQ==";
+        url = "https://registry.npmjs.org/@withgraphite/retyped-routes/-/retyped-routes-0.3.5.tgz";
+        sha512 = "sm55SgyPGE5gYq9qGrixg3fho3ZOlA6DlHFfYfCS0zrV0piKtCYOuyQB7fiQa8jOM2f89ZBHzlEr3JQmJTTaCA==";
       };
     };
     "ansi-regex-5.0.1" = {
@@ -238,13 +238,13 @@ let
         sha512 = "k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==";
       };
     };
-    "ini-3.0.0" = {
+    "ini-3.0.1" = {
       name = "ini";
       packageName = "ini";
-      version = "3.0.0";
+      version = "3.0.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ini/-/ini-3.0.0.tgz";
-        sha512 = "TxYQaeNW/N8ymDvwAxPyRbhMBtnEwuvaTYpOQkFx1nSeusgezHniEc/l35Vo4iCq/mMiTJbpD7oYxN98hFlfmw==";
+        url = "https://registry.npmjs.org/ini/-/ini-3.0.1.tgz";
+        sha512 = "it4HyVAUTKBc6m8e1iXWvXSTdndF7HbdN713+kvLrymxTaU4AUBWrJ4vEooP+V7fexnVD3LKcBshjGGPefSMUQ==";
       };
     };
     "is-docker-2.2.1" = {
@@ -517,13 +517,13 @@ let
         sha512 = "sdeUoAawceQdgIfTI+sdcwkiK2KU+2cbEYA0agzM2uqaUy2UpnnGHtWTHVEtS0ES4zHU0eMFRGN+oQgDxlD66A==";
       };
     };
-    "vscode-languageserver-textdocument-1.0.5" = {
+    "vscode-languageserver-textdocument-1.0.7" = {
       name = "vscode-languageserver-textdocument";
       packageName = "vscode-languageserver-textdocument";
-      version = "1.0.5";
+      version = "1.0.7";
       src = fetchurl {
-        url = "https://registry.npmjs.org/vscode-languageserver-textdocument/-/vscode-languageserver-textdocument-1.0.5.tgz";
-        sha512 = "1ah7zyQjKBudnMiHbZmxz5bYNM9KKZYz+5VQLj+yr8l+9w3g+WAhCkUkWbhMEdC5u0ub4Ndiye/fDyS8ghIKQg==";
+        url = "https://registry.npmjs.org/vscode-languageserver-textdocument/-/vscode-languageserver-textdocument-1.0.7.tgz";
+        sha512 = "bFJH7UQxlXT8kKeyiyu41r22jCZXG8kuuVVA33OEJn1diWOZK5n8zBSPZFHVBOu8kXZ6h0LIRhf5UnCo61J4Hg==";
       };
     };
     "vscode-languageserver-types-3.16.0" = {
@@ -535,13 +535,13 @@ let
         sha512 = "k8luDIWJWyenLc5ToFQQMaSrqCHiLwyKPHKPQZ5zz21vM+vIVUSvsRpcbiECH4WR88K2XZqc4ScRcZ7nk/jbeA==";
       };
     };
-    "vscode-uri-3.0.3" = {
+    "vscode-uri-3.0.6" = {
       name = "vscode-uri";
       packageName = "vscode-uri";
-      version = "3.0.3";
+      version = "3.0.6";
       src = fetchurl {
-        url = "https://registry.npmjs.org/vscode-uri/-/vscode-uri-3.0.3.tgz";
-        sha512 = "EcswR2S8bpR7fD0YPeS7r2xXExrScVMxg4MedACaWHEtx9ftCF/qHG1xGkolzTPcEmjTavCQgbVzHUIdTMzFGA==";
+        url = "https://registry.npmjs.org/vscode-uri/-/vscode-uri-3.0.6.tgz";
+        sha512 = "fmL7V1eiDBFRRnu+gfRWTzyPpNIHJTc4mWnFkwBUmO9U3KPgJAmTx7oxi2bl/Rh6HLdU7+4C9wlj0k2E4AdKFQ==";
       };
     };
     "webidl-conversions-3.0.1" = {
@@ -640,10 +640,10 @@ in
   "@ansible/ansible-language-server" = nodeEnv.buildNodePackage {
     name = "_at_ansible_slash_ansible-language-server";
     packageName = "@ansible/ansible-language-server";
-    version = "0.9.0";
+    version = "0.10.3";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.9.0.tgz";
-      sha512 = "CT5pHMndxE93K7uDWANfHPZWGMjRIUOt/jy5xahy+BVRnjLbc5KGRFGoLVN1bLfJ4S00qE8X936wY6HMoIBV1A==";
+      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.10.3.tgz";
+      sha512 = "1+KX4kTIkvS9yBIvNX5P3fp+MIrmCUFYJ0SHjR9RW5AkvHDv7vdBL8f6b0Jt/yFMzmMxDdgZuAM6X5MK7qoFPA==";
     };
     dependencies = [
       sources."@flatten-js/interval-tree-1.0.19"
@@ -653,7 +653,7 @@ in
       sources."glob-8.0.3"
       sources."inflight-1.0.6"
       sources."inherits-2.0.4"
-      sources."ini-3.0.0"
+      sources."ini-3.0.1"
       sources."lodash-4.17.21"
       sources."minimatch-5.1.0"
       sources."once-1.4.0"
@@ -661,9 +661,9 @@ in
       sources."vscode-jsonrpc-6.0.0"
       sources."vscode-languageserver-7.0.0"
       sources."vscode-languageserver-protocol-3.16.0"
-      sources."vscode-languageserver-textdocument-1.0.5"
+      sources."vscode-languageserver-textdocument-1.0.7"
       sources."vscode-languageserver-types-3.16.0"
-      sources."vscode-uri-3.0.3"
+      sources."vscode-uri-3.0.6"
       sources."wrappy-1.0.2"
       sources."yaml-1.10.2"
     ];
@@ -680,15 +680,15 @@ in
   "@withgraphite/graphite-cli" = nodeEnv.buildNodePackage {
     name = "_at_withgraphite_slash_graphite-cli";
     packageName = "@withgraphite/graphite-cli";
-    version = "0.20.10";
+    version = "0.20.11";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.20.10.tgz";
-      sha512 = "NT0jJZZmmPf/LPnwOoTi9jhgOTW1Nj8n4zWID3rvpJASEXvXnH7k9j16atAoJK3KhSEFvfPRf7NV+35QmHZkPA==";
+      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.20.11.tgz";
+      sha512 = "MpeRYC1CeU218Euj6+R7uGBwRiWhl2voek2LsMOsswI+jhN+YxgFM7d/UDrmrJ1Eq4IpCeCauZVnE+Ax7rJGNA==";
     };
     dependencies = [
       sources."@withgraphite/graphite-cli-routes-0.22.0"
-      sources."@withgraphite/retype-0.3.11"
-      sources."@withgraphite/retyped-routes-0.3.2"
+      sources."@withgraphite/retype-0.3.13"
+      sources."@withgraphite/retyped-routes-0.3.5"
       sources."ansi-regex-5.0.1"
       sources."ansi-styles-4.3.0"
       sources."balanced-match-1.0.2"

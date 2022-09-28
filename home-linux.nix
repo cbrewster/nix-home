@@ -52,11 +52,11 @@ in {
     slack
     simplescreenrecorder
     nixos-shell
-    wireshark
     vault
     flyctl
     elixir_ls
     elixir
+    rnix-lsp
 
     rustup
     rust-analyzer
