@@ -57,6 +57,7 @@ in {
     elixir_ls
     elixir
     rnix-lsp
+    via
 
     rustup
     rust-analyzer
