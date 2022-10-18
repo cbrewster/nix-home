@@ -65,6 +65,9 @@ nnoremap <silent>gr <cmd>lua require'telescope.builtin'.lsp_references()<cr>
 nnoremap <leader>ws <cmd>lua require'telescope.builtin'.lsp_workspace_symbols()<cr>
 nnoremap <leader>ds <cmd>lua require'telescope.builtin'.lsp_document_symbols()<cr>
 
+" Notes file
+nnoremap <silent> on :e ~/notes.md<CR>
+
 " Allow mouse usage
 set mouse=a
 

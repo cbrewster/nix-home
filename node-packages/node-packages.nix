@@ -22,22 +22,22 @@ let
         sha512 = "0LqJ2UMyGkZgP/cp4x89nKibX8r/XMgC+G4Xhobxq34gSOrihqHQjEvPeTiVgjX4MsH7340v8cE2y5pKX6m0aA==";
       };
     };
-    "@withgraphite/retype-0.3.13" = {
+    "@withgraphite/retype-0.3.15" = {
       name = "_at_withgraphite_slash_retype";
       packageName = "@withgraphite/retype";
-      version = "0.3.13";
+      version = "0.3.15";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@withgraphite/retype/-/retype-0.3.13.tgz";
-        sha512 = "jGhsyvjRdZCMeOQ+NiNij/zd2FXRyoOCGoJnRT0lg35jfW55ikRPpQ5zOSbbW0H78UPpyz7X97NAKxa8uVBtVg==";
+        url = "https://registry.npmjs.org/@withgraphite/retype/-/retype-0.3.15.tgz";
+        sha512 = "J5eVSg+2BtksS+2rZi9ttJlushYpapCMxqyDGDUti/gfFpOgXaPxNMpDJ0TgJFEnFNea1Xrc3djhv7JxzhY+pQ==";
       };
     };
-    "@withgraphite/retyped-routes-0.3.5" = {
+    "@withgraphite/retyped-routes-0.3.7" = {
       name = "_at_withgraphite_slash_retyped-routes";
       packageName = "@withgraphite/retyped-routes";
-      version = "0.3.5";
+      version = "0.3.7";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@withgraphite/retyped-routes/-/retyped-routes-0.3.5.tgz";
-        sha512 = "sm55SgyPGE5gYq9qGrixg3fho3ZOlA6DlHFfYfCS0zrV0piKtCYOuyQB7fiQa8jOM2f89ZBHzlEr3JQmJTTaCA==";
+        url = "https://registry.npmjs.org/@withgraphite/retyped-routes/-/retyped-routes-0.3.7.tgz";
+        sha512 = "veadl+nEIw6zgbtchoAcl3C8469SZm5xyRvlrZTVFJK1kzniAEdTaUNsnRHsvC2HME3a5WdYoIZk/k24wegKvA==";
       };
     };
     "ansi-regex-5.0.1" = {
@@ -94,13 +94,13 @@ let
         sha512 = "oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==";
       };
     };
-    "cliui-7.0.4" = {
+    "cliui-8.0.1" = {
       name = "cliui";
       packageName = "cliui";
-      version = "7.0.4";
+      version = "8.0.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/cliui/-/cliui-7.0.4.tgz";
-        sha512 = "OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==";
+        url = "https://registry.npmjs.org/cliui/-/cliui-8.0.1.tgz";
+        sha512 = "BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==";
       };
     };
     "color-convert-2.0.1" = {
@@ -409,13 +409,13 @@ let
         sha512 = "JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==";
       };
     };
-    "semver-7.3.7" = {
+    "semver-7.3.8" = {
       name = "semver";
       packageName = "semver";
-      version = "7.3.7";
+      version = "7.3.8";
       src = fetchurl {
-        url = "https://registry.npmjs.org/semver/-/semver-7.3.7.tgz";
-        sha512 = "QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==";
+        url = "https://registry.npmjs.org/semver/-/semver-7.3.8.tgz";
+        sha512 = "NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==";
       };
     };
     "sisteransi-1.0.5" = {
@@ -616,13 +616,13 @@ let
         sha512 = "r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==";
       };
     };
-    "yargs-17.5.1" = {
+    "yargs-17.6.0" = {
       name = "yargs";
       packageName = "yargs";
-      version = "17.5.1";
+      version = "17.6.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/yargs/-/yargs-17.5.1.tgz";
-        sha512 = "t6YAJcxDkNX7NFYiVtKvWUz8l+PaKTLiL63mJYWR2GnHq2gjEWISzsLp9wg3aY36dY1j+gfIEL3pIF+XlJJfbA==";
+        url = "https://registry.npmjs.org/yargs/-/yargs-17.6.0.tgz";
+        sha512 = "8H/wTDqlSwoSnScvV2N/JHfLWOKuh5MVla9hqLjK3nsfyy6Y4kDSYSvkU5YCUEPOSnRXfIyx3Sq+B/IWudTo4g==";
       };
     };
     "yargs-parser-21.1.1" = {
@@ -640,10 +640,10 @@ in
   "@ansible/ansible-language-server" = nodeEnv.buildNodePackage {
     name = "_at_ansible_slash_ansible-language-server";
     packageName = "@ansible/ansible-language-server";
-    version = "0.10.3";
+    version = "1.0.1";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.10.3.tgz";
-      sha512 = "1+KX4kTIkvS9yBIvNX5P3fp+MIrmCUFYJ0SHjR9RW5AkvHDv7vdBL8f6b0Jt/yFMzmMxDdgZuAM6X5MK7qoFPA==";
+      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-1.0.1.tgz";
+      sha512 = "oHfiFWbLNUsdKChDJiy7F3fpgdw92z5AYl50l0imtUsheas8S3b2cAPKR1Z7729frWRIQLCmY46zKe8rBAGRRw==";
     };
     dependencies = [
       sources."@flatten-js/interval-tree-1.0.19"
@@ -687,14 +687,14 @@ in
     };
     dependencies = [
       sources."@withgraphite/graphite-cli-routes-0.22.0"
-      sources."@withgraphite/retype-0.3.13"
-      sources."@withgraphite/retyped-routes-0.3.5"
+      sources."@withgraphite/retype-0.3.15"
+      sources."@withgraphite/retyped-routes-0.3.7"
       sources."ansi-regex-5.0.1"
       sources."ansi-styles-4.3.0"
       sources."balanced-match-1.0.2"
       sources."brace-expansion-1.1.11"
       sources."chalk-4.1.2"
-      sources."cliui-7.0.4"
+      sources."cliui-8.0.1"
       sources."color-convert-2.0.1"
       sources."color-name-1.1.4"
       sources."concat-map-0.0.1"
@@ -725,7 +725,7 @@ in
       sources."prompts-2.4.2"
       sources."require-directory-2.1.1"
       sources."rimraf-3.0.2"
-      sources."semver-7.3.7"
+      sources."semver-7.3.8"
       sources."sisteransi-1.0.5"
       sources."string-width-4.2.3"
       sources."strip-ansi-6.0.1"
@@ -740,7 +740,7 @@ in
       sources."wrappy-1.0.2"
       sources."y18n-5.0.8"
       sources."yallist-4.0.0"
-      sources."yargs-17.5.1"
+      sources."yargs-17.6.0"
       sources."yargs-parser-21.1.1"
     ];
     buildInputs = globalBuildInputs;
