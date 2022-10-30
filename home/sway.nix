@@ -5,17 +5,26 @@ let
   mod = "Mod4";
 
 in {
-  # gtk = {
-  #   enable = true;
-  #   theme.name = "Adwaita-dark";
-  #   cursorTheme = {
-  #     name = "breeze";
-  #     size = 24;
-  #   };
-  # };
+  gtk = {
+    enable = true;
+    theme.name = "Adwaita-dark";
+    cursorTheme = {
+      name = "breeze";
+      size = 24;
+    };
+  };
+
+  programs.mako = {
+    enable = true;
+    defaultTimeout = 5000;
+    font = "FiraCode Nerd Font 10";
+    borderRadius = 5;
+    margin = "5";
+  };
 
   programs.waybar = {
     enable = true;
+    style = ./waybar.css;
     settings = {
       mainBar = {
         layer = "top";
@@ -23,7 +32,7 @@ in {
         height = 20;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "network" "memory" "disk" "pulseaudio" "battery" "clock" ];
+        modules-right = [ "tray" "network" "memory" "disk" "pulseaudio" "battery" "clock" ];
 
         "sway/workspaces" = {
           all-outputs = true;
@@ -38,14 +47,14 @@ in {
               warning = 30;
               critical = 15;
           };
-          format = "{capacity}% {icon}";
+          format = "{capacity}% {icon} ";
           format-icons = ["" "" "" "" ""];
           max-length = 25;
         };
 
         pulseaudio = {
           format = "{volume}% {icon}";
-          "format-bluetooth" = "{volume}% {icon}";
+          "format-bluetooth" = "{volume}% ";
           "format-muted" = "";
           "format-icons" = {
             "headphone" = "";
@@ -80,6 +89,7 @@ in {
       wl-clipboard
       flameshot
       wdisplays
+      sway-contrib.grimshot
   ];
 
   wayland.windowManager.sway = {
@@ -90,15 +100,6 @@ in {
       gtk = true;
       base = true;
     };
-
-    extraSessionCommands = ''
-      export XDG_SESSION_TYPE=wayland
-      export XDG_CURRENT_DESKTOP=sway
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-      export MOZ_ENABLE_WAYLAND=1
-      export _JAVA_AWT_WM_NONREPARENTING=1
-      export NIXOS_OZONE_WL=1
-    '';
 
     xwayland = true;
 
@@ -124,6 +125,9 @@ in {
         # Built-in display
         "eDP-1" = {
           scale = "1.5";
+        };
+        "*" = {
+          background = "~/.wallpaper.jpg fit";
         };
       };
 
@@ -179,6 +183,7 @@ in {
         "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
         "XF86MonBrightnessUp" =  "exec light -A 10";
         "XF86MonBrightnessDown" = "exec light -U 10";
+        "Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy";
       };
     };
   };
