@@ -2,7 +2,7 @@
 
 let
 
-  size = if pkgs.stdenv.isDarwin then 18 else 12;
+  size = if pkgs.stdenv.isDarwin then lib.mkDefault 18 else lib.mkDefault 12;
 
 in
 

@@ -12,8 +12,8 @@ in {
     ./home/zsh.nix
     ./home/alacritty.nix
     ./home/git.nix
-    ./home/i3.nix 
-    ./home/backgrounds.nix
+    ./home/sway.nix 
+    # ./home/backgrounds.nix
     ./home/direnv.nix
     ./home/tmux.nix
   ];
@@ -58,6 +58,7 @@ in {
     elixir
     rnix-lsp
     via
+    chromium
 
     rustup
     rust-analyzer
