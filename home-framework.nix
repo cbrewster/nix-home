@@ -47,7 +47,6 @@ in {
     tree
     vscode
     gitstatus
-    insomnia
     ffmpeg
     slack
     simplescreenrecorder
@@ -59,6 +58,12 @@ in {
     rnix-lsp
     via
     chromium
+    (pkgs.writeShellScriptBin "insomnia" ''
+      exec ${pkgs.insomnia}/bin/insomnia --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+    '')
+
+    vagrant
+    ansible
 
     rustup
     rust-analyzer
@@ -68,9 +73,12 @@ in {
     customNodePackages."@withgraphite/graphite-cli"
 
     # unfree :(
-    _1password
-    _1password-gui
-    discord
+    (pkgs.writeShellScriptBin "1password" ''
+      exec ${pkgs._1password-gui}/bin/1password --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+    '')
+    (pkgs.writeShellScriptBin "discord" ''
+      exec ${pkgs.discord-canary}/bin/discordcanary --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+    '')
     zoom-us
     spotify
 

@@ -55,8 +55,7 @@ in
       # cmp_luasnip
 
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
-      # Unfortunately tree-sitter is too slow with large Go files.
-      # nvim-treesitter-context
+      nvim-treesitter-context
       playground
 
       lualine-nvim

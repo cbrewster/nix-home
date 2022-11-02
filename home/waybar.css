@@ -7,17 +7,8 @@
 }
 
 window#waybar {
-    background: transparent;
+    background: black;
     color: white;
-}
-
-#window {
-    font-weight: bold;
-    font-family: "Ubuntu";
-}
-
-#workspaces {
-    padding: 0 5px;
 }
 
 #workspaces button {
@@ -28,11 +19,17 @@ window#waybar {
     border-top: 2px solid transparent;
 }
 
-#workspaces button.focused {
+#workspaces button:hover {
+    border-top: 2px solid white;
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#workspaces button.focused:hover, #workspaces button.focused {
     margin: 0;
     padding: 0 5px;
-    color: #c9545d;
-    border-top: 2px solid #c9545d;
+    color: #ff616e;
+    border-top: 2px solid #ff616e;
 }
 
 #mode {

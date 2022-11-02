@@ -5,13 +5,11 @@ let
   mod = "Mod4";
 
 in {
-  gtk = {
-    enable = true;
-    theme.name = "Adwaita-dark";
-    cursorTheme = {
-      name = "breeze";
-      size = 24;
-    };
+  xsession.enable = true;
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.gnome.adwaita-icon-theme;
+    size = 24;
   };
 
   programs.mako = {
@@ -48,6 +46,7 @@ in {
               critical = 15;
           };
           format = "{capacity}% {icon} ";
+          format-charging = "{capacity}% {icon}  ";
           format-icons = ["" "" "" "" ""];
           max-length = 25;
         };
@@ -127,13 +126,13 @@ in {
           scale = "1.5";
         };
         "*" = {
-          background = "~/.wallpaper.jpg fit";
+          background = "~/.wallpaper.jpg fit #303440";
         };
       };
 
       seat = {
-        "*" = {
-          xcursor_theme = "breeze";
+        seat0 = {
+          xcursor_theme = "Adwaita 24";
         };
       };
 
@@ -151,7 +150,7 @@ in {
 
       window.titlebar = false;
 
-      menu = "${pkgs.wofi}/bin/wofi --show run";
+      menu = "${pkgs.wofi}/bin/wofi --style=${./wofi.css} --show run";
 
       keybindings = lib.mkOptionDefault {
         # Focus
