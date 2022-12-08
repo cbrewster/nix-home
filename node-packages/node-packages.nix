@@ -13,13 +13,13 @@ let
         sha512 = "E+uCpmzAP6EL1L0VDligIg2oUnwbzhSMRXts8Ct7OQ+i+dFEgefExcKnTwGFa+MUZGYAIKHBoUWo/f/lhqc1Ew==";
       };
     };
-    "@withgraphite/graphite-cli-routes-0.22.0" = {
+    "@withgraphite/graphite-cli-routes-0.23.0" = {
       name = "_at_withgraphite_slash_graphite-cli-routes";
       packageName = "@withgraphite/graphite-cli-routes";
-      version = "0.22.0";
+      version = "0.23.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@withgraphite/graphite-cli-routes/-/graphite-cli-routes-0.22.0.tgz";
-        sha512 = "0LqJ2UMyGkZgP/cp4x89nKibX8r/XMgC+G4Xhobxq34gSOrihqHQjEvPeTiVgjX4MsH7340v8cE2y5pKX6m0aA==";
+        url = "https://registry.npmjs.org/@withgraphite/graphite-cli-routes/-/graphite-cli-routes-0.23.0.tgz";
+        sha512 = "+hVC6QEkIXKAWeRifpJ925dVjYSSkg/N743RGyP7oljLeI05RPLyvOJoTSs8qRjtLp4XRei+9kNbSZVbd8wKmQ==";
       };
     };
     "@withgraphite/retype-0.3.15" = {
@@ -148,6 +148,15 @@ let
         sha512 = "MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==";
       };
     };
+    "encoding-0.1.13" = {
+      name = "encoding";
+      packageName = "encoding";
+      version = "0.1.13";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz";
+        sha512 = "ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==";
+      };
+    };
     "escalade-3.1.1" = {
       name = "escalade";
       packageName = "escalade";
@@ -218,6 +227,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz";
         sha512 = "EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==";
+      };
+    };
+    "iconv-lite-0.6.3" = {
+      name = "iconv-lite";
+      packageName = "iconv-lite";
+      version = "0.6.3";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz";
+        sha512 = "4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==";
       };
     };
     "inflight-1.0.6" = {
@@ -328,13 +346,13 @@ let
         sha512 = "J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==";
       };
     };
-    "minimatch-5.1.0" = {
+    "minimatch-5.1.1" = {
       name = "minimatch";
       packageName = "minimatch";
-      version = "5.1.0";
+      version = "5.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/minimatch/-/minimatch-5.1.0.tgz";
-        sha512 = "9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==";
+        url = "https://registry.npmjs.org/minimatch/-/minimatch-5.1.1.tgz";
+        sha512 = "362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==";
       };
     };
     "node-fetch-2.6.7" = {
@@ -407,6 +425,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz";
         sha512 = "JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==";
+      };
+    };
+    "safer-buffer-2.1.2" = {
+      name = "safer-buffer";
+      packageName = "safer-buffer";
+      version = "2.1.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz";
+        sha512 = "YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==";
       };
     };
     "semver-7.3.8" = {
@@ -616,13 +643,13 @@ let
         sha512 = "r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==";
       };
     };
-    "yargs-17.6.0" = {
+    "yargs-17.6.2" = {
       name = "yargs";
       packageName = "yargs";
-      version = "17.6.0";
+      version = "17.6.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/yargs/-/yargs-17.6.0.tgz";
-        sha512 = "8H/wTDqlSwoSnScvV2N/JHfLWOKuh5MVla9hqLjK3nsfyy6Y4kDSYSvkU5YCUEPOSnRXfIyx3Sq+B/IWudTo4g==";
+        url = "https://registry.npmjs.org/yargs/-/yargs-17.6.2.tgz";
+        sha512 = "1/9UrdHjDZc0eOU0HxOHoS78C69UD3JRMvzlJ7S79S2nTaWRA/whGCTV8o9e/N/1Va9YIV7Q4sOxD8VV4pCWOw==";
       };
     };
     "yargs-parser-21.1.1" = {
@@ -640,10 +667,10 @@ in
   "@ansible/ansible-language-server" = nodeEnv.buildNodePackage {
     name = "_at_ansible_slash_ansible-language-server";
     packageName = "@ansible/ansible-language-server";
-    version = "1.0.1";
+    version = "1.0.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-1.0.1.tgz";
-      sha512 = "oHfiFWbLNUsdKChDJiy7F3fpgdw92z5AYl50l0imtUsheas8S3b2cAPKR1Z7729frWRIQLCmY46zKe8rBAGRRw==";
+      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-1.0.2.tgz";
+      sha512 = "z23uIaj9IAdqiB6xHYNOUSrBXJQwQjywMLhKOoejuC7AECXmqLPjYm4cMgiPG3SjO6nmSIe08nq/Qfhu2Bm5ww==";
     };
     dependencies = [
       sources."@flatten-js/interval-tree-1.0.19"
@@ -655,7 +682,7 @@ in
       sources."inherits-2.0.4"
       sources."ini-3.0.1"
       sources."lodash-4.17.21"
-      sources."minimatch-5.1.0"
+      sources."minimatch-5.1.1"
       sources."once-1.4.0"
       sources."uuid-8.3.2"
       sources."vscode-jsonrpc-6.0.0"
@@ -680,13 +707,13 @@ in
   "@withgraphite/graphite-cli" = nodeEnv.buildNodePackage {
     name = "_at_withgraphite_slash_graphite-cli";
     packageName = "@withgraphite/graphite-cli";
-    version = "0.20.11";
+    version = "0.20.12";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.20.11.tgz";
-      sha512 = "MpeRYC1CeU218Euj6+R7uGBwRiWhl2voek2LsMOsswI+jhN+YxgFM7d/UDrmrJ1Eq4IpCeCauZVnE+Ax7rJGNA==";
+      url = "https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-0.20.12.tgz";
+      sha512 = "Dki/T3/T3Anl9swh2AbQz2M9ne3jK6kTuInhd5ZIUY9CdXJd1olK1w7o6TWcN6Ez2qT0SQbt9lsjZQEH2vMxxQ==";
     };
     dependencies = [
-      sources."@withgraphite/graphite-cli-routes-0.22.0"
+      sources."@withgraphite/graphite-cli-routes-0.23.0"
       sources."@withgraphite/retype-0.3.15"
       sources."@withgraphite/retyped-routes-0.3.7"
       sources."ansi-regex-5.0.1"
@@ -700,6 +727,7 @@ in
       sources."concat-map-0.0.1"
       sources."define-lazy-prop-2.0.0"
       sources."emoji-regex-8.0.0"
+      sources."encoding-0.1.13"
       sources."escalade-3.1.1"
       sources."fs-extra-10.1.0"
       sources."fs.realpath-1.0.0"
@@ -707,6 +735,7 @@ in
       sources."glob-7.2.3"
       sources."graceful-fs-4.2.10"
       sources."has-flag-4.0.0"
+      sources."iconv-lite-0.6.3"
       sources."inflight-1.0.6"
       sources."inherits-2.0.4"
       sources."is-docker-2.2.1"
@@ -725,6 +754,7 @@ in
       sources."prompts-2.4.2"
       sources."require-directory-2.1.1"
       sources."rimraf-3.0.2"
+      sources."safer-buffer-2.1.2"
       sources."semver-7.3.8"
       sources."sisteransi-1.0.5"
       sources."string-width-4.2.3"
@@ -740,7 +770,7 @@ in
       sources."wrappy-1.0.2"
       sources."y18n-5.0.8"
       sources."yallist-4.0.0"
-      sources."yargs-17.6.0"
+      sources."yargs-17.6.2"
       sources."yargs-parser-21.1.1"
     ];
     buildInputs = globalBuildInputs;

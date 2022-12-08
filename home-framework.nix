@@ -34,6 +34,7 @@ in {
   home.homeDirectory = "/home/cbrewster";
 
   home.packages = with pkgs; [
+    nodePackages.yalc
     ripgrep
     nix-index
     kubectl
@@ -61,9 +62,23 @@ in {
     (pkgs.writeShellScriptBin "insomnia" ''
       exec ${pkgs.insomnia}/bin/insomnia --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
     '')
+    bloomrpc
+    protonup-ng
+    node2nix
+
+    (appimageTools.wrapType2 {
+      name = "tandem";
+      src = fetchurl {
+        url = "https://downloads.tandem.chat/linux/appimage/x64";
+        sha256 = "sha256-HnBE5APuK592w3jE+9z0TlPjgwvRnR3SDwflgPuycfM=";
+      };
+    })
 
     vagrant
     ansible
+    firecracker
+    natscli
+    nats-server
 
     rustup
     rust-analyzer
@@ -76,9 +91,13 @@ in {
     (pkgs.writeShellScriptBin "1password" ''
       exec ${pkgs._1password-gui}/bin/1password --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
     '')
-    (pkgs.writeShellScriptBin "discord" ''
-      exec ${pkgs.discord-canary}/bin/discordcanary --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+    # (pkgs.writeShellScriptBin "discord" ''
+    #   exec ${pkgs.discord-canary}/bin/discordcanary --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+    # '')
+    (pkgs.writeShellScriptBin "postman" ''
+      exec ${pkgs.postman}/bin/postman --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
     '')
+    discord
     zoom-us
     spotify
 

@@ -42,8 +42,8 @@ in {
 
         battery = {
           states = {
-              warning = 30;
-              critical = 15;
+              warning = 10;
+              critical = 5;
           };
           format = "{capacity}% {icon} ";
           format-charging = "{capacity}% {icon}  ";
@@ -125,8 +125,14 @@ in {
         "eDP-1" = {
           scale = "1.5";
         };
+        "Goldstar Company Ltd LG ULTRAGEAR 106MXVWAG815" = {
+          pos = "0 0";
+        };
+        "Goldstar Company Ltd LG ULTRAGEAR 011NTQD9H748" = {
+          pos = "2560 0";
+        };
         "*" = {
-          background = "~/.wallpaper.jpg fit #303440";
+          background = "~/.wallpaper.jpg center #303440";
         };
       };
 
@@ -145,6 +151,7 @@ in {
 
           middle_emulation = "disabled";
           click_method = "clickfinger";
+          dwt = "disabled";
         };
       };
 

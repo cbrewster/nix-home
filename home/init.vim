@@ -125,6 +125,8 @@ nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
 autocmd BufWritePre *.go,*.rs,*.ex,*.exs,*.leex,*.heex lua vim.lsp.buf.formatting_sync()
 
+autocmd BufWritePre *.proto ClangFormat
+
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -220,7 +222,10 @@ require'lspconfig'.rust_analyzer.setup{
     settings = {
         ["rust-analyzer"] = {
             cargo = {
-                loadOutDirsFromCheck = true
+                loadOutDirsFromCheck = true,
+                buildScripts = {
+                    enable = true
+                }
             },
             procMacro = {
                 enable = true
@@ -276,7 +281,7 @@ require'lspconfig'.elixirls.setup{
     cmd = { "elixir-ls" },
 }
 
-require('lualine').setup({
+require'lualine'.setup{
     options = {
         theme = "github_dark"
     },
@@ -288,7 +293,9 @@ require('lualine').setup({
         lualine_y = {'location'},
         lualine_z = {'branch'}
     }
-})
+}
+
+require'fidget'.setup{}
 EOF
 
 nnoremap <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>

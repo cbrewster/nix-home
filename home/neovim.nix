@@ -38,6 +38,7 @@ in
       nvim-lspconfig
       # lspsaga-nvim
       lsp-status-nvim
+      fidget-nvim
 
       nvim-cmp
       cmp-nvim-lsp
@@ -54,7 +55,7 @@ in
       # luasnip
       # cmp_luasnip
 
-      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+      (nvim-treesitter.withAllGrammars)
       nvim-treesitter-context
       playground
 
@@ -77,6 +78,7 @@ in
       vim-terraform
       nvim-lsp-ts-utils
       go-nvim
+      vim-clang-format
 
       gruvbox
       github-nvim-theme
