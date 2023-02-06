@@ -91,6 +91,7 @@ in
       telescope-ui-select-nvim
 
       orgmode
+      octo-nvim
     ];
   };  
 }

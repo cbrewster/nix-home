@@ -59,12 +59,14 @@ in {
     rnix-lsp
     via
     chromium
-    (pkgs.writeShellScriptBin "insomnia" ''
-      exec ${pkgs.insomnia}/bin/insomnia --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
-    '')
+    insomnia
     bloomrpc
     protonup-ng
     node2nix
+    gh
+    wireshark
+    mosh
+    brotli
 
     (appimageTools.wrapType2 {
       name = "tandem";
@@ -88,15 +90,16 @@ in {
     customNodePackages."@withgraphite/graphite-cli"
 
     # unfree :(
-    (pkgs.writeShellScriptBin "1password" ''
-      exec ${pkgs._1password-gui}/bin/1password --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
-    '')
+    # (pkgs.writeShellScriptBin "1password" ''
+    #   exec ${pkgs._1password-gui}/bin/1password --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+    # '')
     # (pkgs.writeShellScriptBin "discord" ''
     #   exec ${pkgs.discord-canary}/bin/discordcanary --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
     # '')
-    (pkgs.writeShellScriptBin "postman" ''
-      exec ${pkgs.postman}/bin/postman --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
-    '')
+    # (pkgs.writeShellScriptBin "postman" ''
+    #   exec ${pkgs.postman}/bin/postman --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+    # '')
+    postman
     discord
     zoom-us
     spotify

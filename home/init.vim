@@ -296,6 +296,8 @@ require'lualine'.setup{
 }
 
 require'fidget'.setup{}
+
+require'octo'.setup{}
 EOF
 
 nnoremap <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>

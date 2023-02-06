@@ -123,7 +123,9 @@ in {
       output = {
         # Built-in display
         "eDP-1" = {
-          scale = "1.5";
+          scale = "1.25";
+        };
+        "eDP-1" = {
         };
         "Goldstar Company Ltd LG ULTRAGEAR 106MXVWAG815" = {
           pos = "0 0";
@@ -178,8 +180,8 @@ in {
         "${mod}+w" = "sticky toggle";
 
         # Multiple monitor
-        "${mod}+Shift+greater" = "move container to output right";
-        "${mod}+Shift+less" = "move container to output left";
+        "${mod}+greater" = "move workspace to output right";
+        "${mod}+less" = "move workspace to output left";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
