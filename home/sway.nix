@@ -117,7 +117,7 @@ in {
 
       gaps = {
         inner = 5;
-        outer = 5;
+        outer = 0;
       };
 
       output = {

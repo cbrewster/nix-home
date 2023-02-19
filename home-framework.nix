@@ -12,10 +12,10 @@ in {
     ./home/zsh.nix
     ./home/alacritty.nix
     ./home/git.nix
-    ./home/sway.nix 
-    # ./home/backgrounds.nix
+    ./home/i3.nix 
     ./home/direnv.nix
     ./home/tmux.nix
+    ./home/picom.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -67,14 +67,7 @@ in {
     wireshark
     mosh
     brotli
-
-    (appimageTools.wrapType2 {
-      name = "tandem";
-      src = fetchurl {
-        url = "https://downloads.tandem.chat/linux/appimage/x64";
-        sha256 = "sha256-HnBE5APuK592w3jE+9z0TlPjgwvRnR3SDwflgPuycfM=";
-      };
-    })
+    xclip
 
     vagrant
     ansible
@@ -104,7 +97,7 @@ in {
     zoom-us
     spotify
 
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
   ];
 
   # This value determines the Home Manager release that your
