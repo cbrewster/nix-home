@@ -33,17 +33,19 @@ in
     vimAlias = true;
 
     extraConfig = (builtins.readFile ./init.vim);
-      
+
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
       # lspsaga-nvim
       lsp-status-nvim
       fidget-nvim
 
+      editorconfig-nvim
+
       nvim-cmp
       cmp-nvim-lsp
       cmp-nvim-lua
-      
+
       vim-vsnip
       vim-vsnip-integ
       cmp-vsnip
@@ -67,6 +69,7 @@ in
       vim-gitgutter
       vim-fugitive
       vim-rooter
+      diffview-nvim
 
       vim-crates
       vim-toml
@@ -74,7 +77,7 @@ in
       typescript-vim
       vim-jsx-typescript
       neoformat
-      vim-nix        
+      vim-nix
       vim-terraform
       nvim-lsp-ts-utils
       go-nvim
@@ -93,5 +96,5 @@ in
       orgmode
       octo-nvim
     ];
-  };  
+  };
 }

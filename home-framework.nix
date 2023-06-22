@@ -3,19 +3,22 @@
 let
 
   customNodePackages = pkgs.callPackage ./node-packages {
-      nodejs = pkgs.nodejs-14_x;
+    nodejs = pkgs.nodejs-18_x;
   };
 
-in {
+in
+{
   imports = [
     ./home/neovim.nix
     ./home/zsh.nix
     ./home/alacritty.nix
     ./home/git.nix
-    ./home/i3.nix 
+    # ./home/i3.nix 
     ./home/direnv.nix
     ./home/tmux.nix
-    ./home/picom.nix
+    # ./home/picom.nix
+    ./home/backgrounds.nix
+    ./home/sway.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -49,7 +52,6 @@ in {
     vscode
     gitstatus
     ffmpeg
-    slack
     simplescreenrecorder
     nixos-shell
     vault
@@ -74,9 +76,9 @@ in {
     firecracker
     natscli
     nats-server
+    nsc
 
     rustup
-    rust-analyzer
     cargo-edit
 
     customNodePackages."@ansible/ansible-language-server"
@@ -85,7 +87,7 @@ in {
     # unfree :(
     # (pkgs.writeShellScriptBin "1password" ''
     #   exec ${pkgs._1password-gui}/bin/1password --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
-    # '')
+    # # '')
     # (pkgs.writeShellScriptBin "discord" ''
     #   exec ${pkgs.discord-canary}/bin/discordcanary --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
     # '')
@@ -93,12 +95,15 @@ in {
     #   exec ${pkgs.postman}/bin/postman --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
     # '')
     postman
-    discord
     zoom-us
     spotify
+    slack
+    discord
 
     (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
   ];
+
+  fonts.fontconfig.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

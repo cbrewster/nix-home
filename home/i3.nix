@@ -4,10 +4,15 @@ let
 
   mod = "Mod4";
 
-in {
+in
+{
   programs.rofi = {
     enable = true;
     theme = ./rofi.rasi;
+  };
+
+  services.dunst = {
+    enable = true;
   };
 
   xsession.windowManager.i3 = {
@@ -35,11 +40,6 @@ in {
 
       startup = [
         { command = "xset r rate 200 40"; }
-        {
-          command = "${pkgs.feh}/bin/feh --bg-center ~/.wallpaper.jpg";
-          always = true;
-          notification = false;
-        }
       ];
 
       gaps = {
@@ -82,7 +82,7 @@ in {
         "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
       };
 
-      bars = [];
+      bars = [ ];
     };
   };
 

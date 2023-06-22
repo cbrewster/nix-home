@@ -3,20 +3,29 @@
 let
 
   customNodePackages = pkgs.callPackage ./node-packages {
-      nodejs = pkgs.nodejs-14_x;
+    nodejs = pkgs.nodejs-14_x;
   };
 
-in {
+in
+{
   imports = [
     ./home/neovim.nix
     ./home/zsh.nix
     ./home/alacritty.nix
     ./home/git.nix
-    ./home/i3.nix 
+    ./home/i3.nix
     ./home/backgrounds.nix
     ./home/direnv.nix
     ./home/tmux.nix
   ];
+
+  services.mako = {
+    enable = true;
+    defaultTimeout = 5000;
+    font = "FiraCode Nerd Font 10";
+    borderRadius = 5;
+    margin = "5";
+  };
 
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.overlays = [
@@ -75,6 +84,8 @@ in {
 
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
+
+  fonts.fontconfig.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

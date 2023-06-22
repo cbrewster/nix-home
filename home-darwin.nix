@@ -2,9 +2,10 @@
 
 let
   customNodePackages = pkgs.callPackage ./node-packages {
-      nodejs = pkgs.nodejs-14_x;
+    nodejs = pkgs.nodejs-14_x;
   };
-in {
+in
+{
   imports = [
     ./home/neovim.nix
     ./home/zsh.nix

@@ -11,6 +11,10 @@ in
     enable = true;
 
     settings = {
+      env = {
+        WINIT_X11_SCALE_FACTOR = "1";
+      };
+
       font = {
         size = size;
         normal = {
@@ -84,26 +88,26 @@ in
 
         # Normal colors
         normal = {
-          black =   "0x24292e";
-          red =     "0xf14c4c";
-          green =   "0x23d18b";
-          yellow =  "0xe2e210";
-          blue =    "0x3b8eea";
+          black = "0x24292e";
+          red = "0xf14c4c";
+          green = "0x23d18b";
+          yellow = "0xe2e210";
+          blue = "0x3b8eea";
           magenta = "0xbc3fbc";
-          cyan =    "0x29b8db";
-          white =   "0xb1bac4";
+          cyan = "0x29b8db";
+          white = "0xb1bac4";
         };
 
         # Bright colors
         bright = {
-          black =   "0x666666";
-          red =     "0xf14c4c";
-          green =   "0x23d18b";
-          yellow =  "0xf5f543";
-          blue =    "0x3b8eea";
+          black = "0x666666";
+          red = "0xf14c4c";
+          green = "0x23d18b";
+          yellow = "0xf5f543";
+          blue = "0x3b8eea";
           magenta = "0xd670d6";
-          cyan =    "0x29b8db";
-          white =   "0xe5e5e5";
+          cyan = "0x29b8db";
+          white = "0xe5e5e5";
         };
       };
 

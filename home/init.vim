@@ -65,6 +65,9 @@ nnoremap <silent>gr <cmd>lua require'telescope.builtin'.lsp_references()<cr>
 nnoremap <leader>ws <cmd>lua require'telescope.builtin'.lsp_workspace_symbols()<cr>
 nnoremap <leader>ds <cmd>lua require'telescope.builtin'.lsp_document_symbols()<cr>
 
+nnoremap <leader>rq <cmd>Octo pr search assignee:cbrewster<cr>
+nnoremap <leader>pr <cmd>Octo pr search<cr>
+
 " Allow mouse usage
 set mouse=a
 
@@ -123,7 +126,7 @@ set shortmess+=c
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
-autocmd BufWritePre *.go,*.rs,*.ex,*.exs,*.leex,*.heex lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre *.go,*.rs,*.ex,*.exs,*.leex,*.heex lua vim.lsp.buf.format()
 
 autocmd BufWritePre *.proto ClangFormat
 

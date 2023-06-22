@@ -4,7 +4,8 @@ let
 
   mod = "Mod4";
 
-in {
+in
+{
   xsession.enable = true;
   home.pointerCursor = {
     name = "Adwaita";
@@ -12,7 +13,7 @@ in {
     size = 24;
   };
 
-  programs.mako = {
+  services.mako = {
     enable = true;
     defaultTimeout = 5000;
     font = "FiraCode Nerd Font 10";
@@ -42,12 +43,12 @@ in {
 
         battery = {
           states = {
-              warning = 10;
-              critical = 5;
+            warning = 10;
+            critical = 5;
           };
           format = "{capacity}% {icon} ";
           format-charging = "{capacity}% {icon}  ";
-          format-icons = ["" "" "" "" ""];
+          format-icons = [ "" "" "" "" "" ];
           max-length = 25;
         };
 
@@ -62,7 +63,7 @@ in {
             "phone" = "";
             "portable" = "";
             "car" = "";
-            "default" = ["" "墳" ""];
+            "default" = [ "" "墳" "" ];
           };
           "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
@@ -85,10 +86,10 @@ in {
   };
 
   home.packages = with pkgs; [
-      wl-clipboard
-      flameshot
-      wdisplays
-      sway-contrib.grimshot
+    wl-clipboard
+    flameshot
+    wdisplays
+    sway-contrib.grimshot
   ];
 
   wayland.windowManager.sway = {
@@ -105,6 +106,7 @@ in {
     extraConfig = ''
       bindswitch lid:on output eDP-1 disable
       bindswitch lid:off output eDP-1 enable
+      for_window [title="Firefox - Sharing Indicator"] kill
     '';
 
     config = {
@@ -125,8 +127,7 @@ in {
         "eDP-1" = {
           scale = "1.25";
         };
-        "eDP-1" = {
-        };
+        "eDP-1" = { };
         "Goldstar Company Ltd LG ULTRAGEAR 106MXVWAG815" = {
           pos = "0 0";
         };
@@ -145,7 +146,7 @@ in {
       };
 
       input = {
-        "*" = { 
+        "*" = {
           xkb_options = "ctrl:nocaps";
 
           repeat_delay = "200";
@@ -189,7 +190,7 @@ in {
         "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 5";
         "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 5";
         "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
-        "XF86MonBrightnessUp" =  "exec light -A 10";
+        "XF86MonBrightnessUp" = "exec light -A 10";
         "XF86MonBrightnessDown" = "exec light -U 10";
         "Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy";
       };
