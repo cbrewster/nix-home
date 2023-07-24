@@ -128,10 +128,10 @@ in
           scale = "1.25";
         };
         "eDP-1" = { };
-        "Goldstar Company Ltd LG ULTRAGEAR 106MXVWAG815" = {
+        "LG Electronics LG ULTRAGEAR 106MXVWAG815" = {
           pos = "0 0";
         };
-        "Goldstar Company Ltd LG ULTRAGEAR 011NTQD9H748" = {
+        "LG Electronics LG ULTRAGEAR 011NTQD9H748" = {
           pos = "2560 0";
         };
         "*" = {

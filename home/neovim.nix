@@ -22,6 +22,16 @@ let
     };
   };
 
+  prettier-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "prettier-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "MunifTanjim";
+      repo = "prettier.nvim";
+      rev = "d98e732cb73690b07c00c839c924be1d1d9ac5c2";
+      sha256 = "sha256-4xq+caprcQQotvBXnWWSsMwVB2hc5uyjrhT1dPBffXI=";
+    };
+  };
+
 in
 
 {
@@ -39,6 +49,7 @@ in
       # lspsaga-nvim
       lsp-status-nvim
       fidget-nvim
+      null-ls-nvim
 
       editorconfig-nvim
 
@@ -82,6 +93,7 @@ in
       nvim-lsp-ts-utils
       go-nvim
       vim-clang-format
+      prettier-nvim
 
       gruvbox
       github-nvim-theme

@@ -62,6 +62,7 @@ nnoremap <C-p> <cmd>lua require'telescope.builtin'.git_files()<cr>
 nnoremap <leader>rg <cmd>lua require'telescope.builtin'.live_grep()<cr>
 nnoremap <leader>ts <cmd>lua require'telescope.builtin'.treesitter()<cr>
 nnoremap <silent>gr <cmd>lua require'telescope.builtin'.lsp_references()<cr>
+nnoremap <silent>gi <cmd>lua require'telescope.builtin'.lsp_implementations()<cr>
 nnoremap <leader>ws <cmd>lua require'telescope.builtin'.lsp_workspace_symbols()<cr>
 nnoremap <leader>ds <cmd>lua require'telescope.builtin'.lsp_document_symbols()<cr>
 
@@ -93,7 +94,7 @@ let g:mix_format_on_save = 1
 autocmd FileType dart setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " JS crap
-autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat prettier
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.yml,*.yaml,*.json Neoformat prettier
 
 " Directory specific overrides
 " repl it web uses 2 space indent
@@ -284,6 +285,11 @@ require'lspconfig'.elixirls.setup{
     cmd = { "elixir-ls" },
 }
 
+require'null-ls'.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
 require'lualine'.setup{
     options = {
         theme = "github_dark"
@@ -301,6 +307,8 @@ require'lualine'.setup{
 require'fidget'.setup{}
 
 require'octo'.setup{}
+
+require'prettier'.setup{}
 EOF
 
 nnoremap <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>
