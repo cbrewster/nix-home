@@ -1,4 +1,4 @@
 [
     "@ansible/ansible-language-server",
-    "@withgraphite/graphite-cli"
+    "@bradymadden97/freephite-cli"
 ]

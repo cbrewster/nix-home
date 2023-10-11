@@ -14,6 +14,8 @@
 
     ignores = [
       ".venv"
+      ".direnv"
+      ".cache"
     ];
 
     aliases = {

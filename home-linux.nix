@@ -2,7 +2,7 @@
 
 let
 
-  customNodePackages = pkgs.callPackage ./node-packages {
+  customNodePackages = pkgs.callPackage ./node-packages/override.nix {
     nodejs = pkgs.nodejs-14_x;
   };
 
@@ -73,7 +73,7 @@ in
     cargo-edit
 
     customNodePackages."@ansible/ansible-language-server"
-    customNodePackages."@withgraphite/graphite-cli"
+    customNodePackages."@bradymadden97/freephite-cli"
 
     # unfree :(
     _1password

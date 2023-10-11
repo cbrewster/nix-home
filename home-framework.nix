@@ -2,7 +2,7 @@
 
 let
 
-  customNodePackages = pkgs.callPackage ./node-packages {
+  customNodePackages = pkgs.callPackage ./node-packages/override.nix {
     nodejs = pkgs.nodejs-18_x;
   };
 
@@ -82,8 +82,7 @@ in
     cargo-edit
 
     customNodePackages."@ansible/ansible-language-server"
-    customNodePackages."@withgraphite/graphite-cli"
-
+    customNodePackages."@bradymadden97/freephite-cli"
     # unfree :(
     # (pkgs.writeShellScriptBin "1password" ''
     #   exec ${pkgs._1password-gui}/bin/1password --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
@@ -99,6 +98,8 @@ in
     spotify
     slack
     discord
+
+    nixd
 
     (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
   ];

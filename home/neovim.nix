@@ -79,6 +79,7 @@ in
       vim-commentary
       vim-gitgutter
       vim-fugitive
+      vim-rhubarb
       vim-rooter
       diffview-nvim
 

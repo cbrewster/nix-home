@@ -14,8 +14,12 @@
       plugins = [ "git" "sudo" ];
     };
 
+    shellAliases = {
+      gt = "fp";
+    };
+
     initExtra = ''
-      source <(gt completion) 
+      source <(fp completion) 
       export PATH=~/google-cloud-sdk/bin:$PATH
       export GCEVM_USERNAME=connor;
     '';

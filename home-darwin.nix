@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  customNodePackages = pkgs.callPackage ./node-packages {
+  customNodePackages = pkgs.callPackage ./node-packages/override.nix {
     nodejs = pkgs.nodejs-14_x;
   };
 in
@@ -51,7 +51,7 @@ in
     terraform-ls
 
     customNodePackages."@ansible/ansible-language-server"
-    customNodePackages."@withgraphite/graphite-cli"
+    customNodePackages."@bradymadden97/freephite-cli"
 
     rust-analyzer
 
