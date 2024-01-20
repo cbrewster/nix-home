@@ -164,6 +164,10 @@ cmp.setup({
             vim.fn["vsnip#anonymous"](args.body)
         end
     },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
     mapping = cmp.mapping.preset.insert({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -210,6 +214,23 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+            vim.lsp.handlers.signature_help, {
+                border = 'rounded',
+                close_events = {"BufHidden", "InsertLeave"},
+    }
+)
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+            vim.lsp.handlers.hover, {
+                border = 'rounded',
+    }
+)
+
+vim.diagnostic.config {     
+    float = { border = "rounded" }, 
+}
+
 require'lspconfig'.nixd.setup{
     capablities = capabilities,
     on_attach = on_attach,
@@ -229,7 +250,8 @@ require'lspconfig'.rust_analyzer.setup{
                 loadOutDirsFromCheck = true,
                 buildScripts = {
                     enable = true
-                }
+                },
+                features = "all"
             },
             procMacro = {
                 enable = true
@@ -274,12 +296,6 @@ require'lspconfig'.ansiblels.setup{
     on_attach = on_attach,
 }
 
-require'lspconfig'.elixirls.setup{
-    capabilities = capabilities,
-    on_attach = on_attach,
-    cmd = { "elixir-ls" },
-}
-
 require'null-ls'.setup({
     capabilities = capabilities,
     on_attach = on_attach,
@@ -304,6 +320,14 @@ require'fidget'.setup{}
 require'octo'.setup{}
 
 require'prettier'.setup{}
+
+require'elixir'.setup{
+    elixirls = {
+        cmd = "elixir-ls",
+        capabilities = capabilities,
+        on_attach = on_attach,
+    }
+}
 EOF
 
 nnoremap <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>

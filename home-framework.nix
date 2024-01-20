@@ -49,7 +49,6 @@ in
     clang-tools
     whois
     tree
-    vscode
     gitstatus
     ffmpeg
     simplescreenrecorder
@@ -93,7 +92,6 @@ in
     # (pkgs.writeShellScriptBin "postman" ''
     #   exec ${pkgs.postman}/bin/postman --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
     # '')
-    postman
     zoom-us
     spotify
     slack
@@ -103,6 +101,13 @@ in
 
     (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
   ];
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      ms-vscode-remote.remote-ssh
+    ];
+  };
 
   fonts.fontconfig.enable = true;
 

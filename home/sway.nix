@@ -130,9 +130,13 @@ in
         "eDP-1" = { };
         "LG Electronics LG ULTRAGEAR 106MXVWAG815" = {
           pos = "0 0";
+          mode = "2560x1440@59.951Hz";
+          # mode = "2560x1440@144Hz";
         };
         "LG Electronics LG ULTRAGEAR 011NTQD9H748" = {
           pos = "2560 0";
+          mode = "2560x1440@59.951Hz";
+          # mode = "2560x1440@144Hz";
         };
         "*" = {
           background = "~/.wallpaper.jpg center #303440";

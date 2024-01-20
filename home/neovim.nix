@@ -95,6 +95,7 @@ in
       go-nvim
       vim-clang-format
       prettier-nvim
+      elixir-tools-nvim
 
       gruvbox
       github-nvim-theme
