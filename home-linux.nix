@@ -65,7 +65,6 @@ in
     flyctl
     elixir_ls
     elixir
-    rnix-lsp
     via
 
     rustup

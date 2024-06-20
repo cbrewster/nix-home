@@ -1,4 +1,5 @@
 [
     "@ansible/ansible-language-server",
-    "@bradymadden97/freephite-cli"
+    "@bradymadden97/freephite-cli",
+    "@devcontainers/cli"
 ]

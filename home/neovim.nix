@@ -2,7 +2,7 @@
 
 let
 
-  github-nvim-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  github-nvim-theme = pkgs.vimUtils.buildVimPlugin {
     name = "github-nvim-theme";
     src = pkgs.fetchFromGitHub {
       owner = "projekt0n";
@@ -12,7 +12,7 @@ let
     };
   };
 
-  go-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  go-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "go-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "ray-x";
@@ -22,7 +22,7 @@ let
     };
   };
 
-  prettier-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  prettier-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "prettier-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "MunifTanjim";
@@ -36,6 +36,13 @@ in
 
 {
   home.sessionVariables.EDITOR = "nvim";
+
+  home.packages = with pkgs; [
+    elixir_ls
+    nodePackages.bash-language-server
+    gopls
+    shellcheck
+  ];
 
   programs.neovim = {
     # package = pkgs.neovim-nightly;

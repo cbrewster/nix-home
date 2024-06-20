@@ -13,11 +13,8 @@ in
     ./home/zsh.nix
     ./home/alacritty.nix
     ./home/git.nix
-    # ./home/i3.nix 
     ./home/direnv.nix
     ./home/tmux.nix
-    # ./home/picom.nix
-    ./home/backgrounds.nix
     ./home/sway.nix
   ];
 
@@ -53,11 +50,8 @@ in
     ffmpeg
     simplescreenrecorder
     nixos-shell
-    vault
     flyctl
-    elixir_ls
     elixir
-    rnix-lsp
     via
     chromium
     insomnia
@@ -101,6 +95,7 @@ in
   ]) ++ [
     customNodePackages."@ansible/ansible-language-server"
     customNodePackages."@bradymadden97/freephite-cli"
+    customNodePackages."@devcontainers/cli"
   ];
 
   programs.vscode = {
