@@ -63,6 +63,7 @@ in
     mosh
     brotli
     xclip
+    vscode-langservers-extracted
 
     vagrant
     ansible
