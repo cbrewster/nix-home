@@ -1,32 +1,18 @@
 { pkgs, ... }:
 
-let
-
-  customNodePackages = pkgs.callPackage ./node-packages/override.nix {
-    nodejs = pkgs.nodejs-18_x;
-  };
-
-in
 {
   imports = [
     ./home/neovim.nix
     ./home/zsh.nix
     ./home/alacritty.nix
     ./home/git.nix
-    # ./home/i3.nix 
     ./home/direnv.nix
     ./home/tmux.nix
-    # ./home/picom.nix
-    ./home/backgrounds.nix
+    #./home/backgrounds.nix
     ./home/sway.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
-  # nixpkgs.overlays = [
-  #   (import (builtins.fetchTarball {
-  #     url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-  #   }))
-  # ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -36,13 +22,9 @@ in
   home.username = "cbrewster";
   home.homeDirectory = "/home/cbrewster";
 
-  home.packages = (with pkgs; [
-    nodePackages.yalc
+  home.packages = with pkgs; [
     ripgrep
     nix-index
-    kubectl
-    kubectx
-    kubernetes-helm
     htop
     jq
     clang
@@ -53,25 +35,16 @@ in
     ffmpeg
     simplescreenrecorder
     nixos-shell
-    vault
     flyctl
     elixir_ls
     elixir
-    rnix-lsp
-    via
-    chromium
     insomnia
-    bloomrpc
     protonup-ng
     node2nix
     gh
     wireshark
-    mosh
-    brotli
     xclip
 
-    vagrant
-    ansible
     firecracker
     natscli
     nats-server
@@ -80,46 +53,26 @@ in
     rustup
     cargo-edit
 
-    # unfree :(
-    # (pkgs.writeShellScriptBin "1password" ''
-    #   exec ${pkgs._1password-gui}/bin/1password --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
-    # # '')
-    # (pkgs.writeShellScriptBin "discord" ''
-    #   exec ${pkgs.discord-canary}/bin/discordcanary --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
-    # '')
-    # (pkgs.writeShellScriptBin "postman" ''
-    #   exec ${pkgs.postman}/bin/postman --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
-    # '')
-    zoom-us
-    spotify
+    (writeShellScriptBin "spotify" ''
+      exec ${lib.getExe spotifywm} --enable-features=UseOzonePlatform --ozone-platform=wayland    '')
     slack
     discord
 
     nixd
 
     (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
-  ]) ++ [
-    customNodePackages."@ansible/ansible-language-server"
-    customNodePackages."@bradymadden97/freephite-cli"
   ];
-
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      ms-vscode-remote.remote-ssh
-    ];
-  };
 
   wayland.windowManager.sway = {
     extraConfig = ''
-      bindswitch lid:on output eDP-1 disable
-      bindswitch lid:off output eDP-1 enable
+      bindswitch lid:on output eDP-2 disable
+      bindswitch lid:off output eDP-2 enable
       for_window [title="Firefox - Sharing Indicator"] kill
     '';
 
     config.output = {
       # Built-in display
-      "eDP-1" = {
+      "eDP-2" = {
         scale = "1.25";
       };
     };

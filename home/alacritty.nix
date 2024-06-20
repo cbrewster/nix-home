@@ -109,9 +109,9 @@ in
           cyan = "0x29b8db";
           white = "0xe5e5e5";
         };
-      };
 
-      draw_bold_text_with_bright_colors = false;
+        draw_bold_text_with_bright_colors = false;
+      };
     };
   };
 }

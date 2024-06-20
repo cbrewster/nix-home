@@ -47,38 +47,38 @@ in
             critical = 5;
           };
           format = "{capacity}% {icon} ";
-          format-charging = "{capacity}% {icon}  ";
+          format-charging = "{capacity}% {icon}  󰂄";
           format-icons = [ "" "" "" "" "" ];
           max-length = 25;
         };
 
         pulseaudio = {
           format = "{volume}% {icon}";
-          "format-bluetooth" = "{volume}% ";
-          "format-muted" = "";
+          "format-bluetooth" = "{volume}% ";
+          "format-muted" = "󰖁";
           "format-icons" = {
             "headphone" = "";
-            "hands-free" = "";
-            "headset" = "";
+            "hands-free" = "";
+            "headset" = "";
             "phone" = "";
             "portable" = "";
             "car" = "";
-            "default" = [ "" "墳" "" ];
+            "default" = [ "" "" "" ];
           };
           "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
 
         disk = {
-          format = "{percentage_used}% ";
+          format = "{percentage_used}% 󱛟";
         };
 
         memory = {
-          format = "{}% ";
+          format = "{}% 󰍛";
         };
 
         network = {
-          "format-wifi" = "直";
-          "format-disconnect" = "睊";
+          "format-wifi" = "󰖩";
+          "format-disconnect" = "󱚵";
           "tooltip-format-wifi" = "{essid} ({signalStrength}%) ";
         };
       };
@@ -103,12 +103,6 @@ in
 
     xwayland = true;
 
-    extraConfig = ''
-      bindswitch lid:on output eDP-1 disable
-      bindswitch lid:off output eDP-1 enable
-      for_window [title="Firefox - Sharing Indicator"] kill
-    '';
-
     config = {
       modifier = mod;
       terminal = "${pkgs.alacritty}/bin/alacritty";
@@ -123,23 +117,16 @@ in
       };
 
       output = {
-        # Built-in display
-        "eDP-1" = {
-          scale = "1.25";
-        };
-        "eDP-1" = { };
         "LG Electronics LG ULTRAGEAR 106MXVWAG815" = {
           pos = "0 0";
-          mode = "2560x1440@59.951Hz";
-          # mode = "2560x1440@144Hz";
+          mode = "2560x1440@144Hz";
         };
         "LG Electronics LG ULTRAGEAR 011NTQD9H748" = {
           pos = "2560 0";
-          mode = "2560x1440@59.951Hz";
-          # mode = "2560x1440@144Hz";
+          mode = "2560x1440@144Hz";
         };
         "*" = {
-          background = "~/.wallpaper.jpg center #303440";
+          background = "${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src} stretch #303440";
         };
       };
 
@@ -198,6 +185,14 @@ in
         "XF86MonBrightnessDown" = "exec light -U 10";
         "Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy";
       };
+    };
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome.gnome-themes-extra;
     };
   };
 }

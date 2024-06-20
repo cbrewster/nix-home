@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
 
@@ -7,8 +7,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "projekt0n";
       repo = "github-nvim-theme";
-      rev = "b3f15193d1733cc4e9c9fe65fbfec329af4bdc2a";
-      sha256 = "wLX81wgl4E50mRig9erbLyrxyGbZllFbHFAQ9+v60W4=";
+      rev = "d832925e77cef27b16011a8dfd8835f49bdcd055";
+      hash = "sha256-vsIr3UrnajxixDo0cp+6GoQfmO0KDkPX8jw1e0fPHo4=";
     };
   };
 
@@ -18,7 +18,7 @@ let
       owner = "ray-x";
       repo = "go.nvim";
       rev = "c75824b1f050c153ebfd5be65a318b9d4463d5a9";
-      sha256 = "azO+Eay3V9aLyJyP1hmKiEAtr6Z3OqlWVu4v2GEoUdo=";
+      hash = "sha256-azO+Eay3V9aLyJyP1hmKiEAtr6Z3OqlWVu4v2GEoUdo=";
     };
   };
 
@@ -28,7 +28,7 @@ let
       owner = "MunifTanjim";
       repo = "prettier.nvim";
       rev = "d98e732cb73690b07c00c839c924be1d1d9ac5c2";
-      sha256 = "sha256-4xq+caprcQQotvBXnWWSsMwVB2hc5uyjrhT1dPBffXI=";
+      hash = "sha256-4xq+caprcQQotvBXnWWSsMwVB2hc5uyjrhT1dPBffXI=";
     };
   };
 
@@ -44,7 +44,7 @@ in
 
     extraConfig = (builtins.readFile ./init.vim);
 
-    plugins = with pkgs.vimPlugins; [
+    plugins = (with pkgs.vimPlugins; [
       nvim-lspconfig
       # lspsaga-nvim
       lsp-status-nvim
@@ -92,13 +92,10 @@ in
       vim-nix
       vim-terraform
       nvim-lsp-ts-utils
-      go-nvim
       vim-clang-format
-      prettier-nvim
       elixir-tools-nvim
 
       gruvbox
-      github-nvim-theme
 
       nvim-web-devicons
 
@@ -109,6 +106,10 @@ in
 
       orgmode
       octo-nvim
+    ]) ++ [
+      go-nvim
+      prettier-nvim
+      github-nvim-theme
     ];
   };
 }
