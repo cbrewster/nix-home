@@ -103,7 +103,9 @@ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.yml,*.yaml,*.json Neoformat prettier
 
 " Go
 lua <<EOF
-require('go').setup()
+require('go').setup({
+  lsp_inlay_hints = { enable = false },
+})
 EOF
 
 " Tree sitter tings
@@ -130,7 +132,7 @@ set shortmess+=c
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
-autocmd BufWritePre *.go,*.rs,*.ex,*.exs,*.leex,*.heex lua vim.lsp.buf.format()
+autocmd BufWritePre *.go,*.rs,*.ex,*.exs,*.leex,*.heex,*.py lua vim.lsp.buf.format()
 
 autocmd BufWritePre *.proto ClangFormat
 
@@ -211,9 +213,6 @@ local on_attach = function(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
         vim.cmd 'autocmd CursorHold   <buffer> lua vim.lsp.buf.document_highlight()'
         vim.cmd 'autocmd CursorMoved  <buffer> lua vim.lsp.buf.clear_references()'
-    end
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end
 end
 
@@ -318,6 +317,16 @@ require'null-ls'.setup({
 })
 
 require'lspconfig'.bashls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.pyright.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.ruff_lsp.setup{
     capabilities = capabilities,
     on_attach = on_attach,
 }

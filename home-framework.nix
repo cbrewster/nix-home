@@ -64,6 +64,9 @@ in
     brotli
     xclip
     vscode-langservers-extracted
+    pyright
+    ruff
+    ruff-lsp
 
     vagrant
     ansible

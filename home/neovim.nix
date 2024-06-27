@@ -17,8 +17,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "ray-x";
       repo = "go.nvim";
-      rev = "c75824b1f050c153ebfd5be65a318b9d4463d5a9";
-      hash = "sha256-azO+Eay3V9aLyJyP1hmKiEAtr6Z3OqlWVu4v2GEoUdo=";
+      rev = "78c6d7b970a79c34dc0f35149f4bd845e09803d6";
+      hash = "sha256-78JnxANooq8KVPlgdJ2Adp3IT8xhtUx8jUfYQKsk4V0=";
     };
   };
 
