@@ -54,8 +54,8 @@ in
     customNodePackages."@bradymadden97/freephite-cli"
 
     rust-analyzer
-
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    pkgs.nerd-fonts.fire-code
+    pkgs.nerd-fonts.iosevka
   ];
 
   fonts.fontconfig.enable = true;

@@ -13,12 +13,10 @@ in
     ./home/zsh.nix
     ./home/alacritty.nix
     ./home/git.nix
-    # ./home/i3.nix 
     ./home/direnv.nix
     ./home/tmux.nix
-    # ./home/picom.nix
-    ./home/backgrounds.nix
     ./home/sway.nix
+    ./home/ghostty.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -49,17 +47,14 @@ in
     clang-tools
     whois
     tree
-    gitstatus
     ffmpeg
     simplescreenrecorder
     nixos-shell
-    vault
     flyctl
-    elixir_ls
     elixir
-    rnix-lsp
     via
     chromium
+    firefox
     insomnia
     bloomrpc
     protonup-ng
@@ -69,10 +64,14 @@ in
     mosh
     brotli
     xclip
+    vscode-langservers-extracted
+    pyright
+    basedpyright
+    ruff
+    ruff-lsp
+    zls
+    btop
 
-    vagrant
-    ansible
-    firecracker
     natscli
     nats-server
     nsc
@@ -96,12 +95,28 @@ in
     discord
 
     nixd
+    nodePackages.prettier
 
-    (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.iosevka
+
+    fd
   ]) ++ [
     customNodePackages."@ansible/ansible-language-server"
     customNodePackages."@bradymadden97/freephite-cli"
-  ];
+    customNodePackages."@devcontainers/cli"
+  ] ++ (with pkgs.python3Packages; [
+    python-lsp-server
+    python-lsp-jsonrpc
+    python-lsp-black
+    python-lsp-ruff
+    pyls-isort
+    pyls-flake8
+    pylsp-mypy
+    flake8
+    isort
+    black
+  ]);
 
   programs.vscode = {
     enable = true;

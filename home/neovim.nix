@@ -2,33 +2,13 @@
 
 let
 
-  github-nvim-theme = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  github-nvim-theme = pkgs.vimUtils.buildVimPlugin {
     name = "github-nvim-theme";
     src = pkgs.fetchFromGitHub {
       owner = "projekt0n";
       repo = "github-nvim-theme";
-      rev = "d832925e77cef27b16011a8dfd8835f49bdcd055";
-      hash = "sha256-vsIr3UrnajxixDo0cp+6GoQfmO0KDkPX8jw1e0fPHo4=";
-    };
-  };
-
-  go-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "go-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "ray-x";
-      repo = "go.nvim";
-      rev = "c75824b1f050c153ebfd5be65a318b9d4463d5a9";
-      hash = "sha256-azO+Eay3V9aLyJyP1hmKiEAtr6Z3OqlWVu4v2GEoUdo=";
-    };
-  };
-
-  prettier-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "prettier-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "MunifTanjim";
-      repo = "prettier.nvim";
-      rev = "d98e732cb73690b07c00c839c924be1d1d9ac5c2";
-      hash = "sha256-4xq+caprcQQotvBXnWWSsMwVB2hc5uyjrhT1dPBffXI=";
+      rev = "c106c9472154d6b2c74b74565616b877ae8ed31d";
+      hash = "sha256-/A4hkKTzjzeoR1SuwwklraAyI8oMkhxrwBBV9xb59PA=";
     };
   };
 
@@ -36,6 +16,13 @@ in
 
 {
   home.sessionVariables.EDITOR = "nvim";
+
+  home.packages = with pkgs; [
+    elixir_ls
+    nodePackages.bash-language-server
+    gopls
+    shellcheck
+  ];
 
   programs.neovim = {
     # package = pkgs.neovim-nightly;
@@ -106,9 +93,8 @@ in
 
       orgmode
       octo-nvim
-    ]) ++ [
       go-nvim
-      prettier-nvim
+    ]) ++ [
       github-nvim-theme
     ];
   };

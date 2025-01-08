@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
 
@@ -9,7 +9,7 @@ in
   xsession.enable = true;
   home.pointerCursor = {
     name = "Adwaita";
-    package = pkgs.gnome.adwaita-icon-theme;
+    package = pkgs.adwaita-icon-theme;
     size = 24;
   };
 
@@ -105,7 +105,7 @@ in
 
     config = {
       modifier = mod;
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${pkgs.ghostty}/bin/ghostty";
 
       bars = [{
         command = "${pkgs.waybar}/bin/waybar";
@@ -114,6 +114,12 @@ in
       gaps = {
         inner = 5;
         outer = 0;
+      };
+
+      input."2362:628:PIXA3854:00_093A:0274_Touchpad" = {
+        dwt = "enabled";
+        tap = "enabled";
+        middle_emulation = "enabled";
       };
 
       output = {
@@ -192,7 +198,7 @@ in
     enable = true;
     theme = {
       name = "Adwaita-dark";
-      package = pkgs.gnome.gnome-themes-extra;
+      package = pkgs.gnome-themes-extra;
     };
   };
 }

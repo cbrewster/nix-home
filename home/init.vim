@@ -32,7 +32,7 @@ require('github-theme').setup({
 })
 EOF
 
-colorscheme github_dark_dimmed
+colorscheme github_dark_default
 
 set backspace=indent,eol,start
 " Fix colors for alacritty
@@ -103,7 +103,9 @@ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.yml,*.yaml,*.json Neoformat prettier
 
 " Go
 lua <<EOF
-require('go').setup()
+require('go').setup({
+  lsp_inlay_hints = { enable = false },
+})
 EOF
 
 " Tree sitter tings
@@ -130,7 +132,7 @@ set shortmess+=c
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
-autocmd BufWritePre *.go,*.rs,*.ex,*.exs,*.leex,*.heex lua vim.lsp.buf.format()
+autocmd BufWritePre *.go,*.rs,*.ex,*.exs,*.leex,*.heex,*.py lua vim.lsp.buf.format()
 
 autocmd BufWritePre *.proto ClangFormat
 
@@ -212,9 +214,6 @@ local on_attach = function(client, bufnr)
         vim.cmd 'autocmd CursorHold   <buffer> lua vim.lsp.buf.document_highlight()'
         vim.cmd 'autocmd CursorMoved  <buffer> lua vim.lsp.buf.clear_references()'
     end
-    -- if client.server_capabilities.inlayHintProvider then
-    --    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    -- end
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -270,12 +269,7 @@ require'lspconfig'.rust_analyzer.setup{
 require'lspconfig'.ts_ls.setup{
     init_options = require'nvim-lsp-ts-utils'.init_options,
     capabilities = capabilities,
-    on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-        local ts_utils = require'nvim-lsp-ts-utils'
-        ts_utils.setup({})
-        ts_utils.setup_client(client)
-    end,
+    on_attach = on_attach,
 }
 
 require'lspconfig'.flow.setup{
@@ -303,15 +297,25 @@ require'lspconfig'.ansiblels.setup{
     on_attach = on_attach,
 }
 
-local null_ls = require("null-ls")
-null_ls.setup({
+require'lspconfig'.bashls.setup{
     capabilities = capabilities,
     on_attach = on_attach,
-    sources = {
-        null_ls.builtins.diagnostics.credo,
-        null_ls.builtins.diagnostics.trail_space,
-    },
-})
+}
+
+require'lspconfig'.pyright.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.zls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.ruff.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
 
 require'lualine'.setup{
     options = {
@@ -331,9 +335,12 @@ require'fidget'.setup{}
 
 require'octo'.setup{}
 
+<<<<<<< HEAD
 require'prettier'.setup{}
 
 local elixirls = require("elixir.elixirls")
+=======
+>>>>>>> 7e0dc6d78cdaa65816142611217749037b1dd926
 require'elixir'.setup{
     elixirls = {
         cmd = "elixir-ls",
@@ -363,3 +370,14 @@ endfunction
 
 command LspReload :call LspReload()
 
+function! RemoveQFItem()
+  let curqfidx = line('.') - 1
+  let qfall = getqflist()
+  call remove(qfall, curqfidx)
+  call setqflist(qfall, 'r')
+  execute curqfidx + 1 . "cfirst"
+  :copen
+endfunction
+:command! RemoveQFItem :call RemoveQFItem()
+" Use map <buffer> to only map dd in the quickfix window. Requires +localmap
+autocmd FileType qf map <buffer> dd :RemoveQFItem<cr>

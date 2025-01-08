@@ -36,7 +36,7 @@ in
 
     config = {
       modifier = mod;
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${pkgs.ghostty}/bin/ghostty";
 
       startup = [
         { command = "xset r rate 200 40"; }

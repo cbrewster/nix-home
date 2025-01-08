@@ -59,8 +59,8 @@
     discord
 
     nixd
-
-    (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.iosevka
   ];
 
   wayland.windowManager.sway = {
