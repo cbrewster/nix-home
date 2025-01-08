@@ -45,7 +45,6 @@
     wireshark
     xclip
 
-    firecracker
     natscli
     nats-server
     nsc
