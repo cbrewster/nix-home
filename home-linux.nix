@@ -80,8 +80,8 @@ in
     discord
     zoom-us
     spotify
-
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.iosevka
   ];
 
   fonts.fontconfig.enable = true;

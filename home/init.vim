@@ -32,7 +32,7 @@ require('github-theme').setup({
 })
 EOF
 
-colorscheme github_dark_dimmed
+colorscheme github_dark_default
 
 set backspace=indent,eol,start
 " Fix colors for alacritty
@@ -275,15 +275,9 @@ require'lspconfig'.rust_analyzer.setup{
     }
 }
 
-require'lspconfig'.tsserver.setup{
-    init_options = require'nvim-lsp-ts-utils'.init_options,
+require'lspconfig'.ts_ls.setup{
     capabilities = capabilities,
-    on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-        local ts_utils = require'nvim-lsp-ts-utils'
-        ts_utils.setup({})
-        ts_utils.setup_client(client)
-    end,
+    on_attach = on_attach,
 }
 
 require'lspconfig'.flow.setup{
@@ -311,11 +305,6 @@ require'lspconfig'.ansiblels.setup{
     on_attach = on_attach,
 }
 
-require'null-ls'.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-
 require'lspconfig'.bashls.setup{
     capabilities = capabilities,
     on_attach = on_attach,
@@ -326,7 +315,12 @@ require'lspconfig'.pyright.setup{
     on_attach = on_attach,
 }
 
-require'lspconfig'.ruff_lsp.setup{
+require'lspconfig'.zls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.ruff.setup{
     capabilities = capabilities,
     on_attach = on_attach,
 }
@@ -348,8 +342,6 @@ require'lualine'.setup{
 require'fidget'.setup{}
 
 require'octo'.setup{}
-
-require'prettier'.setup{}
 
 require'elixir'.setup{
     elixirls = {

@@ -7,28 +7,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "projekt0n";
       repo = "github-nvim-theme";
-      rev = "d832925e77cef27b16011a8dfd8835f49bdcd055";
-      hash = "sha256-vsIr3UrnajxixDo0cp+6GoQfmO0KDkPX8jw1e0fPHo4=";
-    };
-  };
-
-  go-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "go-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "ray-x";
-      repo = "go.nvim";
-      rev = "78c6d7b970a79c34dc0f35149f4bd845e09803d6";
-      hash = "sha256-78JnxANooq8KVPlgdJ2Adp3IT8xhtUx8jUfYQKsk4V0=";
-    };
-  };
-
-  prettier-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "prettier-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "MunifTanjim";
-      repo = "prettier.nvim";
-      rev = "d98e732cb73690b07c00c839c924be1d1d9ac5c2";
-      hash = "sha256-4xq+caprcQQotvBXnWWSsMwVB2hc5uyjrhT1dPBffXI=";
+      rev = "c106c9472154d6b2c74b74565616b877ae8ed31d";
+      hash = "sha256-/A4hkKTzjzeoR1SuwwklraAyI8oMkhxrwBBV9xb59PA=";
     };
   };
 
@@ -56,7 +36,6 @@ in
       # lspsaga-nvim
       lsp-status-nvim
       fidget-nvim
-      null-ls-nvim
 
       editorconfig-nvim
 
@@ -113,9 +92,8 @@ in
 
       orgmode
       octo-nvim
-    ]) ++ [
       go-nvim
-      prettier-nvim
+    ]) ++ [
       github-nvim-theme
     ];
   };
