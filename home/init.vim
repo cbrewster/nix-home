@@ -335,12 +335,9 @@ require'fidget'.setup{}
 
 require'octo'.setup{}
 
-<<<<<<< HEAD
 require'prettier'.setup{}
 
 local elixirls = require("elixir.elixirls")
-=======
->>>>>>> 7e0dc6d78cdaa65816142611217749037b1dd926
 require'elixir'.setup{
     elixirls = {
         cmd = "elixir-ls",
