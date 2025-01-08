@@ -335,8 +335,6 @@ require'fidget'.setup{}
 
 require'octo'.setup{}
 
-require'prettier'.setup{}
-
 local elixirls = require("elixir.elixirls")
 require'elixir'.setup{
     elixirls = {
