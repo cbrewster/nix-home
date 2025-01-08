@@ -212,9 +212,9 @@ local on_attach = function(client, bufnr)
         vim.cmd 'autocmd CursorHold   <buffer> lua vim.lsp.buf.document_highlight()'
         vim.cmd 'autocmd CursorMoved  <buffer> lua vim.lsp.buf.clear_references()'
     end
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end
+    -- if client.server_capabilities.inlayHintProvider then
+    --    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    -- end
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -233,8 +233,8 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     }
 )
 
-vim.diagnostic.config {     
-    float = { border = "rounded" }, 
+vim.diagnostic.config {
+    float = { border = "rounded" },
 }
 
 require'lspconfig'.nixd.setup{
@@ -245,16 +245,7 @@ require'lspconfig'.nixd.setup{
 require'lspconfig'.gopls.setup{
     capablities = capabilities,
     on_attach = on_attach,
-    settings = {
-        ["gopls"] = {
-            hints = {
-                compositeLiteralFields = true,
-                constantValues = true,
-                parameterNames = true,
-                rangeVariableType = true,
-            }
-        }
-    }
+    -- settings = { ["gopls"] = { hints = { compositeLiteralFields = true, constantValues = true, parameterNames = true, rangeVariableType = true, } } }
 }
 
 require'lspconfig'.rust_analyzer.setup{
@@ -276,7 +267,7 @@ require'lspconfig'.rust_analyzer.setup{
     }
 }
 
-require'lspconfig'.tsserver.setup{
+require'lspconfig'.ts_ls.setup{
     init_options = require'nvim-lsp-ts-utils'.init_options,
     capabilities = capabilities,
     on_attach = function(client, bufnr)
@@ -312,9 +303,14 @@ require'lspconfig'.ansiblels.setup{
     on_attach = on_attach,
 }
 
-require'null-ls'.setup({
+local null_ls = require("null-ls")
+null_ls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
+    sources = {
+        null_ls.builtins.diagnostics.credo,
+        null_ls.builtins.diagnostics.trail_space,
+    },
 })
 
 require'lualine'.setup{
@@ -337,11 +333,16 @@ require'octo'.setup{}
 
 require'prettier'.setup{}
 
+local elixirls = require("elixir.elixirls")
 require'elixir'.setup{
     elixirls = {
         cmd = "elixir-ls",
         capabilities = capabilities,
         on_attach = on_attach,
+        settings = elixirls.settings {
+            incrementalDialyzer = true,
+            suggestSpecs = true,
+        },
     }
 }
 EOF

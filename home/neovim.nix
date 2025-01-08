@@ -49,7 +49,7 @@ in
       # lspsaga-nvim
       lsp-status-nvim
       fidget-nvim
-      null-ls-nvim
+      none-ls-nvim
 
       editorconfig-nvim
 
