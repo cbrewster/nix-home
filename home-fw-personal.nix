@@ -8,8 +8,8 @@
     ./home/git.nix
     ./home/direnv.nix
     ./home/tmux.nix
-    #./home/backgrounds.nix
     ./home/sway.nix
+    ./home/ghostty.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
