@@ -37,6 +37,7 @@ in
       lsp-status-nvim
       fidget-nvim
       none-ls-nvim
+      copilot-vim
 
       editorconfig-nvim
 
