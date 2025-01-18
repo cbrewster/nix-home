@@ -44,6 +44,7 @@
     gh
     wireshark
     xclip
+    zls
 
     natscli
     nats-server
