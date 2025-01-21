@@ -37,7 +37,10 @@ in
       lsp-status-nvim
       fidget-nvim
       none-ls-nvim
+
+      # AI Tools
       copilot-vim
+      CopilotChat-nvim
 
       editorconfig-nvim
 

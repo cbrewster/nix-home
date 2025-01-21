@@ -347,6 +347,10 @@ require'elixir'.setup{
         },
     }
 }
+
+require'CopilotChat'.setup {
+    model = 'claude-3.5-sonnet',
+}
 EOF
 
 nnoremap <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>
