@@ -351,6 +351,43 @@ require'elixir'.setup{
 require'CopilotChat'.setup {
     model = 'claude-3.5-sonnet',
 }
+
+local dap = require("dap")
+dap.adapters.lldb = {
+    type = "executable",
+    command = "lldb-dap",
+    name = "lldb"
+}
+dap.configurations.zig = {
+    {
+        name = "Launch",
+        type = "lldb",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        args = {},
+    }
+};
+
+local dapui = require("dapui")
+dapui.setup()
+
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
+
 EOF
 
 nnoremap <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>

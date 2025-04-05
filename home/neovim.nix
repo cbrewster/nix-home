@@ -38,6 +38,10 @@ in
       fidget-nvim
       none-ls-nvim
 
+      # Debugger
+      nvim-dap
+      nvim-dap-ui
+
       # AI Tools
       copilot-vim
       CopilotChat-nvim
