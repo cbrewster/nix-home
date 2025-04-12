@@ -4,6 +4,11 @@ let
 
   mod = "Mod4";
 
+  background = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/acfd27ad750277053e4bb6784547a634ce2cc264/images/ign_colorful.png";
+    hash = "sha256-Rows/HKVlAdjlGz/LrRWKqOTYNO11YJ0UPFYVgpCOnI=";
+  };
+
 in
 {
   xsession.enable = true;
@@ -132,7 +137,8 @@ in
           mode = "2560x1440@144Hz";
         };
         "*" = {
-          background = "${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src} stretch #303440";
+          # background = "${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src} stretch #303440";
+          background = "${background} fill #303440";
         };
       };
 
