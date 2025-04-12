@@ -26,6 +26,22 @@ in
     margin = "5";
   };
 
+  services.swayidle = {
+    enable = true;
+    events = [
+      { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+      { event = "lock"; command = "lock"; }
+    ];
+    timeouts = [
+      { timeout = 900; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+      { timeout = 1200; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+    ];
+  };
+
+  programs.swaylock = {
+    enable = true;
+  };
+
   programs.waybar = {
     enable = true;
     style = ./waybar.css;
@@ -118,7 +134,7 @@ in
 
       gaps = {
         inner = 5;
-        outer = 0;
+        outer = 5;
       };
 
       input."2362:628:PIXA3854:00_093A:0274_Touchpad" = {
