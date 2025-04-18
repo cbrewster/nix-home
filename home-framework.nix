@@ -2,9 +2,8 @@
 
 let
 
-  customNodePackages = pkgs.callPackage ./node-packages/override.nix {
-    nodejs = pkgs.nodejs-18_x;
-  };
+  customNodePackages = pkgs.callPackage ./node-packages/override.nix { };
+  tcld = pkgs.callPackage ./pkgs/tcld.nix { };
 
 in
 {
@@ -71,6 +70,8 @@ in
     ruff-lsp
     zls
     btop
+    claude-code
+    tcld
 
     natscli
     nats-server
@@ -117,13 +118,6 @@ in
     isort
     black
   ]);
-
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      ms-vscode-remote.remote-ssh
-    ];
-  };
 
   wayland.windowManager.sway = {
     extraConfig = ''

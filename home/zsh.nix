@@ -28,7 +28,7 @@ in
 
     initExtra = ''
       source <(${customNodePackages."@bradymadden97/freephite-cli"}/bin/fp completion) 
-      export PATH=~/google-cloud-sdk/bin:$PATH
+      export PATH=~/google-cloud-sdk/bin:~/.local/bin:$PATH
       export GCEVM_USERNAME=connor;
     '';
 
