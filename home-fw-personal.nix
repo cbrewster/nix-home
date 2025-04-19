@@ -45,6 +45,8 @@
     wireshark
     xclip
     zls
+    kubectx
+    kubectl
 
     natscli
     nats-server
