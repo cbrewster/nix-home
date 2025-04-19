@@ -75,7 +75,7 @@ in
       vim-gitgutter
       vim-fugitive
       vim-rhubarb
-      # vim-rooter
+      vim-rooter
       diffview-nvim
 
       vim-crates
