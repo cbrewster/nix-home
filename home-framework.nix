@@ -72,6 +72,7 @@ in
     btop
     claude-code
     tcld
+    temporal-cli
 
     natscli
     nats-server
