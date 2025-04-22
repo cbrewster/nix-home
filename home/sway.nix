@@ -26,17 +26,17 @@ in
     margin = "5";
   };
 
-  services.swayidle = {
-    enable = true;
-    events = [
-      { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
-      { event = "lock"; command = "lock"; }
-    ];
-    timeouts = [
-      { timeout = 900; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
-      { timeout = 1200; command = "${pkgs.systemd}/bin/systemctl suspend"; }
-    ];
-  };
+  # services.swayidle = {
+  #   enable = true;
+  #   events = [
+  #     { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+  #     { event = "lock"; command = "lock"; }
+  #   ];
+  #   timeouts = [
+  #     { timeout = 900; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+  #     { timeout = 1200; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+  #   ];
+  # };
 
   programs.swaylock = {
     enable = true;
