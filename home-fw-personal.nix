@@ -22,6 +22,10 @@
   home.username = "cbrewster";
   home.homeDirectory = "/home/cbrewster";
 
+  home.sessionVariables = {
+    LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
+  };
+
   home.packages = with pkgs; [
     ripgrep
     nix-index
@@ -29,6 +33,7 @@
     jq
     clang
     clang-tools
+    llvmPackages.libclang.lib
     whois
     tree
     gitstatus
@@ -44,9 +49,17 @@
     gh
     wireshark
     xclip
-    zls
     kubectx
     kubectl
+    code-cursor
+    protobuf
+    gnumake
+    cmake
+    pkg-config
+    lldb
+    gdbgui
+    gdb
+    claude-code
 
     natscli
     nats-server

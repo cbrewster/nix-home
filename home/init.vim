@@ -132,10 +132,6 @@ set shortmess+=c
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 
-autocmd BufWritePre *.go,*.rs,*.ex,*.exs,*.leex,*.heex,*.py lua vim.lsp.buf.format()
-
-autocmd BufWritePre *.proto ClangFormat
-
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -216,6 +212,18 @@ local on_attach = function(client, bufnr)
     end
 end
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("lsp", { clear = true }),
+  callback = function(args)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.format {async = false, id = args.data.client_id }
+      end,
+    })
+  end
+})
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
@@ -252,15 +260,8 @@ require'lspconfig'.rust_analyzer.setup{
     on_attach = on_attach,
     settings = {
         ["rust-analyzer"] = {
-            cargo = {
-                loadOutDirsFromCheck = true,
-                buildScripts = {
-                    enable = true
-                },
-                features = "all"
-            },
-            procMacro = {
-                enable = true
+            checkOnSave = {
+                command = "clippy",
             },
         }
     }
@@ -273,11 +274,6 @@ require'lspconfig'.ts_ls.setup{
 }
 
 require'lspconfig'.flow.setup{
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
-require'lspconfig'.clangd.setup{
     capabilities = capabilities,
     on_attach = on_attach,
 }
@@ -317,13 +313,21 @@ require'lspconfig'.ruff.setup{
     on_attach = on_attach,
 }
 
+
+require'lspconfig'.buf_ls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
 require'lualine'.setup{
     options = {
         theme = "github_dark"
     },
     sections = {
         lualine_b = {'filename'},
-        lualine_c = {lsp_status.status},
+        lualine_c = {function () 
+            return require'lsp-status'.status()
+        end},
 
         lualine_x = {'progress'},
         lualine_y = {'location'},

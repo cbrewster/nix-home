@@ -1,13 +1,5 @@
 { lib, pkgs, ... }:
 
-let
-
-  customNodePackages = pkgs.callPackage ../node-packages/override.nix {
-    nodejs = pkgs.nodejs-18_x;
-  };
-
-in
-
 {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -27,7 +19,6 @@ in
     };
 
     initExtra = ''
-      source <(${customNodePackages."@bradymadden97/freephite-cli"}/bin/fp completion) 
       export PATH=~/google-cloud-sdk/bin:~/.local/bin:$PATH
       export GCEVM_USERNAME=connor;
     '';
