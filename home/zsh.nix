@@ -18,11 +18,6 @@
       gt = "fp";
     };
 
-    initExtra = ''
-      export PATH=~/google-cloud-sdk/bin:~/.local/bin:$PATH
-      export GCEVM_USERNAME=connor;
-    '';
-
     plugins = [
       {
         name = "powerlevel10k";
