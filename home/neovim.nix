@@ -34,17 +34,12 @@ in
     plugins = (with pkgs.vimPlugins; [
       nvim-lspconfig
       # lspsaga-nvim
-      lsp-status-nvim
       fidget-nvim
       none-ls-nvim
 
       # Debugger
       nvim-dap
       nvim-dap-ui
-
-      # AI Tools
-      copilot-vim
-      CopilotChat-nvim
 
       editorconfig-nvim
 

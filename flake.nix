@@ -8,7 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hy3.url = "github:outfoxxed/hy3?ref=hl0.49.0";
   };
 
   outputs =
