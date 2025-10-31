@@ -152,6 +152,9 @@ in
           pos = "2560 0";
           mode = "2560x1440@144Hz";
         };
+        "ASUSTek COMPUTER INC VG28UQL1A RALMTF013823" = {
+          scale = "1.5";
+        };
         "*" = {
           # background = "${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src} stretch #303440";
           background = "${background} fill #303440";

@@ -267,11 +267,11 @@ require'lspconfig'.rust_analyzer.setup{
     }
 }
 
-require'lspconfig'.ts_ls.setup{
-    init_options = require'nvim-lsp-ts-utils'.init_options,
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+-- require'lspconfig'.ts_ls.setup{
+--   init_options = require'nvim-lsp-ts-utils'.init_options,
+--   capabilities = capabilities,
+--    on_attach = on_attach,
+-- }
 
 require'lspconfig'.flow.setup{
     capabilities = capabilities,
@@ -280,7 +280,13 @@ require'lspconfig'.flow.setup{
 
 require'lspconfig'.eslint.setup{
     capabilities = capabilities,
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+        })
+    end,
 }
 
 require'lspconfig'.terraformls.setup{
@@ -352,9 +358,22 @@ require'elixir'.setup{
     }
 }
 
-require'CopilotChat'.setup {
-    model = 'claude-3.5-sonnet',
-}
+vim.lsp.config("ts_go_ls", {
+    cmd = { "tsgo", "--lsp", "--stdio" },
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+    },
+    root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+})
+vim.lsp.enable("ts_go_ls")
+
+
+-- require'CopilotChat'.setup { model = 'claude-3.5-sonnet', }
 
 local dap = require("dap")
 dap.adapters.lldb = {
@@ -391,6 +410,20 @@ end
 dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
+
+require('satellite').setup {}
+
+require('codecompanion').setup {}
+
+null_ls = require('null-ls')
+null_ls.setup({
+    sources = {
+        -- null_ls.builtins.diagnostics.golangci_lint,
+        null_ls.builtins.diagnostics.mypy,
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.terraform_fmt,
+    }
+})
 
 EOF
 

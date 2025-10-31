@@ -2,7 +2,7 @@
 
 let
 
-  customNodePackages = pkgs.callPackage ./node-packages/override.nix { };
+  customNodePackages = pkgs.callPackage ./node-packages/override.nix { nodejs = pkgs.nodejs; };
   tcld = pkgs.callPackage ./pkgs/tcld.nix { };
 
 in
@@ -67,12 +67,15 @@ in
     pyright
     basedpyright
     ruff
-    ruff-lsp
     zls
     btop
     claude-code
     tcld
     temporal-cli
+    code-cursor
+    jujutsu
+    meld
+    typescript-go
 
     natscli
     nats-server
@@ -95,17 +98,18 @@ in
     spotify
     slack
     discord
+    graphite-cli
 
     nixd
     nodePackages.prettier
 
-    pkgs.nerd-fonts.fira-code
-    pkgs.nerd-fonts.iosevka
+    nerd-fonts.fira-code
+    nerd-fonts.iosevka
 
     fd
   ]) ++ [
     customNodePackages."@ansible/ansible-language-server"
-    customNodePackages."@bradymadden97/freephite-cli"
+    # customNodePackages."@bradymadden97/freephite-cli"
     customNodePackages."@devcontainers/cli"
   ] ++ (with pkgs.python3Packages; [
     python-lsp-server

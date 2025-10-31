@@ -16,6 +16,7 @@
       ".venv"
       ".direnv"
       ".cache"
+      "**/.claude/settings.local.json"
     ];
 
     aliases = {

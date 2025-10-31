@@ -18,7 +18,6 @@ in
   home.sessionVariables.EDITOR = "nvim";
 
   home.packages = with pkgs; [
-    elixir_ls
     nodePackages.bash-language-server
     gopls
     shellcheck
@@ -38,12 +37,15 @@ in
       fidget-nvim
       none-ls-nvim
 
+      codecompanion-nvim
+
+      satellite-nvim
+
       # Debugger
       nvim-dap
       nvim-dap-ui
 
       # AI Tools
-      copilot-vim
       CopilotChat-nvim
 
       editorconfig-nvim

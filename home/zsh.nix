@@ -3,6 +3,7 @@
 {
   home.sessionVariables = {
     EDITOR = "nvim";
+    SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   };
 
   programs.zsh = {
@@ -12,10 +13,6 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "sudo" ];
-    };
-
-    shellAliases = {
-      gt = "fp";
     };
 
     initExtra = ''
