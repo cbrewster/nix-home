@@ -41,7 +41,6 @@
     simplescreenrecorder
     nixos-shell
     flyctl
-    elixir_ls
     elixir
     insomnia
     protonup-ng

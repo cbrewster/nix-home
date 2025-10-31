@@ -20,10 +20,12 @@ in
 
   services.mako = {
     enable = true;
-    defaultTimeout = 5000;
-    font = "FiraCode Nerd Font 10";
-    borderRadius = 5;
-    margin = "5";
+    settings = {
+      default-timeout = 5000;
+      font = "FiraCode Nerd Font 10";
+      border-radius = 5;
+      margin = "5";
+    };
   };
 
   # services.swayidle = {

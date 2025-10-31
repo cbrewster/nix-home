@@ -198,14 +198,7 @@ cmp.setup({
     },
 })
 
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
-lsp_status.config({
-    status_symbol = '',
-})
-
 local on_attach = function(client, bufnr)
-    lsp_status.on_attach(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
         vim.cmd 'autocmd CursorHold   <buffer> lua vim.lsp.buf.document_highlight()'
         vim.cmd 'autocmd CursorMoved  <buffer> lua vim.lsp.buf.clear_references()'
@@ -225,7 +218,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
             vim.lsp.handlers.signature_help, {
@@ -244,86 +236,72 @@ vim.diagnostic.config {
     float = { border = "rounded" },
 }
 
-require'lspconfig'.nixd.setup{
+vim.lsp.config('nixd', {
     capablities = capabilities,
     on_attach = on_attach,
-}
+})
+vim.lsp.enable('nixd')
 
-require'lspconfig'.gopls.setup{
+vim.lsp.config('gopls', {
     capablities = capabilities,
     on_attach = on_attach,
-    -- settings = { ["gopls"] = { hints = { compositeLiteralFields = true, constantValues = true, parameterNames = true, rangeVariableType = true, } } }
-}
+})
+vim.lsp.enable('gopls')
 
-require'lspconfig'.rust_analyzer.setup{
+vim.lsp.config('rust_analyzer', {
     capabilities = capabilities,
     on_attach = on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            checkOnSave = {
-                command = "clippy",
-            },
-        }
-    }
-}
+})
+vim.lsp.enable('rust_analyzer')
 
--- require'lspconfig'.ts_ls.setup{
---   init_options = require'nvim-lsp-ts-utils'.init_options,
---   capabilities = capabilities,
---    on_attach = on_attach,
--- }
-
-require'lspconfig'.flow.setup{
+vim.lsp.config('ts_ls', {
+    init_options = require'nvim-lsp-ts-utils'.init_options,
     capabilities = capabilities,
     on_attach = on_attach,
-}
+})
+vim.lsp.enable('tl_ls')
 
-require'lspconfig'.eslint.setup{
-    capabilities = capabilities,
-    on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            command = "EslintFixAll",
-        })
-    end,
-}
-
-require'lspconfig'.terraformls.setup{
+vim.lsp.config('eslint', {
     capabilities = capabilities,
     on_attach = on_attach,
-}
+})
+vim.lsp.enable('eslint')
 
-require'lspconfig'.ansiblels.setup{
+vim.lsp.config('terraformls', {
     capabilities = capabilities,
     on_attach = on_attach,
-}
+})
+vim.lsp.enable('terraformls')
 
-require'lspconfig'.bashls.setup{
+vim.lsp.config('bashls', {
     capabilities = capabilities,
     on_attach = on_attach,
-}
+})
+vim.lsp.enable('bashls')
 
-require'lspconfig'.pyright.setup{
+vim.lsp.config('pyright', {
     capabilities = capabilities,
     on_attach = on_attach,
-}
+})
+vim.lsp.enable('pyright')
 
-require'lspconfig'.zls.setup{
+vim.lsp.config('zls', {
     capabilities = capabilities,
     on_attach = on_attach,
-}
+})
+vim.lsp.enable('zls')
 
-require'lspconfig'.ruff.setup{
+vim.lsp.config('ruff', {
     capabilities = capabilities,
     on_attach = on_attach,
-}
+})
+vim.lsp.enable('ruff')
 
-
-require'lspconfig'.buf_ls.setup{
+vim.lsp.config('buf_ls', {
     capabilities = capabilities,
     on_attach = on_attach,
-}
+})
+vim.lsp.enable('buf_ls')
 
 require'lualine'.setup{
     options = {
@@ -331,9 +309,7 @@ require'lualine'.setup{
     },
     sections = {
         lualine_b = {'filename'},
-        lualine_c = {function () 
-            return require'lsp-status'.status()
-        end},
+        lualine_c = {'lsp_status'},
 
         lualine_x = {'progress'},
         lualine_y = {'location'},
@@ -357,23 +333,6 @@ require'elixir'.setup{
         },
     }
 }
-
-vim.lsp.config("ts_go_ls", {
-    cmd = { "tsgo", "--lsp", "--stdio" },
-    filetypes = {
-        "javascript",
-        "javascriptreact",
-        "javascript.jsx",
-        "typescript",
-        "typescriptreact",
-        "typescript.tsx",
-    },
-    root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
-})
-vim.lsp.enable("ts_go_ls")
-
-
--- require'CopilotChat'.setup { model = 'claude-3.5-sonnet', }
 
 local dap = require("dap")
 dap.adapters.lldb = {
@@ -410,20 +369,6 @@ end
 dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
-
-require('satellite').setup {}
-
-require('codecompanion').setup {}
-
-null_ls = require('null-ls')
-null_ls.setup({
-    sources = {
-        -- null_ls.builtins.diagnostics.golangci_lint,
-        null_ls.builtins.diagnostics.mypy,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.terraform_fmt,
-    }
-})
 
 EOF
 

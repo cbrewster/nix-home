@@ -46,7 +46,6 @@ in
     docker-compose
     terraform
     elixir
-    elixir_ls
     tailscale
     terraform-ls
 
