@@ -9,6 +9,19 @@ let
     hash = "sha256-Rows/HKVlAdjlGz/LrRWKqOTYNO11YJ0UPFYVgpCOnI=";
   };
 
+  screen-record = pkgs.writeShellApplication {
+    name = "screen-record";
+
+    runtimeInputs = [
+      pkgs.wf-recorder
+      pkgs.slurp
+    ];
+
+    text = ''
+    exec wf-recorder -g "$(slurp)" -f "$HOME/Videos/recording-$(date '+%F_%H:%M:%S').mkv"
+    '';
+  };
+
 in
 {
   xsession.enable = true;
@@ -50,7 +63,7 @@ in
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
+        position = "bottom";
         height = 20;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
@@ -141,7 +154,7 @@ in
 
       input."2362:628:PIXA3854:00_093A:0274_Touchpad" = {
         dwt = "enabled";
-        tap = "enabled";
+        # tap = "enabled";
         middle_emulation = "enabled";
       };
 
@@ -155,6 +168,10 @@ in
           mode = "2560x1440@144Hz";
         };
         "ASUSTek COMPUTER INC VG28UQL1A RALMTF013823" = {
+          scale = "1.5";
+        };
+        "Dell Inc. DELL U3219Q DJFL413" = {
+          pos = "-3840 0";
           scale = "1.5";
         };
         "*" = {
@@ -209,6 +226,7 @@ in
         "${mod}+less" = "move workspace to output left";
 
         "Ctrl+Shift+4" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
+        "Ctrl+Shift+5" = "exec ${screen-record}/bin/screen-record";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";

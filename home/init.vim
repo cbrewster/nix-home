@@ -254,12 +254,18 @@ vim.lsp.config('rust_analyzer', {
 })
 vim.lsp.enable('rust_analyzer')
 
+vim.lsp.config('tsgo', {
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+vim.lsp.enable('tsgo')
+
 vim.lsp.config('ts_ls', {
     init_options = require'nvim-lsp-ts-utils'.init_options,
     capabilities = capabilities,
     on_attach = on_attach,
 })
-vim.lsp.enable('tl_ls')
+-- vim.lsp.enable('ts_ls')
 
 vim.lsp.config('eslint', {
     capabilities = capabilities,

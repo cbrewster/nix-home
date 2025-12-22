@@ -12,6 +12,7 @@ in
     ./home/zsh.nix
     ./home/alacritty.nix
     ./home/git.nix
+    ./home/jj.nix
     ./home/direnv.nix
     ./home/tmux.nix
     ./home/sway.nix
@@ -73,8 +74,6 @@ in
     tcld
     temporal-cli
     code-cursor
-    jujutsu
-    meld
     typescript-go
 
     natscli
@@ -134,7 +133,7 @@ in
     config.output = {
       # Built-in display
       "eDP-1" = {
-        scale = "1.25";
+        scale = "1.5";
       };
     };
   };

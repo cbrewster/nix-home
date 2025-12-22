@@ -59,7 +59,6 @@ in
 
       (nvim-treesitter.withAllGrammars)
       nvim-treesitter-context
-      playground
 
       lualine-nvim
       vim-highlightedyank
