@@ -3,6 +3,7 @@
 {
   home.sessionVariables = {
     EDITOR = "nvim";
+    SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   };
 
   programs.zsh = {
@@ -14,11 +15,17 @@
       plugins = [ "git" "sudo" ];
     };
 
-    shellAliases = {
-      gt = "fp";
-    };
-
     plugins = [
+      {
+        name = "zsh-async";
+        src = pkgs.fetchFromGitHub {
+          owner = "mafredri";
+          repo = "zsh-async";
+          rev = "v1.8.6";
+          sha256 = "sha256-Js/9vGGAEqcPmQSsumzLfkfwljaFWHJ9sMWOgWDi0NI=";
+        };
+        file = "async.plugin.zsh";
+      }
       {
         name = "powerlevel10k";
         src = pkgs.zsh-powerlevel10k;
