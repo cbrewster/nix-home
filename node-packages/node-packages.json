@@ -1,5 +1,1 @@
-[
-    "@ansible/ansible-language-server",
-    "@bradymadden97/freephite-cli",
-    "@devcontainers/cli"
-]
+["@ansible/ansible-language-server", "@devcontainers/cli", "jj-stack"]

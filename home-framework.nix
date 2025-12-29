@@ -110,6 +110,7 @@ in
     customNodePackages."@ansible/ansible-language-server"
     # customNodePackages."@bradymadden97/freephite-cli"
     customNodePackages."@devcontainers/cli"
+    customNodePackages."jj-stack"
   ] ++ (with pkgs.python3Packages; [
     python-lsp-server
     python-lsp-jsonrpc
