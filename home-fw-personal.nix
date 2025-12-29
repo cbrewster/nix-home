@@ -10,6 +10,7 @@
     ./home/tmux.nix
     ./home/ghostty.nix
     ./home/sway.nix
+    ./home/jj.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
