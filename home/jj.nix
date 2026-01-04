@@ -1,8 +1,18 @@
 { pkgs, ... }:
 
+let
+
+  jj-github = pkgs.callPackage ../pkgs/jj-github.nix { };
+
+in
+
 {
   home.packages = with pkgs; [
     jjui
+    watchman
+    difftastic
+    mergiraf
+    jj-github
   ];
 
   programs.jujutsu = {
@@ -11,6 +21,14 @@
       user = {
         name = "Connor Brewster";
         email = "cbrewster@hey.com";
+      };
+      fsmonitor = {
+        backend = "watchman";
+      };
+      ui = {
+        default-command = "log";
+        diff-formatter = ["difft" "--color=always" "$left" "$right"];
+        conflict-marker-style = "git";
       };
       template-aliases = {
         "format_short_change_id(id)" = "id.shortest(4)";
@@ -45,6 +63,9 @@
       };
       ui = {
         pager = "less -FRX";
+      };
+      aliases = {
+        github = ["util" "exec" "--" "jj-github"];
       };
     };
   };

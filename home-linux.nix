@@ -63,7 +63,7 @@ in
     nixos-shell
     vault
     flyctl
-    elixir_ls
+    elixir-ls
     elixir
     via
 

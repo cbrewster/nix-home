@@ -18,7 +18,7 @@ in
   home.sessionVariables.EDITOR = "nvim";
 
   home.packages = with pkgs; [
-    elixir_ls
+    elixir-ls
     nodePackages.bash-language-server
     gopls
     shellcheck
@@ -60,7 +60,6 @@ in
 
       (nvim-treesitter.withAllGrammars)
       nvim-treesitter-context
-      playground
 
       lualine-nvim
       vim-highlightedyank

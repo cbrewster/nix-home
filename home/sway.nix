@@ -54,7 +54,7 @@ in
         height = 20;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "tray" "network" "memory" "disk" "pulseaudio" "battery" "clock" ];
+        modules-right = [ "tray" "network" "memory" "cpu" "disk" "pulseaudio" "battery" "clock" ];
 
         "sway/workspaces" = {
           all-outputs = true;
@@ -96,7 +96,11 @@ in
         };
 
         memory = {
-          format = "{}% 󰍛";
+          format = "{}% ";
+        };
+
+        cpu = {
+          format = "{usage}% 󰍛";
         };
 
         network = {
