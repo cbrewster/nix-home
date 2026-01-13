@@ -10,11 +10,11 @@ buildGoModule {
   src = fetchFromGitHub {
     owner = "cbrewster";
     repo = "jj-github";
-    rev = "fa01211bc95ee3ca3863617aee2b84758115f4ee";
-    hash = "sha256-HVr3DIphl1M+jM5ZPko3mBggA92yeHUMHj8rAavcz6Q=";
+    rev = "87e08d83eb4ff0dbd4079e79df43bbf97ca9282a";
+    hash = "sha256-z4116ttpZmn66TyIGwQfOPBHJ3TZoqju9EPIheTsl0E=";
   };
 
-  vendorHash = "sha256-RcoDXBsVMMJnGdAv0b8iNxcOhf/rnNZ8PDBx0w4u/kE=";
+  vendorHash = "sha256-lmcuaQ2yj/4CBQW4lwf2oKRfO6ip4MhBnI85dNqdfIw";
 
   doCheck = false;
 }
