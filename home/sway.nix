@@ -145,7 +145,6 @@ in
 
       input."2362:628:PIXA3854:00_093A:0274_Touchpad" = {
         dwt = "enabled";
-        tap = "enabled";
         middle_emulation = "enabled";
       };
 

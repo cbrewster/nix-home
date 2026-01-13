@@ -1,4 +1,4 @@
-syntax on
+syntax oninit.vim
 
 set number
 set cursorline
@@ -259,7 +259,7 @@ vim.lsp.config('ts_ls', {
     capabilities = capabilities,
     on_attach = on_attach,
 })
-vim.lsp.enable('ts_ls')
+-- vim.lsp.enable('ts_ls')
 
 vim.lsp.config('eslint', {
     capabilities = capabilities,
@@ -302,6 +302,12 @@ vim.lsp.config('buf_ls', {
     on_attach = on_attach,
 })
 vim.lsp.enable('buf_ls')
+
+vim.lsp.config('tsgo', {
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+vim.lsp.enable('tsgo')
 
 require'lualine'.setup{
     options = {
