@@ -27,7 +27,7 @@
     in
     {
       homeConfigurations = {
-        "cbrewster@framework" = mkHomeConfiguration [ ./home-framework.nix ];
+        "cbrewster@fw-work" = mkHomeConfiguration [ ./home-fw-work.nix ];
         "cbrewster@fw-personal" = mkHomeConfiguration [ ./home-fw-personal.nix ];
       };
     };

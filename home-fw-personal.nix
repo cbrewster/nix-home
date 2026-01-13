@@ -8,8 +8,9 @@
     ./home/git.nix
     ./home/direnv.nix
     ./home/tmux.nix
-    ./home/sway.nix
     ./home/ghostty.nix
+    ./home/sway.nix
+    ./home/jj.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -36,6 +37,7 @@
     simplescreenrecorder
     nixos-shell
     flyctl
+    elixir-ls
     elixir
     insomnia
     protonup-ng

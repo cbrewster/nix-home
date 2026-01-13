@@ -18,6 +18,7 @@ in
   home.sessionVariables.EDITOR = "nvim";
 
   home.packages = with pkgs; [
+    elixir-ls
     nodePackages.bash-language-server
     gopls
     shellcheck

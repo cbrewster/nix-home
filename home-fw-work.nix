@@ -68,7 +68,6 @@ in
     claude-code
     tcld
     temporal-cli
-    code-cursor
     typescript-go
 
     natscli
@@ -92,7 +91,6 @@ in
     spotify
     slack
     discord
-    graphite-cli
 
     nixd
     nodePackages.prettier
@@ -101,12 +99,7 @@ in
     nerd-fonts.iosevka
 
     fd
-  ]) ++ [
-    customNodePackages."@ansible/ansible-language-server"
-    # customNodePackages."@bradymadden97/freephite-cli"
-    customNodePackages."@devcontainers/cli"
-    customNodePackages."jj-stack"
-  ] ++ (with pkgs.python3Packages; [
+  ]) ++ (with pkgs.python3Packages; [
     python-lsp-server
     python-lsp-jsonrpc
     python-lsp-black
@@ -129,6 +122,14 @@ in
     config.output = {
       # Built-in display
       "eDP-1" = {
+        scale = "1.5";
+      };
+      # External monitors (work)
+      "ASUSTek COMPUTER INC VG28UQL1A RALMTF013823" = {
+        scale = "1.5";
+      };
+      "Dell Inc. DELL U3219Q DJFL413" = {
+        pos = "-3840 0";
         scale = "1.5";
       };
     };

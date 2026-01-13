@@ -5,21 +5,8 @@ let
   mod = "Mod4";
 
   background = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/acfd27ad750277053e4bb6784547a634ce2cc264/images/ign_colorful.png";
+    url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/acfd27ad83e5e279127a38ef410bcfac6d77c264/images/ign_colorful.png";
     hash = "sha256-Rows/HKVlAdjlGz/LrRWKqOTYNO11YJ0UPFYVgpCOnI=";
-  };
-
-  screen-record = pkgs.writeShellApplication {
-    name = "screen-record";
-
-    runtimeInputs = [
-      pkgs.wf-recorder
-      pkgs.slurp
-    ];
-
-    text = ''
-    exec wf-recorder -g "$(slurp)" -f "$HOME/Videos/recording-$(date '+%F_%H:%M:%S').mkv"
-    '';
   };
 
 in
@@ -35,9 +22,9 @@ in
     enable = true;
     settings = {
       default-timeout = 5000;
-      font = "FiraCode Nerd Font 10";
       border-radius = 5;
       margin = "5";
+      font = "FiraCode Nerd Font 10";
     };
   };
 
@@ -67,7 +54,7 @@ in
         height = 20;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "tray" "network" "memory" "disk" "pulseaudio" "battery" "clock" ];
+        modules-right = [ "tray" "network" "memory" "cpu" "disk" "pulseaudio" "battery" "clock" ];
 
         "sway/workspaces" = {
           all-outputs = true;
@@ -109,7 +96,11 @@ in
         };
 
         memory = {
-          format = "{}% 󰍛";
+          format = "{}% ";
+        };
+
+        cpu = {
+          format = "{usage}% 󰍛";
         };
 
         network = {
@@ -154,7 +145,7 @@ in
 
       input."2362:628:PIXA3854:00_093A:0274_Touchpad" = {
         dwt = "enabled";
-        # tap = "enabled";
+        tap = "enabled";
         middle_emulation = "enabled";
       };
 
@@ -166,13 +157,6 @@ in
         "LG Electronics LG ULTRAGEAR 011NTQD9H748" = {
           pos = "2560 0";
           mode = "2560x1440@144Hz";
-        };
-        "ASUSTek COMPUTER INC VG28UQL1A RALMTF013823" = {
-          scale = "1.5";
-        };
-        "Dell Inc. DELL U3219Q DJFL413" = {
-          pos = "-3840 0";
-          scale = "1.5";
         };
         "*" = {
           # background = "${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src} stretch #303440";
@@ -226,7 +210,6 @@ in
         "${mod}+less" = "move workspace to output left";
 
         "Ctrl+Shift+4" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
-        "Ctrl+Shift+5" = "exec ${screen-record}/bin/screen-record";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
@@ -240,7 +223,14 @@ in
       };
     };
   };
-
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
+  };
   gtk = {
     enable = true;
     theme = {
