@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
 let
 
@@ -132,7 +132,7 @@ in
 
     config = {
       modifier = mod;
-      terminal = "${pkgs.ghostty}/bin/ghostty";
+      terminal = "${config.programs.ghostty.package}/bin/ghostty";
 
       bars = [{
         command = "${pkgs.waybar}/bin/waybar";

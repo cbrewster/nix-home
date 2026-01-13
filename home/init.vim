@@ -1,4 +1,4 @@
-syntax oninit.vim
+syntax on
 
 set number
 set cursorline

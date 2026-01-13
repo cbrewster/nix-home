@@ -11,6 +11,7 @@
     ./home/ghostty.nix
     ./home/sway.nix
     ./home/jj.nix
+    ./home/ai.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -55,7 +56,6 @@
     lldb
     gdbgui
     gdb
-    claude-code
 
     natscli
     nats-server

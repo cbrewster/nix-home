@@ -17,6 +17,7 @@ in
     ./home/tmux.nix
     ./home/sway.nix
     ./home/ghostty.nix
+    ./home/ai.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -65,7 +66,6 @@ in
     ruff
     zls
     btop
-    claude-code
     tcld
     temporal-cli
     typescript-go
