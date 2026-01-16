@@ -26,7 +26,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ghostty, llm-agents, jj-github, ... }:
+  outputs = { nixpkgs, home-manager, ghostty, llm-agents, jj-github, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -44,6 +44,7 @@
         };
     in
     {
+      inherit inputs;
       homeConfigurations = {
         "cbrewster@cbrewster-framework" = mkHomeConfiguration [ ./home-fw-work.nix ];
         "cbrewster@fw-personal" = mkHomeConfiguration [ ./home-fw-personal.nix ];
