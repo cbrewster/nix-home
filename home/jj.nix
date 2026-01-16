@@ -1,18 +1,11 @@
-{ pkgs, ... }:
-
-let
-
-  jj-github = pkgs.callPackage ../pkgs/jj-github.nix { };
-
-in
+{ pkgs, jj-github, ... }:
 
 {
   home.packages = with pkgs; [
     jjui
-    watchman
     difftastic
     mergiraf
-    jj-github
+    jj-github.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   programs.jujutsu = {
@@ -21,9 +14,6 @@ in
       user = {
         name = "Connor Brewster";
         email = "cbrewster@hey.com";
-      };
-      fsmonitor = {
-        backend = "watchman";
       };
       ui = {
         default-command = "log";
@@ -51,7 +41,7 @@ in
       revset-aliases = {
         "closest_bookmark(to)" = "heads(::to & bookmarks())";
         "active(rev)" = "(ancestors(rev) | descendants(rev)) ~ immutable() ~ empty()";
-        "stack" = "active(@)";
+        "stack" = "active(@-)";
       };
       templates = {
         git_push_bookmark = ''"cbrewster/push-" ++ change_id.short()'';
