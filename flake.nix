@@ -48,7 +48,7 @@
       homeConfigurations = {
         "cbrewster@cbrewster-framework" = mkHomeConfiguration [ ./home-fw-work.nix ];
         "cbrewster@fw-personal" = mkHomeConfiguration [ ./home-fw-personal.nix ];
+        "cbrewster@zergrush" = mkHomeConfiguration [ ./home-zergrush.nix ];
       };
-      homeModules.zergrush = ./home-zergrush.nix ;
     };
 }
