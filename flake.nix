@@ -31,14 +31,14 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
-      mkHomeConfiguration = modules:
+      mkHomeConfiguration = username: modules:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit ghostty system llm-agents jj-github; };
           modules = [
             {
-              home.username = "cbrewster";
-              home.homeDirectory = "/home/cbrewster";
+              home.username = "developer";
+              home.homeDirectory = "/home/developer";
             }
           ] ++ modules;
         };
@@ -46,9 +46,9 @@
     {
       inherit inputs;
       homeConfigurations = {
-        "cbrewster@cbrewster-framework" = mkHomeConfiguration [ ./home-fw-work.nix ];
-        "cbrewster@fw-personal" = mkHomeConfiguration [ ./home-fw-personal.nix ];
-        "cbrewster@zergrush" = mkHomeConfiguration [ ./home-zergrush.nix ];
+        "cbrewster@cbrewster-framework" = mkHomeConfiguration "cbrewster" [ ./home-fw-work.nix ];
+        "cbrewster@fw-personal" = mkHomeConfiguration "cbrewster" [ ./home-fw-personal.nix ];
+        "developer@zergrush" = mkHomeConfiguration "developer" [ ./home-zergrush.nix ];
       };
     };
 }
