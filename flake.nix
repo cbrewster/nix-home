@@ -37,8 +37,8 @@
           extraSpecialArgs = { inherit ghostty system llm-agents jj-github; };
           modules = [
             {
-              home.username = "developer";
-              home.homeDirectory = "/home/developer";
+              home.username = username;
+              home.homeDirectory = "/home/${username}";
             }
           ] ++ modules;
         };
