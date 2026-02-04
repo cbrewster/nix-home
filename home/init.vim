@@ -124,6 +124,8 @@ require'nvim-treesitter.configs'.setup {
 require'treesitter-context'.setup{
   max_lines = 4,
 }
+
+require'jj'.setup{}
 EOF
 
 " === LSP Tings ===

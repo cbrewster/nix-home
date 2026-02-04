@@ -12,6 +12,16 @@ let
     };
   };
 
+  jj-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "jj-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "NicolasGB";
+      repo = "jj.nvim";
+      rev = "463fd0876aa2e3e991d2453e24557aa956d974d9";
+      hash = "sha256-N1f9Gjmbev11F7Cp60zYodY/NkZXJQreVbnsiY9mfOg=";
+    };
+  };
+
 in
 
 {
@@ -36,6 +46,7 @@ in
       # lspsaga-nvim
       fidget-nvim
       none-ls-nvim
+      jj-nvim
 
       # Debugger
       nvim-dap
