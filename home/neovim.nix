@@ -29,7 +29,7 @@ in
 
   home.packages = with pkgs; [
     elixir-ls
-    nodePackages.bash-language-server
+    bash-language-server
     gopls
     shellcheck
   ];

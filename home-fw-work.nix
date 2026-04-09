@@ -2,7 +2,6 @@
 
 let
 
-  customNodePackages = pkgs.callPackage ./node-packages/override.nix { nodejs = pkgs.nodejs; };
   tcld = pkgs.callPackage ./pkgs/tcld.nix { };
 
 in
@@ -31,11 +30,12 @@ in
   programs.home-manager.enable = true;
 
   home.packages = (with pkgs; [
-    nodePackages.yalc
+    yalc
     ripgrep
     nix-index
     kubectl
     kubectx
+    stern
     kubernetes-helm
     htop
     jq
@@ -54,7 +54,6 @@ in
     insomnia
     bloomrpc
     protonup-ng
-    node2nix
     gh
     wireshark
     mosh
@@ -93,7 +92,7 @@ in
     discord
 
     nixd
-    nodePackages.prettier
+    prettier
 
     nerd-fonts.fira-code
     nerd-fonts.iosevka
@@ -132,6 +131,9 @@ in
         pos = "-3840 0";
         scale = "1.5";
       };
+      "Dell Inc. DELL P3425WE BL59R84" = {
+        mode = "3440x1440@100Hz";
+      };
     };
   };
 
@@ -145,5 +147,5 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.05";
+  home.stateVersion = "26.05";
 }
