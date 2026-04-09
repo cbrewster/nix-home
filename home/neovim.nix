@@ -88,7 +88,7 @@ in
       yats-vim
       typescript-vim
       vim-jsx-typescript
-      neoformat
+      conform-nvim
       vim-nix
       vim-terraform
       nvim-lsp-ts-utils

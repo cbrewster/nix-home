@@ -94,32 +94,14 @@ let g:mix_format_on_save = 1
 " Dart
 autocmd FileType dart setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
-" JS crap
-autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.yml,*.yaml,*.json Neoformat prettier
-
 " Directory specific overrides
 " repl it web uses 2 space indent
 :autocmd BufRead,BufNewFile /home/cbrewster/Development/replit/repl-it-web/* setlocal ts=2 sw=2 expandtab
 
-" Go
 lua <<EOF
 require('go').setup({
   lsp_inlay_hints = { enable = false },
 })
-EOF
-
-" Tree sitter tings
-lua <<EOF
-
-require"nvim-treesitter.install".compilers = {"clang++"}
-
-require'nvim-treesitter.configs'.setup {
-  -- ensure_installed = { "rust", "go", "typescript", "tsx", "javascript", "elixir", "html", "heex", "eex" },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
 
 require'treesitter-context'.setup{
   max_lines = 4,
@@ -200,116 +182,71 @@ cmp.setup({
     },
 })
 
-local on_attach = function(client, bufnr)
-    if client.server_capabilities.documentHighlightProvider then
-        vim.cmd 'autocmd CursorHold   <buffer> lua vim.lsp.buf.document_highlight()'
-        vim.cmd 'autocmd CursorMoved  <buffer> lua vim.lsp.buf.clear_references()'
-    end
-end
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("lsp", { clear = true }),
-  callback = function(args)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = args.buf,
-      callback = function()
-        vim.lsp.buf.format {async = false, id = args.data.client_id }
-      end,
-    })
-  end
+require('conform').setup({
+  formatters_by_ft = {
+    javascript = { 'prettier' },
+    typescript = { 'prettier' },
+    html = { 'prettier' },
+    css = { 'prettier' },
+    json = { 'prettier' },
+    yaml = { 'prettier' },
+    markdown = { 'prettier' },
+  },
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  callback = function(args)
+    require('conform').format({ bufnr = args.buf, lsp_fallback = true })
+  end,
+})
 
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-            vim.lsp.handlers.signature_help, {
-                border = 'rounded',
-                close_events = {"BufHidden", "InsertLeave"},
-    }
-)
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('lsp', { clear = true }),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client then return end
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-            vim.lsp.handlers.hover, {
-                border = 'rounded',
-    }
-)
+    -- Document highlight
+    if client.server_capabilities.documentHighlightProvider then
+      local buf = args.buf
+      vim.api.nvim_create_autocmd('CursorHold', {
+        buffer = buf,
+        callback = vim.lsp.buf.document_highlight,
+      })
+      vim.api.nvim_create_autocmd('CursorMoved', {
+        buffer = buf,
+        callback = vim.lsp.buf.clear_references,
+      })
+    end
+  end,
+})
+
+vim.api.nvim_create_user_command('LspRestart', function()
+  vim.lsp.stop_client(vim.lsp.get_clients())
+end, {})
 
 vim.diagnostic.config {
     float = { border = "rounded" },
 }
+vim.o.winborder = 'rounded'
 
-vim.lsp.config('nixd', {
-    capablities = capabilities,
-    on_attach = on_attach,
-})
 vim.lsp.enable('nixd')
-
-vim.lsp.config('gopls', {
-    capablities = capabilities,
-    on_attach = on_attach,
-})
 vim.lsp.enable('gopls')
-
-vim.lsp.config('rust_analyzer', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
 vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('eslint')
+vim.lsp.enable('terraformls')
+vim.lsp.enable('bashls')
+vim.lsp.enable('pyright')
+vim.lsp.enable('zls')
+vim.lsp.enable('ruff')
+vim.lsp.enable('buf_ls')
+vim.lsp.enable('tsgo')
 
 vim.lsp.config('ts_ls', {
     init_options = require'nvim-lsp-ts-utils'.init_options,
-    capabilities = capabilities,
-    on_attach = on_attach,
 })
 -- vim.lsp.enable('ts_ls')
-
-vim.lsp.config('eslint', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-vim.lsp.enable('eslint')
-
-vim.lsp.config('terraformls', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-vim.lsp.enable('terraformls')
-
-vim.lsp.config('bashls', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-vim.lsp.enable('bashls')
-
-vim.lsp.config('pyright', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-vim.lsp.enable('pyright')
-
-vim.lsp.config('zls', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-vim.lsp.enable('zls')
-
-vim.lsp.config('ruff', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-vim.lsp.enable('ruff')
-
-vim.lsp.config('buf_ls', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-vim.lsp.enable('buf_ls')
-
-vim.lsp.config('tsgo', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-vim.lsp.enable('tsgo')
 
 require'lualine'.setup{
     options = {
@@ -386,15 +323,8 @@ xnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
-nnoremap <silent> [e <cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> ]e <cmd>lua vim.diagnostic.goto_next()<CR>
-
-function LspReload()
-    lua vim.lsp.stop_client(vim.lsp.get_active_clients())
-    edit
-endfunction
-
-command LspReload :call LspReload()
+nnoremap <silent> [e <cmd>lua vim.diagnostic.jump({count = -1})<CR>
+nnoremap <silent> ]e <cmd>lua vim.diagnostic.jump({count = 1})<CR>
 
 function! RemoveQFItem()
   let curqfidx = line('.') - 1
