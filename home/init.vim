@@ -323,8 +323,8 @@ xnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
-nnoremap <silent> [e <cmd>lua vim.diagnostic.jump({count = -1})<CR>
-nnoremap <silent> ]e <cmd>lua vim.diagnostic.jump({count = 1})<CR>
+nnoremap <silent> [e <cmd>lua vim.diagnostic.jump({count = -1, float = true})<CR>
+nnoremap <silent> ]e <cmd>lua vim.diagnostic.jump({count = 1, float = true})<CR>
 
 function! RemoveQFItem()
   let curqfidx = line('.') - 1

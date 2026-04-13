@@ -137,6 +137,44 @@ in
     };
   };
 
+  services.kanshi = {
+    enable = true;
+    settings = [
+      {
+        profile = {
+          name = "dockedLg";
+          outputs = [
+            {
+              criteria = "LG Electronics LG HDR 4K 303NTNHBB711";
+              status = "enable";
+              position = "0,0";
+              scale = 1.25;
+            }
+            {
+              criteria = "eDP-1";
+              status = "enable";
+              position = "576,1728";
+              scale = 1.5;
+            }
+          ];
+        };
+      }
+      {
+        profile = {
+          name = "undocked";
+          outputs = [
+            {
+              criteria = "eDP-1";
+              status = "enable";
+              position = "0,0";
+              scale = 1.5;
+            }
+          ];
+        };
+      }
+    ];
+  };
+
   fonts.fontconfig.enable = true;
 
   # This value determines the Home Manager release that your
