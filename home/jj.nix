@@ -46,11 +46,6 @@
       templates = {
         git_push_bookmark = ''"cbrewster/push-" ++ change_id.short()'';
       };
-      remotes = {
-        origin = {
-          auto-track-bookmarks = "glob:cbrewster/*";
-        };
-      };
       ui = {
         pager = "less -FRX";
       };

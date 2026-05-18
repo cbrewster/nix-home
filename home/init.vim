@@ -32,7 +32,7 @@ require('github-theme').setup({
 })
 EOF
 
-colorscheme github_dark_default
+colorscheme github_dark_dimmed
 
 set backspace=indent,eol,start
 " Fix colors for alacritty
@@ -46,6 +46,10 @@ let g:netrw_liststyle = 0
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+
+" vim-rooter: only treat VCS roots as project roots
+" (default included Makefile and package.json which broke monorepos)
+let g:rooter_patterns = ['.git', '.jj', '.hg', '.svn', '.bzr', '_darcs']
 
 " Telescope
 lua << EOF
@@ -185,7 +189,9 @@ cmp.setup({
 require('conform').setup({
   formatters_by_ft = {
     javascript = { 'prettier' },
+    javascriptreact = { 'prettier' },
     typescript = { 'prettier' },
+    typescriptreact = { 'prettier' },
     html = { 'prettier' },
     css = { 'prettier' },
     json = { 'prettier' },
@@ -197,7 +203,7 @@ require('conform').setup({
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   callback = function(args)
-    require('conform').format({ bufnr = args.buf, lsp_fallback = true })
+    require('conform').format({ bufnr = args.buf, lsp_format = 'fallback' })
   end,
 })
 
@@ -226,6 +232,19 @@ vim.api.nvim_create_user_command('LspRestart', function()
   vim.lsp.stop_client(vim.lsp.get_clients())
 end, {})
 
+-- Resync LSP document state when buffer is reloaded from an external change
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+  callback = function(args)
+    local bufnr = args.buf
+    vim.schedule(function()
+      for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+        vim.lsp.buf_detach_client(bufnr, client.id)
+        vim.lsp.buf_attach_client(bufnr, client.id)
+      end
+    end)
+  end,
+})
+
 vim.diagnostic.config {
     float = { border = "rounded" },
 }
@@ -242,6 +261,7 @@ vim.lsp.enable('zls')
 vim.lsp.enable('ruff')
 vim.lsp.enable('buf_ls')
 vim.lsp.enable('tsgo')
+-- vim.lsp.enable('vtsls')
 
 vim.lsp.config('ts_ls', {
     init_options = require'nvim-lsp-ts-utils'.init_options,

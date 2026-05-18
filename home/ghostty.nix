@@ -8,7 +8,7 @@
       window-decoration = false;
       resize-overlay = "never";
       confirm-close-surface = false;
-      theme = "GitHub Dark";
+      theme = "GitHub Dark Dimmed";
       shell-integration-features = "ssh-terminfo,ssh-env";
     };
   };

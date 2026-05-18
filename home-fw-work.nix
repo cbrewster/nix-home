@@ -1,10 +1,5 @@
 { pkgs, ... }:
 
-let
-
-  tcld = pkgs.callPackage ./pkgs/tcld.nix { };
-
-in
 {
   imports = [
     ./home/neovim.nix
@@ -68,6 +63,7 @@ in
     tcld
     temporal-cli
     typescript-go
+    vtsls
 
     natscli
     nats-server
