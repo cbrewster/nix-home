@@ -71,6 +71,7 @@
     nixd
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.iosevka
+    pkgs.inter
   ];
 
   wayland.windowManager.sway = {
