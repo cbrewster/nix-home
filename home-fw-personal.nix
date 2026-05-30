@@ -48,7 +48,6 @@
     xclip
     kubectx
     kubectl
-    code-cursor
     protobuf
     gnumake
     cmake
@@ -56,6 +55,7 @@
     lldb
     gdbgui
     gdb
+    zed-editor
 
     natscli
     nats-server
