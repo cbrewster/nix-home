@@ -64,8 +64,7 @@
     rustup
     cargo-edit
 
-    (writeShellScriptBin "spotify" ''
-      exec ${lib.getExe spotifywm} --enable-features=UseOzonePlatform --ozone-platform=wayland    '')
+    spotify
     slack
     discord
 

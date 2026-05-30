@@ -169,7 +169,7 @@ let
     }
 
     layer-rule {
-        match namespace="^wofi$"
+        match namespace="^rofi$"
         geometry-corner-radius 13.0 13.0 13.0 13.0
         background-effect {
             blur true
@@ -291,11 +291,15 @@ in
         "Super+Shift+k".action.move-window-up = {};
         "Super+Shift+l".action.move-column-right = {};
 
+        # Group windows into columns
+        "Super+comma".action.consume-window-into-column = {};
+        "Super+period".action.expel-window-from-column = {};
+
         # Terminal
         "Super+Return".action.spawn = [ "${config.programs.ghostty.package}/bin/ghostty" ];
 
         # App launcher
-        "Super+d".action.spawn = [ "${pkgs.wofi}/bin/wofi" "--style=${./wofi.css}" "--show" "drun" ];
+        "Super+d".action.spawn = [ "${pkgs.rofi}/bin/rofi" "-show" "drun" "-theme" "${./rofi.rasi}" ];
 
         # Close window
         "Super+Shift+q".action.close-window = {};
