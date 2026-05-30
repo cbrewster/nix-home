@@ -1,4 +1,4 @@
-@define-color background #1f262d;
+@define-color background rgba(31, 38, 45, 0.82);
 @define-color foreground #eeeeee;
 @define-color muted rgba(238, 238, 238, 0.58);
 @define-color surface #333a42;

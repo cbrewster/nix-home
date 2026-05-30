@@ -1,4 +1,4 @@
-{ pkgs, config, niri, ... }:
+{ pkgs, config, lib, niri, ... }:
 
 let
   background = pkgs.fetchurl {
@@ -154,6 +154,22 @@ let
       };
     };
   };
+
+  niriConfigWithWaybarBlur = pkgs.runCommand "niri-config-with-waybar-blur.kdl" { } ''
+    cat ${pkgs.writeText "niri-generated-config.kdl" config.programs.niri.finalConfig} > "$out"
+    cat >> "$out" <<'EOF'
+
+    layer-rule {
+        match namespace="^waybar$"
+        geometry-corner-radius 13.0 13.0 13.0 13.0
+        background-effect {
+            blur true
+            xray false
+        }
+    }
+EOF
+    ${config.programs.niri.package}/bin/niri validate -c "$out"
+  '';
 in
 {
   imports = [ niri.homeModules.niri ];
@@ -348,6 +364,8 @@ in
       };
     };
   };
+
+  xdg.configFile.niri-config.source = lib.mkForce niriConfigWithWaybarBlur;
 
   home.packages = with pkgs; [
     brightnessctl
