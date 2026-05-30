@@ -78,6 +78,7 @@ in
 
   programs.niri = {
     enable = true;
+    package = pkgs.niri;
 
     settings = {
       cursor = {
@@ -112,13 +113,28 @@ in
 
         focus-ring = {
           enable = true;
-          width = 2;
-          active.color = "#ff616e";
-          inactive.color = "#505050";
+          width = 1;
+          active.color = "#2a2a2a99";
+          inactive.color = "#2a2a2a66";
         };
 
         border = {
-          enable = false;
+          enable = true;
+          width = 1;
+          active.color = "#e8e8e899";
+          inactive.color = "#e8e8e84d";
+        };
+
+        shadow = {
+          enable = true;
+          offset = {
+            x = 0;
+            y = 6;
+          };
+          softness = 24;
+          spread = -8;
+          color = "#00000040";
+          inactive-color = "#00000024";
         };
       };
 
@@ -131,6 +147,12 @@ in
             bottom-right = r;
           };
           clip-to-geometry = true;
+        }
+        {
+          matches = [
+            { is-active = false; }
+          ];
+          opacity = 0.92;
         }
       ];
 
