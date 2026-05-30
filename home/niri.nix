@@ -232,12 +232,6 @@ in
           };
           clip-to-geometry = true;
         }
-        {
-          matches = [
-            { is-active = false; }
-          ];
-          opacity = 0.92;
-        }
       ];
 
       screenshot-path = null;
