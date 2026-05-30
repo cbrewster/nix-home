@@ -11,34 +11,55 @@ let
     text = builtins.toJSON {
       layer = "top";
       position = "bottom";
-      height = 20;
-      "modules-left" = [ "niri/workspaces" ];
+      spacing = 0;
+      height = 28;
+      margin-left = 8;
+      margin-right = 8;
+      margin-bottom = 8;
+      "reload-style-on-change" = true;
+      "modules-left" = [ "niri/workspaces" "mpris" ];
       "modules-center" = [ "niri/window" ];
-      "modules-right" = [ "tray" "network" "memory" "cpu" "disk" "pulseaudio" "battery" "clock" ];
+      "modules-right" = [ "group/tray-expander" "group/ctl" "clock" ];
 
       "niri/workspaces" = {
         all-outputs = true;
+        format = "{icon}";
+        "format-icons" = {
+          active = "";
+          default = "";
+        };
       };
 
       clock = {
-        format = "{:%I:%M %p}";
+        format = " {:%I:%M %p}";
+        "format-alt" = "{:%A  %e %B}";
+        "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
       };
 
       battery = {
         states = {
-          warning = 10;
-          critical = 5;
+          warning = 20;
+          critical = 10;
         };
-        format = "{capacity}% {icon} ";
-        "format-charging" = "{capacity}% {icon}  󰂄";
-        "format-icons" = [ "" "" "" "" "" ];
-        "max-length" = 25;
+        format = "{capacity}% {icon}";
+        "format-discharging" = "{icon} {capacity}%";
+        "format-charging" = "{icon} {capacity}%";
+        "format-plugged" = " {capacity}%";
+        "format-icons" = {
+          charging = [ "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅" ];
+          default = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+        };
+        "format-full" = "󰂅";
+        "tooltip-format-discharging" = "{power:>1.0f}W↓ {capacity}%";
+        "tooltip-format-charging" = "{power:>1.0f}W↑ {capacity}%";
+        interval = 5;
       };
 
       pulseaudio = {
-        format = "{volume}% {icon}";
-        "format-bluetooth" = "{volume}% ";
+        format = "{icon} {volume}%";
         "format-muted" = "󰖁";
+        "tooltip-format" = "Playing at {volume}%";
+        "scroll-step" = 5;
         "format-icons" = {
           headphone = "";
           "hands-free" = "";
@@ -46,27 +67,90 @@ let
           phone = "";
           portable = "";
           car = "";
-          "default" = [ "" "" "" ];
+          "default" = [ "" " " " " ];
         };
         "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
+        "on-click-right" = "${pkgs.pamixer}/bin/pamixer -t";
       };
 
       disk = {
-        format = "{percentage_used}% 󱛟";
+        format = "󱛟 {percentage_used}%";
       };
 
       memory = {
-        format = "{}% ";
+        format = "󰍛 {}%";
       };
 
       cpu = {
-        format = "{usage}% 󰍛";
+        interval = 2;
+        format = "󰍛 {usage}%";
       };
 
       network = {
-        "format-wifi" = "󰖩";
-        "format-disconnect" = "󱚵";
-        "tooltip-format-wifi" = "{essid} ({signalStrength}%) ";
+        "format-icons" = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+        format = "{icon}";
+        "format-wifi" = "{icon}";
+        "format-ethernet" = "󰀂";
+        "format-disconnected" = "󰤮";
+        "tooltip-format-wifi" = "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+        "tooltip-format-ethernet" = "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+        "tooltip-format-disconnected" = "Disconnected";
+        interval = 3;
+        spacing = 1;
+      };
+
+      tray = {
+        "icon-size" = 12;
+        spacing = 4;
+      };
+
+      "custom/expand-icon" = {
+        format = "";
+        tooltip = false;
+      };
+
+      "group/tray-expander" = {
+        orientation = "inherit";
+        drawer = {
+          "transition-duration" = 600;
+          "children-class" = "tray-group-item";
+        };
+        modules = [ "custom/expand-icon" "tray" ];
+      };
+
+      "group/ctl" = {
+        orientation = "inherit";
+        modules = [ "network" "pulseaudio" "cpu" "memory" "battery" ];
+      };
+
+      mpris = {
+        interval = 10;
+        format = "{player_icon} {dynamic}";
+        "format-paused" = "{status_icon} {artist} {title}";
+        "on-click-middle" = "${pkgs.playerctl}/bin/playerctl play-pause";
+        "on-click" = "${pkgs.playerctl}/bin/playerctl previous";
+        "on-click-right" = "${pkgs.playerctl}/bin/playerctl next";
+        "player-icons" = {
+          chromium = "";
+          default = "";
+          firefox = "";
+          mpv = "󰐹";
+          spotify = "󰎆";
+          vlc = "󰕼";
+        };
+        "status-icons" = {
+          paused = "";
+          playing = "";
+          stopped = "";
+        };
+        "dynamic-order" = [ "artist" "title" ];
+        "ignored-players" = [ "firefox" "zen" ];
+        "max-length" = 40;
+      };
+
+      "niri/window" = {
+        format = "{title}";
+        "max-length" = 45;
       };
     };
   };
@@ -109,7 +193,7 @@ in
       };
 
       layout = {
-        gaps = 16;
+        gaps = 8;
 
         focus-ring = {
           enable = true;
@@ -140,7 +224,7 @@ in
 
       window-rules = [
         {
-          geometry-corner-radius = let r = 8.0; in {
+          geometry-corner-radius = let r = 13.0; in {
             top-left = r;
             top-right = r;
             bottom-left = r;
@@ -161,7 +245,7 @@ in
       hotkey-overlay.skip-at-startup = true;
 
       spawn-at-startup = [
-        { command = [ "${pkgs.waybar}/bin/waybar" "--config" "${niriWaybarConfig}" ]; }
+        { command = [ "${pkgs.waybar}/bin/waybar" "--config" "${niriWaybarConfig}" "--style" "${./waybar.css}" ]; }
         { command = [ "${pkgs.swaybg}/bin/swaybg" "-m" "fill" "-c" "#303440" "-i" "${background}" ]; }
       ];
 
@@ -189,6 +273,13 @@ in
 
         # Exit niri
         "Super+Shift+e".action.quit = {};
+
+        # Reload config and status bar
+        "Super+Shift+c".action.spawn = [
+          "sh"
+          "-c"
+          "${pkgs.niri}/bin/niri msg action load-config-file && ${pkgs.procps}/bin/pkill waybar; ${pkgs.waybar}/bin/waybar --config ${niriWaybarConfig} --style ${./waybar.css}"
+        ];
 
         # Window sizing
         "Super+r".action.switch-preset-column-width = {};
@@ -254,8 +345,8 @@ in
         };
 
         # Brightness
-        "XF86MonBrightnessUp".action.spawn = [ "light" "-A" "10" ];
-        "XF86MonBrightnessDown".action.spawn = [ "light" "-U" "10" ];
+        "XF86MonBrightnessUp".action.spawn = [ "${pkgs.brightnessctl}/bin/brightnessctl" "set" "+10%" ];
+        "XF86MonBrightnessDown".action.spawn = [ "${pkgs.brightnessctl}/bin/brightnessctl" "set" "10%-" ];
 
         # Screenshots (clipboard only)
         "Print".action.screenshot-screen = {};
@@ -265,6 +356,7 @@ in
   };
 
   home.packages = with pkgs; [
+    brightnessctl
     swaybg
     xwayland-satellite
   ];

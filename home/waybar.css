@@ -1,97 +1,149 @@
+@define-color background #1f262d;
+@define-color foreground #eeeeee;
+@define-color muted rgba(238, 238, 238, 0.58);
+@define-color surface #333a42;
+@define-color surface-strong #3a424b;
+@define-color edge-light rgba(232, 232, 232, 0.28);
+@define-color edge-dark #1f2328;
+@define-color accent #ff6b78;
+@define-color urgent #f13333;
+
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "FiraCode Nerd Font";
-    font-size: 13px;
-    min-height: 0;
+  border: none;
+  border-radius: 13px;
+  color: @foreground;
+  font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font", monospace;
+  font-size: 12px;
+  min-height: 0;
 }
 
 window#waybar {
-    background: black;
-    color: white;
+  background: transparent;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar > box {
+  background: @background;
+  border: 1px solid @edge-dark;
+  border-radius: 13px;
+  box-shadow: inset 0 0 0 1px @edge-light, 0 6px 24px rgba(0, 0, 0, 0.24);
+}
+
+.modules-left {
+  margin-left: 0;
+}
+
+.modules-right {
+  margin-right: 0;
+}
+
+window#waybar.empty #window {
+  background: transparent;
+  color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+#waybar.empty .modules-center {
+  opacity: 0;
+}
+
+#workspaces {
+  background: @surface;
+  border: none;
+  border-radius: 10px;
+  margin: 3px 2px;
+  opacity: 0.95;
+  padding: 0 8px;
 }
 
 #workspaces button {
-    margin: 0;
-    padding: 0 5px;
-    background: transparent;
-    color: white;
-    border-top: 2px solid transparent;
+  all: initial;
+  color: @muted;
+  margin: 0 1.5px;
+  min-width: 9px;
+  padding: 0 6px;
 }
 
+#workspaces button.active,
+#workspaces button.focused,
 #workspaces button:hover {
-    border-top: 2px solid white;
-    box-shadow: inherit;
-    text-shadow: inherit;
+  color: @foreground;
 }
 
-#workspaces button.focused:hover, #workspaces button.focused {
-    margin: 0;
-    padding: 0 5px;
-    color: #ff616e;
-    border-top: 2px solid #ff616e;
+#workspaces button.empty {
+  opacity: 0.5;
 }
 
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
-}
-
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #disk {
-    padding: 0 3px;
-    margin: 0 3px;
-    background: transparent;
-    color: white;
+#clock,
+#mpris,
+#window,
+#group-ctl,
+#group_ctl,
+#ctl {
+  background: @surface;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  margin: 3px 2px;
+  padding: 0 8px;
 }
 
 #clock {
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
-#battery {
-}
-
-#battery icon {
-    color: red;
-}
-
-#battery.charging {
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
-}
-
-#battery.warning:not(.charging) {
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#cpu {
-}
-
-#memory {
-}
-
-#network {
-}
-
-#network.disconnected {
-    background: #f53c3c;
-}
-
-#pulseaudio {
-}
-
-#pulseaudio.muted {
+#window {
+  color: @foreground;
 }
 
 #tray {
+  background: transparent;
+  border-radius: 10px;
+  margin: 3px 1px 3px 2px;
+  padding: 0 8px;
 }
 
+#custom-expand-icon {
+  margin-right: 10px;
+}
+
+#cpu,
+#memory,
+#battery,
+#pulseaudio {
+  margin: 0 7.5px;
+  min-width: 12px;
+}
+
+#network {
+  margin-right: 9px;
+}
+
+#battery.warning:not(.charging),
+#battery.critical:not(.charging),
+#network.disconnected,
+#pulseaudio.muted {
+  color: @accent;
+}
+
+#battery.critical:not(.charging) {
+  color: @urgent;
+}
+
+tooltip {
+  background: @background;
+  border: 1px solid @edge-dark;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px @edge-light;
+}
+
+tooltip label {
+  color: @foreground;
+}
+
+.hidden {
+  opacity: 0;
+}

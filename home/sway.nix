@@ -113,6 +113,7 @@ in
   };
 
   home.packages = with pkgs; [
+    brightnessctl
     wl-clipboard
     flameshot
     wdisplays
@@ -216,8 +217,8 @@ in
         "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 5";
         "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 5";
         "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
-        "XF86MonBrightnessUp" = "exec light -A 10";
-        "XF86MonBrightnessDown" = "exec light -U 10";
+        "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +10%";
+        "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
         "Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy";
       };
     };
