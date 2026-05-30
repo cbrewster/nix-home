@@ -8,7 +8,7 @@
  **/
 
 * {
-    font: "FiraCode Nerd Font 16";
+    font: "JetBrainsMono Nerd Font 13";
 }
 
 /**
@@ -20,12 +20,12 @@
  **/
 
 * {
-    background:     #282A2EFF;
+    background:     #1f262dd1;
     /*background:     #1E2127FF;*/
-    background-alt: #0d0e0fE0;
-    foreground:     #FFFFFFFF;
+    background-alt: #0c101456;
+    foreground:     #EEEEEEFF;
     /*selected:       #61AFEFFF;*/
-    selected:       #71C6EBFF;
+    selected:       #0c101456;
     active:         #98C379E0;
     urgent:         #E06C75FF;
 }
@@ -66,7 +66,7 @@ configuration {
     active-background:           var(active);
     active-foreground:           var(background);
     selected-normal-background:  var(selected);
-    selected-normal-foreground:  var(background);
+    selected-normal-foreground:  var(foreground);
     selected-urgent-background:  var(active);
     selected-urgent-foreground:  var(background);
     selected-active-background:  var(urgent);
@@ -85,9 +85,9 @@ window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    fullscreen:                  true;
-    width:                       1366px;
-    height:                      768px;
+    fullscreen:                  false;
+    width:                       640px;
+    height:                      520px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -95,8 +95,8 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px;
+    border:                      1px solid;
+    border-radius:               13px;
     border-color:                @border-colour;
     cursor:                      "default";
     background-color:            transparent;
@@ -105,13 +105,13 @@ window {
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     20px;
+    spacing:                     10px;
     margin:                      0px;
-    padding:                     25% 35%;
+    padding:                     10px;
     border:                      0px solid;
-    border-radius:               0px 0px 0px 0px;
+    border-radius:               13px;
     border-color:                @border-colour;
-    background-color:            transparent;
+    background-color:            @background-colour;
     children:                    [ "inputbar", "listview" ];
 }
 
@@ -120,9 +120,9 @@ inputbar {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     20px;
-    border:                      1px;
-    border-radius:               20px;
+    padding:                     10px;
+    border:                      0px;
+    border-radius:               10px;
     border-color:                @border-colour;
     background-color:            @alternate-background;
     text-color:                  @foreground-colour;
@@ -156,7 +156,7 @@ entry {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       12;
+    lines:                       10;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -165,11 +165,11 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     10px;
+    spacing:                     4px;
     margin:                      0px;
-    padding:                     30px;
-    border:                      1px solid;
-    border-radius:               20px;
+    padding:                     8px;
+    border:                      0px solid;
+    border-radius:               10px;
     border-color:                @border-colour;
     background-color:            @alternate-background;
     text-color:                  @foreground-colour;
@@ -187,9 +187,9 @@ element {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     8px;
+    padding:                     8px 10px;
     border:                      0px solid;
-    border-radius:               12px;
+    border-radius:               10px;
     border-color:                @border-colour;
     background-color:            transparent;
     text-color:                  @foreground-colour;

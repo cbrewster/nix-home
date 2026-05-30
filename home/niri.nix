@@ -167,6 +167,25 @@ let
             xray false
         }
     }
+
+    layer-rule {
+        match namespace="^wofi$"
+        geometry-corner-radius 13.0 13.0 13.0 13.0
+        background-effect {
+            blur true
+            xray false
+        }
+    }
+
+    window-rule {
+        match app-id="^rofi$"
+        geometry-corner-radius 13.0 13.0 13.0 13.0
+        clip-to-geometry true
+        background-effect {
+            blur true
+            xray false
+        }
+    }
 EOF
     ${config.programs.niri.package}/bin/niri validate -c "$out"
   '';
@@ -276,7 +295,7 @@ in
         "Super+Return".action.spawn = [ "${config.programs.ghostty.package}/bin/ghostty" ];
 
         # App launcher
-        "Super+d".action.spawn = [ "${pkgs.wofi}/bin/wofi" "--style=${./wofi.css}" "--show" "run" ];
+        "Super+d".action.spawn = [ "${pkgs.wofi}/bin/wofi" "--style=${./wofi.css}" "--show" "drun" ];
 
         # Close window
         "Super+Shift+q".action.close-window = {};
