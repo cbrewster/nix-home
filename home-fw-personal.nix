@@ -10,6 +10,7 @@
     ./home/tmux.nix
     ./home/ghostty.nix
     ./home/sway.nix
+    ./home/niri.nix
     ./home/jj.nix
     ./home/ai.nix
   ];
