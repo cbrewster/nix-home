@@ -1,8 +1,8 @@
 @define-color background rgba(31, 38, 45, 0.82);
 @define-color foreground #eeeeee;
 @define-color muted rgba(238, 238, 238, 0.58);
-@define-color surface #333a42;
-@define-color surface-strong #3a424b;
+@define-color surface rgba(12, 16, 20, 0.34);
+@define-color surface-strong rgba(8, 12, 16, 0.44);
 @define-color edge-light rgba(232, 232, 232, 0.28);
 @define-color edge-dark #1f2328;
 @define-color accent #ff6b78;
@@ -55,7 +55,7 @@ window#waybar.empty #window {
   border-radius: 10px;
   margin: 3px 2px;
   opacity: 0.95;
-  padding: 0 8px;
+  padding: 0 2px;
 }
 
 #workspaces button {
@@ -87,12 +87,13 @@ window#waybar.empty #window {
   border-radius: 10px;
   font-weight: 500;
   margin: 3px 2px;
-  padding: 0 8px;
+  padding: 0 10px;
 }
 
 #clock {
   margin-left: 2px;
   margin-right: 2px;
+  padding-right: 10px;
 }
 
 #window {

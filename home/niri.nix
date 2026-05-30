@@ -31,7 +31,7 @@ let
       };
 
       clock = {
-        format = " {:%I:%M %p}";
+        format = "{:%I:%M %p}";
         "format-alt" = "{:%A  %e %B}";
         "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
       };
