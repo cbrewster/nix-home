@@ -175,8 +175,8 @@
 
   wayland.windowManager.sway = {
     extraConfig = ''
-      bindswitch lid:on output eDP-1 disable
-      bindswitch lid:off output eDP-1 enable
+      bindswitch --reload lid:on output eDP-1 disable
+      bindswitch --reload lid:off output eDP-1 enable
       for_window [title="Firefox - Sharing Indicator"] kill
     '';
 
@@ -197,44 +197,6 @@
         mode = "3440x1440@100Hz";
       };
     };
-  };
-
-  services.kanshi = {
-    enable = true;
-    settings = [
-      {
-        profile = {
-          name = "dockedLg";
-          outputs = [
-            {
-              criteria = "LG Electronics LG HDR 4K 303NTNHBB711";
-              status = "enable";
-              position = "0,0";
-              scale = 1.25;
-            }
-            {
-              criteria = "eDP-1";
-              status = "enable";
-              position = "576,1728";
-              scale = 1.5;
-            }
-          ];
-        };
-      }
-      {
-        profile = {
-          name = "undocked";
-          outputs = [
-            {
-              criteria = "eDP-1";
-              status = "enable";
-              position = "0,0";
-              scale = 1.5;
-            }
-          ];
-        };
-      }
-    ];
   };
 
   fonts.fontconfig.enable = true;

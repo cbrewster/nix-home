@@ -76,8 +76,8 @@
 
   wayland.windowManager.sway = {
     extraConfig = ''
-      bindswitch lid:on output eDP-2 disable
-      bindswitch lid:off output eDP-2 enable
+      bindswitch --reload lid:on output eDP-2 disable
+      bindswitch --reload lid:off output eDP-2 enable
       for_window [title="Firefox - Sharing Indicator"] kill
     '';
 

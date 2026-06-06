@@ -185,7 +185,7 @@ in
     enable = true;
     package = null;
     extraConfig = ''
-      corner_radius ${toString theme.cornerRadius}
+      corner_radius 10
 
       blur enable
       blur_xray disable
