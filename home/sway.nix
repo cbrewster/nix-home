@@ -4,6 +4,14 @@ let
 
   mod = "Mod4";
   gapSize = 5;
+  theme = {
+    background = "#1f262dd1";
+    foreground = "#eeeeeeff";
+    selected = "#e8e8e824";
+    edgeDark = "#1f2328ff";
+    edgeLight = "#e8e8e847";
+    cornerRadius = 13;
+  };
   splitIndicatorColor = "#539bf5ff";
 
   background = pkgs.fetchurl {
@@ -24,9 +32,16 @@ in
     enable = true;
     settings = {
       default-timeout = 5000;
-      border-radius = 5;
+      background-color = theme.background;
+      text-color = theme.foreground;
+      border-color = theme.edgeLight;
+      progress-color = "over ${theme.selected}";
+      border-size = 1;
+      border-radius = theme.cornerRadius;
+      layer = "overlay";
       margin = "5";
-      font = "FiraCode Nerd Font 10";
+      padding = "12,14";
+      font = "JetBrainsMono Nerd Font 10";
     };
   };
 
@@ -170,7 +185,7 @@ in
     enable = true;
     package = null;
     extraConfig = ''
-      corner_radius 10
+      corner_radius ${toString theme.cornerRadius}
 
       blur enable
       blur_xray disable
@@ -180,13 +195,13 @@ in
       layer_effects "waybar" {
         blur enable;
         blur_xray disable;
-        corner_radius 13;
+        corner_radius ${toString theme.cornerRadius};
       }
 
       layer_effects "rofi" {
         blur enable;
         blur_xray disable;
-        corner_radius 13;
+        corner_radius ${toString theme.cornerRadius};
       }
     '';
 
@@ -212,25 +227,25 @@ in
 
       colors = {
         focused = {
-          border = "#2a2a2a99";
-          background = "#2a2a2a99";
-          text = "#eeeeee";
+          border = theme.edgeDark;
+          background = theme.background;
+          text = theme.foreground;
           indicator = splitIndicatorColor;
-          childBorder = "#e8e8e899";
+          childBorder = theme.edgeLight;
         };
         focusedInactive = {
-          border = "#2a2a2a66";
-          background = "#2a2a2a66";
-          text = "#eeeeee";
-          indicator = "#e8e8e84d";
-          childBorder = "#e8e8e84d";
+          border = theme.edgeDark;
+          background = theme.background;
+          text = theme.foreground;
+          indicator = theme.selected;
+          childBorder = theme.selected;
         };
         unfocused = {
-          border = "#2a2a2a66";
-          background = "#2a2a2a66";
-          text = "#eeeeee";
-          indicator = "#e8e8e84d";
-          childBorder = "#e8e8e84d";
+          border = theme.edgeDark;
+          background = theme.background;
+          text = theme.foreground;
+          indicator = theme.selected;
+          childBorder = theme.selected;
         };
       };
 
