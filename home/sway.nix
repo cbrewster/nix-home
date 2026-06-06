@@ -171,26 +171,6 @@ in
   wayland.windowManager.sway = {
     enable = true;
     package = null;
-    extraConfig = ''
-      corner_radius 10
-
-      blur enable
-      blur_xray disable
-      blur_passes 3
-      blur_radius 5
-
-      layer_effects "waybar" {
-        blur enable;
-        blur_xray disable;
-        corner_radius ${toString theme.cornerRadius};
-      }
-
-      layer_effects "rofi" {
-        blur enable;
-        blur_xray disable;
-        corner_radius ${toString theme.cornerRadius};
-      }
-    '';
 
     wrapperFeatures = {
       gtk = true;

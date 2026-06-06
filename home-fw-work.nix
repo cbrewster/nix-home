@@ -175,6 +175,25 @@
 
   wayland.windowManager.sway = {
     extraConfig = ''
+      corner_radius 10
+
+      blur enable
+      blur_xray disable
+      blur_passes 3
+      blur_radius 5
+
+      layer_effects "waybar" {
+        blur enable;
+        blur_xray disable;
+        corner_radius 13;
+      }
+
+      layer_effects "rofi" {
+        blur enable;
+        blur_xray disable;
+        corner_radius 13;
+      }
+
       bindswitch --reload lid:on output eDP-1 disable
       bindswitch --reload lid:off output eDP-1 enable
       for_window [title="Firefox - Sharing Indicator"] kill
