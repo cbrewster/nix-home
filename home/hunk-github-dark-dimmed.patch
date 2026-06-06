@@ -1,0 +1,43 @@
+diff --git a/src/ui/diff/pierre.ts b/src/ui/diff/pierre.ts
+index 4c85a90..2da12e9 100644
+--- a/src/ui/diff/pierre.ts
++++ b/src/ui/diff/pierre.ts
+@@ -180,11 +180,22 @@ function parseStyleValue(styleValue: unknown) {
+   return styles;
+ }
+ 
+-const RESERVED_PIERRE_TOKEN_COLORS = {
++const PIERRE_TOKEN_COLOR_REMAP = {
+   dark: {
+     "#ff6762": "keyword",
+     "#ff855e": "keyword",
+     "#5ecc71": "string",
++    "#ff7b72": "keyword",
++    "#ffa657": "type",
++    "#a5d6ff": "string",
++    "#79c0ff": "number",
++    "#8b949e": "comment",
++    "#c9d1d9": "default",
++    // Pierre uses the GitHub dark entity color heavily for TypeScript import/type
++    // identifiers. github-nvim-theme leaves those identifiers as normal fg in
++    // the same files, so remap entity to default instead of the function color.
++    "#d2a8ff": "default",
+   },
+   light: {
+     "#d52c36": "keyword",
+@@ -267,10 +278,10 @@ function normalizeHighlightedColor(color: string | undefined, theme: AppTheme) {
+   }
+ 
+   const normalized = color.trim().toLowerCase();
+-  const reserved =
+-    RESERVED_PIERRE_TOKEN_COLORS[theme.appearance][
+-      normalized as keyof (typeof RESERVED_PIERRE_TOKEN_COLORS)[typeof theme.appearance]
++  const remapped =
++    PIERRE_TOKEN_COLOR_REMAP[theme.appearance][
++      normalized as keyof (typeof PIERRE_TOKEN_COLOR_REMAP)[typeof theme.appearance]
+     ];
+-  const resolvedColor = reserved ? theme.syntaxColors[reserved] : color;
++  const resolvedColor = remapped ? theme.syntaxColors[remapped] : color;
+   cacheForTheme.set(color, resolvedColor);
+   return resolvedColor;
+ }

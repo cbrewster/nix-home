@@ -22,6 +22,10 @@
       url = "github:cbrewster/jj-github";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hunk = {
+      url = "github:modem-dev/hunk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,7 +36,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ghostty, llm-agents, jj-github, niri, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, ghostty, llm-agents, jj-github, niri, hunk, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -40,7 +44,7 @@
       mkHomeConfiguration = username: modules:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit ghostty system llm-agents jj-github niri; };
+          extraSpecialArgs = { inherit ghostty system llm-agents jj-github hunk niri; };
           modules = [
             {
               home.username = username;

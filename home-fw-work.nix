@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, system, hunk, ... }:
 
 {
   imports = [
@@ -12,6 +12,7 @@
     ./home/sway.nix
     ./home/ghostty.nix
     ./home/ai.nix
+    hunk.homeManagerModules.default
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -23,6 +24,68 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.hunk = {
+    enable = true;
+    package = hunk.packages.${system}.default.overrideAttrs (old: {
+      patches = (old.patches or []) ++ [
+        ./home/hunk-github-dark-dimmed.patch
+      ];
+    });
+    settings = {
+      theme = "custom";
+      custom_theme = {
+        base = "graphite";
+        label = "GitHub Dark Dimmed";
+
+        background = "#22272e";
+        panel = "#1e232a";
+        panelAlt = "#292e36";
+        border = "#444c56";
+        accent = "#539bf5";
+        accentMuted = "#2b4f81";
+        text = "#adbac7";
+        muted = "#768390";
+
+        addedBg = "#253430";
+        removedBg = "#3b2a2f";
+        contextBg = "#22272e";
+        addedContentBg = "#275736";
+        removedContentBg = "#783839";
+        contextContentBg = "#22272e";
+        addedSignColor = "#57ab5a";
+        removedSignColor = "#e5534b";
+        lineNumberBg = "#22272e";
+        lineNumberFg = "#636e7b";
+        selectedHunk = "#36557e";
+
+        badgeAdded = "#57ab5a";
+        badgeRemoved = "#e5534b";
+        badgeNeutral = "#636e7b";
+        fileNew = "#57ab5a";
+        fileDeleted = "#e5534b";
+        fileRenamed = "#c69026";
+        fileModified = "#cc6b2c";
+        fileUntracked = "#539bf5";
+
+        noteBorder = "#b083f0";
+        noteBackground = "#35324c";
+        noteTitleBackground = "#56457e";
+        noteTitleText = "#dcbdfb";
+
+        syntax = {
+          default = "#adbac7";
+          keyword = "#f47067";
+          string = "#96d0ff";
+          comment = "#768390";
+          number = "#6cb6ff";
+          function = "#dcbdfb";
+          property = "#6cb6ff";
+          type = "#f69d50";
+          punctuation = "#adbac7";
+        };
+      };
+    };
+  };
 
   home.packages = (with pkgs; [
     yalc
@@ -64,6 +127,9 @@
     temporal-cli
     typescript-go
     vtsls
+    zed-editor
+    snouty
+    python3
 
     natscli
     nats-server

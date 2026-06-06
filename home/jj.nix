@@ -51,7 +51,7 @@
       };
       aliases = {
         github = ["util" "exec" "--" "jj-github"];
-        tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
+        tug = ["bookmark" "advance" "--to" "@-"];
       };
     };
   };
