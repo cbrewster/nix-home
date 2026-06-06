@@ -227,6 +227,17 @@ in
         scale = 1.25;
       };
 
+      # Two identical LG UltraGear monitors, addressed by serial so the
+      # positions stay tied to the physical monitor regardless of port.
+      outputs."LG Electronics LG ULTRAGEAR 106MXVWAG815".position = {
+        x = 0;
+        y = 0;
+      };
+      outputs."LG Electronics LG ULTRAGEAR 011NTQD9H748".position = {
+        x = 2560;
+        y = 0;
+      };
+
       layout = {
         gaps = 8;
 
