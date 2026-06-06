@@ -19,7 +19,7 @@ let
       "reload-style-on-change" = true;
       "modules-left" = [ "niri/workspaces" "mpris" ];
       "modules-center" = [ "niri/window" ];
-      "modules-right" = [ "group/tray-expander" "group/ctl" "clock" ];
+      "modules-right" = [ "tray" "group/ctl" "clock" ];
 
       "niri/workspaces" = {
         all-outputs = true;
@@ -102,20 +102,6 @@ let
       tray = {
         "icon-size" = 12;
         spacing = 4;
-      };
-
-      "custom/expand-icon" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "group/tray-expander" = {
-        orientation = "inherit";
-        drawer = {
-          "transition-duration" = 600;
-          "children-class" = "tray-group-item";
-        };
-        modules = [ "custom/expand-icon" "tray" ];
       };
 
       "group/ctl" = {

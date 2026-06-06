@@ -10,6 +10,7 @@ let
     selected = "#e8e8e824";
     edgeDark = "#1f2328ff";
     edgeLight = "#e8e8e847";
+    notificationBackground = "#1f262dff";
     cornerRadius = 13;
   };
   splitIndicatorColor = "#539bf5ff";
@@ -32,7 +33,7 @@ in
     enable = true;
     settings = {
       default-timeout = 5000;
-      background-color = theme.background;
+      background-color = theme.notificationBackground;
       text-color = theme.foreground;
       border-color = theme.edgeLight;
       progress-color = "over ${theme.selected}";
@@ -75,7 +76,7 @@ in
         margin-bottom = gapSize;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "group/tray-expander" "group/ctl" "clock" ];
+        modules-right = [ "tray" "group/ctl" "clock" ];
 
         "sway/workspaces" = {
           all-outputs = true;
@@ -149,20 +150,6 @@ in
         tray = {
           icon-size = 12;
           spacing = 4;
-        };
-
-        "custom/expand-icon" = {
-          format = "";
-          tooltip = false;
-        };
-
-        "group/tray-expander" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 600;
-            children-class = "tray-group-item";
-          };
-          modules = [ "custom/expand-icon" "tray" ];
         };
 
         "group/ctl" = {

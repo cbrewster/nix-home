@@ -127,10 +127,6 @@ window#waybar.empty #window {
   padding: 0 8px;
 }
 
-#custom-expand-icon {
-  margin-right: 10px;
-}
-
 #cpu,
 #memory,
 #battery,
