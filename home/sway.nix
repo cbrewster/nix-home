@@ -3,6 +3,7 @@
 let
 
   mod = "Mod4";
+  gapSize = 5;
 
   background = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/acfd27ad83e5e279127a38ef410bcfac6d77c264/images/ign_colorful.png";
@@ -51,10 +52,14 @@ in
       mainBar = {
         layer = "top";
         position = "bottom";
-        height = 20;
+        spacing = 0;
+        height = 28;
+        margin-left = gapSize;
+        margin-right = gapSize;
+        margin-bottom = gapSize;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "tray" "network" "memory" "cpu" "disk" "pulseaudio" "battery" "clock" ];
+        modules-right = [ "group/tray-expander" "group/ctl" "clock" ];
 
         "sway/workspaces" = {
           all-outputs = true;
@@ -62,51 +67,91 @@ in
 
         clock = {
           format = "{:%I:%M %p}";
+          format-alt = "{:%A  %e %B}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         };
 
         battery = {
           states = {
-            warning = 10;
-            critical = 5;
+            warning = 20;
+            critical = 10;
           };
-          format = "{capacity}% {icon} ";
-          format-charging = "{capacity}% {icon}  󰂄";
-          format-icons = [ "" "" "" "" "" ];
-          max-length = 25;
+          format = "{capacity}% {icon}";
+          format-discharging = "{icon} {capacity}%";
+          format-charging = "{icon} {capacity}%";
+          format-plugged = " {capacity}%";
+          format-icons = {
+            charging = [ "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅" ];
+            default = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          };
+          format-full = "󰂅";
+          tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
+          tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
+          interval = 5;
         };
 
         pulseaudio = {
-          format = "{volume}% {icon}";
-          "format-bluetooth" = "{volume}% ";
-          "format-muted" = "󰖁";
-          "format-icons" = {
-            "headphone" = "";
-            "hands-free" = "";
-            "headset" = "";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = [ "" "" "" ];
+          format = "{icon} {volume}%";
+          format-muted = "󰖁";
+          tooltip-format = "Playing at {volume}%";
+          scroll-step = 5;
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" " " " " ];
           };
-          "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
-        };
-
-        disk = {
-          format = "{percentage_used}% 󱛟";
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+          on-click-right = "${pkgs.pamixer}/bin/pamixer -t";
         };
 
         memory = {
-          format = "{}% ";
+          format = "󰍛 {}%";
         };
 
         cpu = {
-          format = "{usage}% 󰍛";
+          interval = 2;
+          format = "󰍛 {usage}%";
         };
 
         network = {
-          "format-wifi" = "󰖩";
-          "format-disconnect" = "󱚵";
-          "tooltip-format-wifi" = "{essid} ({signalStrength}%) ";
+          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+          format = "{icon}";
+          format-wifi = "{icon}";
+          format-ethernet = "󰀂";
+          format-disconnected = "󰤮";
+          tooltip-format-wifi = "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+          tooltip-format-ethernet = "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
+          tooltip-format-disconnected = "Disconnected";
+          interval = 3;
+          spacing = 1;
+        };
+
+        tray = {
+          icon-size = 12;
+          spacing = 4;
+        };
+
+        "custom/expand-icon" = {
+          format = "";
+          tooltip = false;
+        };
+
+        "group/tray-expander" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 600;
+            children-class = "tray-group-item";
+          };
+          modules = [ "custom/expand-icon" "tray" ];
+        };
+
+        "group/ctl" = {
+          orientation = "inherit";
+          modules = [ "network" "pulseaudio" "cpu" "memory" "battery" ];
         };
       };
     };
@@ -123,6 +168,26 @@ in
   wayland.windowManager.sway = {
     enable = true;
     package = null;
+    extraConfig = ''
+      corner_radius 8
+
+      blur enable
+      blur_xray disable
+      blur_passes 3
+      blur_radius 5
+
+      layer_effects "waybar" {
+        blur enable;
+        blur_xray disable;
+        corner_radius 13;
+      }
+
+      layer_effects "rofi" {
+        blur enable;
+        blur_xray disable;
+        corner_radius 13;
+      }
+    '';
 
     wrapperFeatures = {
       gtk = true;
@@ -140,8 +205,8 @@ in
       }];
 
       gaps = {
-        inner = 5;
-        outer = 5;
+        inner = gapSize;
+        outer = 0;
       };
 
       input."2362:628:PIXA3854:00_093A:0274_Touchpad" = {
@@ -185,7 +250,7 @@ in
 
       window.titlebar = false;
 
-      menu = "${pkgs.wofi}/bin/wofi --style=${./wofi.css} --show run";
+      menu = "${pkgs.rofi}/bin/rofi -show drun -theme ${./rofi.rasi} ";
 
       keybindings = lib.mkOptionDefault {
         # Focus
