@@ -4,6 +4,7 @@ let
 
   mod = "Mod4";
   gapSize = 5;
+  splitIndicatorColor = "#539bf5ff";
 
   background = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/D3Ext/aesthetic-wallpapers/acfd27ad83e5e279127a38ef410bcfac6d77c264/images/ign_colorful.png";
@@ -214,7 +215,7 @@ in
           border = "#2a2a2a99";
           background = "#2a2a2a99";
           text = "#eeeeee";
-          indicator = "#e8e8e899";
+          indicator = splitIndicatorColor;
           childBorder = "#e8e8e899";
         };
         focusedInactive = {
