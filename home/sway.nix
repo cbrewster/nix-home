@@ -169,7 +169,7 @@ in
     enable = true;
     package = null;
     extraConfig = ''
-      corner_radius 8
+      corner_radius 10
 
       blur enable
       blur_xray disable
@@ -207,6 +207,30 @@ in
       gaps = {
         inner = gapSize;
         outer = 0;
+      };
+
+      colors = {
+        focused = {
+          border = "#2a2a2a99";
+          background = "#2a2a2a99";
+          text = "#eeeeee";
+          indicator = "#e8e8e899";
+          childBorder = "#e8e8e899";
+        };
+        focusedInactive = {
+          border = "#2a2a2a66";
+          background = "#2a2a2a66";
+          text = "#eeeeee";
+          indicator = "#e8e8e84d";
+          childBorder = "#e8e8e84d";
+        };
+        unfocused = {
+          border = "#2a2a2a66";
+          background = "#2a2a2a66";
+          text = "#eeeeee";
+          indicator = "#e8e8e84d";
+          childBorder = "#e8e8e84d";
+        };
       };
 
       input."2362:628:PIXA3854:00_093A:0274_Touchpad" = {
@@ -248,7 +272,10 @@ in
         };
       };
 
-      window.titlebar = false;
+      window = {
+        border = 1;
+        titlebar = false;
+      };
 
       menu = "${pkgs.rofi}/bin/rofi -show drun -theme ${./rofi.rasi} ";
 
